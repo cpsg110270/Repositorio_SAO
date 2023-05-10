@@ -1,0 +1,30 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@using SAO.Web.Pages.TipoProductos
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using SAO.TipoProductos;
+@using System.Globalization
+@inject IHtmlLocalizer<SAOResource> L
+@model EditModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/TipoProductos/EditModal" autocomplete="off">
+    <abp-modal id="TipoProductoEditModal">
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    <abp-input asp-for="Id" />
+
+                    
+            <abp-input asp-for="TipoProducto.DesProducto"  />
+
+                    
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

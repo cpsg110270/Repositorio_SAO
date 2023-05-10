@@ -1,0 +1,76 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@using SAO.Web.Pages.Productos
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using SAO.Productos;
+@using System.Globalization
+@inject IHtmlLocalizer<SAOResource> L
+@model EditModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/Productos/EditModal" autocomplete="off">
+    <abp-modal id="ProductoEditModal">
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+             <abp-tabs>
+                <abp-tab title="@L["Producto"].Value">
+                    <abp-input asp-for="Id" />
+
+                    
+            <abp-input asp-for="Producto.NombreComercia"  />
+
+            <abp-input asp-for="Producto.Uso" text-area />
+
+                                <abp-select asp-for="Producto.FabricanteId" asp-items="Model.FabricanteLookupListRequired" label="@L["Fabricante"].Value"/>            <abp-select asp-for="Producto.AsraeId" asp-items="Model.AsraeLookupListRequired" label="@L["Asrae"].Value"/>            <abp-select asp-for="Producto.TipoProductoId" asp-items="Model.TipoProductoLookupList" label="@L["TipoProducto"].Value"/>
+                </abp-tab>
+                                 <abp-tab title="@L["SustanciaElementals"].Value">
+                    <div class="input-group multiple mb-3">
+                      <div class="flex-grow-1">
+                        <select id="SustanciaElementalLookup"
+                                        name="SustanciaElementalLookup"
+                                        class="form-control"
+                                        style="width: 100%"
+                                        data-value="">
+                        </select>
+                      </div>
+                      <abp-button button-type="Info" id="AddSustanciaElementalButton" class="text-light">@L["Add"]</abp-button>
+                    </div>
+
+                    <abp-row>
+                        <abp-table style="@(Model.SustanciaElementals.Any() ? "": "display:none")" id="SustanciaElementalTable">
+                            <thead Theme="Dark">
+                            <tr style="text-align: center; vertical-align: middle;">
+                                <th scope="Column" style="text-align: left">@L["CodCas"]</th>
+                                <th scope="Column"></th>
+                            </tr>
+                            </thead>
+                            <tbody id="SustanciaElementalTableRows">
+                            @for (var index = 0; index < Model.SustanciaElementals.Count; index++)
+                            {
+                                <tr style="text-align: center; vertical-align: middle;" index="@index">
+                                    <td style="display: none" name="id" display-name="@Model.SustanciaElementals[index].CodCas" index="@index">@Model.SustanciaElementals[index].Id</td>
+                                    <td style="display: none">
+                                        <input value="@Model.SustanciaElementals[index].Id" id="SelectedSustanciaElementalIds[@index]" name="SelectedSustanciaElementalIds[@index]"/>
+                                    </td>
+                                    <td style="text-align: left">@Model.SustanciaElementals[index].CodCas</td>
+                                    <td style="text-align: right">
+                                        <abp-button button-type="Danger" size="Small" class="text-light sustanciaElementalDeleteButton" index="@index"> <i class="fa fa-trash"></i> </abp-button>
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </abp-table>
+                    </abp-row>
+
+                </abp-tab>
+
+            </abp-tabs>
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

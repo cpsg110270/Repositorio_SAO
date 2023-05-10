@@ -1,0 +1,163 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using SAO.Web.Pages.ImporExports
+@using SAO.ImporExports;
+@using System.Globalization
+@inject IHtmlLocalizer<SAOResource> L
+@model CreateModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/ImporExports/CreateModal" autocomplete="off">
+   
+    <abp-modal id="ImporExportCreateModal">
+        <abp-modal-header title="@L["NewImporExport"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+           
+            
+                    
+            <table class="table table-borderless">
+            <tr>
+                    <td><abp-input asp-for="ImporExport.NoPermiso" /> </td>
+                   
+            </tr>
+            <tr>
+                    <td><abp-input asp-for="ImporExport.FechaEmision" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date" />    </td>
+                    <td><abp-input asp-for="ImporExport.FechaSolicitud" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date"/></td>
+            </tr>
+            <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="ImporExport_ImportadorId">@L["Importador"]</label>
+                            <select id="ImporExport_ImportadorId"
+                                    class="custom-select form-control"
+                                    name="ImporExport.ImportadorId"
+                                    data-value="@Model.ImporExport.ImportadorId">
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="ImporExport_ExportadorId">@L["Exportador"]</label>
+                            <select id="ImporExport_ExportadorId"
+                                    class="custom-select form-control"
+                                    name="ImporExport.ExportadorId"
+                                    data-value="@Model.ImporExport.ExportadorId" required>
+                            </select>
+                        </div>
+                    </td>
+            </tr>
+            <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="ImporExport_ProductoId">@L["Producto"]</label>
+                            <select id="ImporExport_ProductoId"
+                                    class="custom-select form-control"
+                                    name="ImporExport.ProductoId"
+                                    data-value="@Model.ImporExport.ProductoId" required>
+                            </select>
+                        </div>
+                    </td>
+                    <td><abp-select asp-for="ImporExport.PermisoDe" asp-items="Model.TipoPermisoLookupListRequired" label="@L["PermisoDe"].Value" /></td>
+            </tr>
+            <tr>
+
+                     <td>
+                         <abp-select asp-for="ImporExport.UnidadMedidaId" asp-items="Model.UnidadMedidaLookupListRequired" label="@L["UnidadMedida"].Value" />        
+                     </td>
+                     <td>
+                          <abp-select asp-for="ImporExport.TipoEnvaseId" asp-items="Model.TipoEnvaseLookupListRequired" label="@L["TipoEnvase"].Value" />
+                     </td>
+
+            </tr>
+            <tr>
+                <td>
+                        <abp-input asp-for="ImporExport.PesoUnitario" />
+                </td>
+                <td>
+                        <abp-input asp-for="ImporExport.CantEnvvase" />
+                </td>
+            </tr>
+            <tr>
+                    <td>
+                        <abp-input asp-for="ImporExport.PesoNeto" />
+                    </td>
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                        <abp-select asp-for="ImporExport.PaisProcedenciaId" asp-items="Model.PaisLookupList" label="@L["PaisProcedencia"].Value" />
+                    </td>
+                <td>
+                        <abp-select asp-for="ImporExport.PuertoEntradaId" asp-items="Model.PuertoEntradaSalidaLookupList" label="@L["PuertoEntrada"].Value" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <abp-select asp-for="ImporExport.PuertoSalidaId" asp-items="Model.PuertoEntradaSalidaLookupList" label="@L["PuertoSalida"].Value" />
+                </td>
+                <td>
+                        <abp-select asp-for="ImporExport.PaisDestinoId" asp-items="Model.PaisLookupList" label="@L["PaisDestino"].Value" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                        <abp-select asp-for="ImporExport.AlmacenId" asp-items="Model.AlmacenLookupList" label="@L["Almacen"].Value" />
+                </td>
+                <td>
+                        <abp-select asp-for="ImporExport.PaisOrigenId" asp-items="Model.PaisLookupList" label="@L["PaisOrigen"].Value" />   
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <abp-input asp-for="ImporExport.NoFactura" />
+                </td>
+                <td>
+                   <abp-input asp-for="ImporExport.EsRenovacion" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <div class="form-group">
+                            <label for="ImporExport_PermisoRenov">@L["PermisoRenov"]</label>
+                            <select id="ImporExport_PermisoRenov"
+                                    class="custom-select form-control"
+                                    name="ImporExport.PermisoRenov"
+                                    data-value="@Model.ImporExport.PermisoRenov" disabled>
+                            </select>
+                        </div>
+                </td>
+                <td>
+                        <abp-input asp-for="ImporExport.Observaciones" text-area  />
+                </td>
+            </tr>
+
+</table>
+            <abp-input asp-for="ImporExport.Estado" disabled />
+
+    
+   </abp-modal-body>
+
+   <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+   </abp-modal>
+    
+</form>
+
+<script>
+    $('#ImporExport_PermisoRenov').click(function () {
+        if ($(this).is(':checked')) {
+            // Do stuff
+            $('#ImporExport_PermisoRenov').prop("disabled", false)
+            
+        }
+        else
+            $('#ImporExport_PermisoRenov').prop("disabled", true)
+        
+
+    });
+</script>

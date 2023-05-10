@@ -1,0 +1,30 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using SAO.Web.Pages.TipoPermisos
+@using SAO.TipoPermisos;
+@using System.Globalization
+@inject IHtmlLocalizer<SAOResource> L
+@model CreateModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/TipoPermisos/CreateModal" autocomplete="off">
+    <abp-modal id="TipoPermisoCreateModal">
+        <abp-modal-header title="@L["NewTipoPermiso"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    
+            <abp-input asp-for="TipoPermiso.Codigo"  />
+
+            <abp-input asp-for="TipoPermiso.Desripcion"  />
+
+                    
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

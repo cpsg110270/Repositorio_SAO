@@ -1,0 +1,70 @@
+version: '3.7'
+
+services:
+  sao-web:
+    image: mycompanyname/sao-web:latest
+    container_name: sao-web
+    hostname: sao-web
+    build:
+      context: ../../
+      dockerfile: src/SAO.Web/Dockerfile.local
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80;
+      - Kestrel__Certificates__Default__Path=/root/certificate/localhost.pfx
+      - Kestrel__Certificates__Default__Password=91f91912-5ab0-49df-8166-23377efaf3cc
+      - App__SelfUrl=https://localhost:44353
+      - AuthServer__RequireHttpsMetadata=false
+      - AuthServer__Authority=http://sao-web
+      - App__HealthCheckUrl=http://sao-web/health-status      
+      - ConnectionStrings__Default=Data Source=sql-server;Initial Catalog=SAO;User Id=sa;Password=myPassw0rd;MultipleActiveResultSets=true;TrustServerCertificate=True;
+    ports:
+      - "44353:443"
+    restart: on-failure
+    volumes:
+      - ./certs:/root/certificate
+    networks:
+      - abp-network
+
+  
+
+  
+  db-migrator:
+    image: mycompanyname/sao-db-migrator:latest
+    container_name: db-migrator
+    build:
+      context: ../../
+      dockerfile: src/SAO.DbMigrator/Dockerfile.local
+    environment:
+      - OpenIddict__Applications__SAO_Web__RootUrl=https://localhost:44353
+      - ConnectionStrings__Default=Data Source=sql-server;Initial Catalog=SAO;User Id=sa;Password=myPassw0rd;MultipleActiveResultSets=true;TrustServerCertificate=True;
+    depends_on:
+      sql-server:
+        condition: service_healthy
+    networks:
+      - abp-network
+  
+  sql-server:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1434:1433"
+    environment:
+      SA_PASSWORD: "myPassw0rd"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - sqldata:/var/opt/mssql
+    networks:
+      - abp-network
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S sql-server -U sa -P "myPassw0rd" -Q "SELECT 1" -b -o /dev/null
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+volumes:
+  sqldata:
+    name: sao_sqldata
+networks:
+  abp-network:
+    name: sao-network
+    driver: bridge

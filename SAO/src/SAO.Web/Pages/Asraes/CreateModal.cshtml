@@ -1,0 +1,30 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using SAO.Web.Pages.Asraes
+@using SAO.Asraes;
+@using System.Globalization
+@inject IHtmlLocalizer<SAOResource> L
+@model CreateModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/Asraes/CreateModal" autocomplete="off">
+    <abp-modal id="AsraeCreateModal">
+        <abp-modal-header title="@L["NewAsrae"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    
+            <abp-input asp-for="Asrae.Codigo_ASHRAE"  />
+
+            <abp-input asp-for="Asrae.Descripcion"  />
+
+                    
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

@@ -1,0 +1,32 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@using SAO.Web.Pages.Almacens
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using SAO.Almacens;
+@using System.Globalization
+@inject IHtmlLocalizer<SAOResource> L
+@model EditModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/Almacens/EditModal" autocomplete="off">
+    <abp-modal id="AlmacenEditModal">
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    <abp-input asp-for="Id" />
+
+                    
+            <abp-input asp-for="Almacen.NombreAlmacen"  />
+
+            <abp-input asp-for="Almacen.SiglaAlmacen"  />
+
+                    
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

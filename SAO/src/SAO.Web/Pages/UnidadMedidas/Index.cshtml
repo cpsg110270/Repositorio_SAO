@@ -1,0 +1,67 @@
+@page
+@using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using SAO.Permissions
+@using SAO.Web.Pages.UnidadMedidas
+@using SAO.Web.Menus
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@inject IHtmlLocalizer<SAOResource> L
+@inject IAuthorizationService Authorization
+@model IndexModel
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["UnidadMedidas"].Value;
+    PageLayout.Content.MenuItemName = SAOMenus.UnidadMedidas;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/UnidadMedidas/index.js" />
+}
+
+@section content_toolbar {
+    <abp-button id="ExportToExcelButton" text="@L["ExportToExcel"].Value" icon="download" size="Small" button-type="Primary" />
+    @if (await Authorization.IsGrantedAsync(SAOPermissions.UnidadMedidas.Create))
+    {
+        <abp-button id="NewUnidadMedidaButton" text="@L["NewUnidadMedida"].Value" icon="plus" size="Small" button-type="Primary" />
+    }
+}
+
+<abp-card>
+    <abp-card-body>
+		<abp-row class="mb-3">
+            <abp-column size-md="_12">
+                <form id="SearchForm" autocomplete="off">
+                    <div class="input-group">
+                        <input class="form-control page-search-filter-text" id="FilterText" placeholder="@L["Search"]"/>
+                        <abp-button button-type="Primary" type="submit" icon="search"/>
+                    </div>
+                </form>
+            </abp-column>
+            <abp-column size-md="_12" class="mt-3">
+                <a href="javascript:;" id="AdvancedFilterSectionToggler" class="text-decoration-none">@L["SeeAdvancedFilters"]</a>
+            </abp-column>
+        </abp-row>
+
+        <abp-row id="AdvancedFilterSection" style="display: none;">
+            <abp-column size="_3">
+                <abp-input asp-for="AbreviaturaFilter" label="@L["Abreviatura"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-input asp-for="NombreUnidadFilter" label="@L["NombreUnidad"].Value" />
+            </abp-column>
+        </abp-row>
+
+        <abp-table striped-rows="true" id="UnidadMedidasTable">
+            <thead>
+				<tr>
+					<th>@L["Actions"]</th>
+					<th>@L["Abreviatura"]</th>
+					<th>@L["NombreUnidad"]</th>
+
+				</tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

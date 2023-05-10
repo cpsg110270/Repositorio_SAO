@@ -1,0 +1,30 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using SAO.Web.Pages.SustanciaElementals
+@using SAO.SustanciaElementals;
+@using System.Globalization
+@inject IHtmlLocalizer<SAOResource> L
+@model CreateModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/SustanciaElementals/CreateModal" autocomplete="off">
+    <abp-modal id="SustanciaElementalCreateModal">
+        <abp-modal-header title="@L["NewSustanciaElemental"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    
+            <abp-input asp-for="SustanciaElemental.CodCas"  />
+
+            <abp-input asp-for="SustanciaElemental.DesSustancia"  />
+
+                    
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>
