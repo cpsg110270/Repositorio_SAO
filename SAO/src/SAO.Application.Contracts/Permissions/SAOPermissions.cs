@@ -14,6 +14,8 @@ public static class SAOPermissions
     //Add your own permission names. Example:
     //public const string MyPermission1 = GroupName + ".MyPermission1";
 
+    public const string Reportes = GroupName + ".Reportes";
+
     public static class Modulos
     {
         public const string ModulosGroup = GroupName + ".Modulos";

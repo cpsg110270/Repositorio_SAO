@@ -6,6 +6,8 @@ public class SAOMenus
 
     public const string Home = Prefix + ".Home";
 
+    public const string Reportes = Prefix + ".Reportes";
+
     public const string HostDashboard = Prefix + ".HostDashboard";
     public const string CatalagosGenerales = Prefix + ".CatalagosGenerales";
     public const string CatalogosProductos = Prefix + ".CatalogosProductos";

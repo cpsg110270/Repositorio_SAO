@@ -1,0 +1,32 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using SAO.Permissions
+@using SAO.Web.Pages.Productos
+@using SAO.Web.Menus
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@inject IHtmlLocalizer<SAOResource> L
+@inject IAuthorizationService Authorization
+@model IndexModel
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["Reportes"].Value;
+    PageLayout.Content.MenuItemName = SAOMenus.Reportes;
+}
+
+@section content_toolbar {
+
+}
+
+@section scripts {
+    <partial name="_JSBoldReports" />
+}
+
+@section styles {
+    <link href="https://cdn.boldreports.com/4.2.87/content/material/bold.reports.all.min.css" rel="stylesheet" />
+}
+
+<div style="min-height: 600px;width: 100%;">
+    <bold-report-viewer id="viewer" report-path="sales-order-detail.rdl" report-service-url="/api/ReportViewer"></bold-report-viewer>
+</div>

@@ -248,6 +248,16 @@ public class SAOMenuContributor : IMenuContributor
                 icon: "fa fa-file-alt",
                 requiredPermissionName: SAOPermissions.CuotaImportadors.Default)
         );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SAOMenus.Reportes,
+                l["Menu:Reportes"],
+                url: "/ReportViewer",
+                icon: "fa fa-bar-chart",
+                requiredPermissionName: SAOPermissions.Reportes)
+        );
+
         return Task.CompletedTask;
     }
 }

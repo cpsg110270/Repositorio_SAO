@@ -17,6 +17,8 @@ public class SAOPermissionDefinitionProvider : PermissionDefinitionProvider
         //Define your own permissions here. Example:
         //myGroup.AddPermission(SAOPermissions.MyPermission1, L("Permission:MyPermission1"));
 
+        myGroup.AddPermission(SAOPermissions.Reportes, L("Permission:Reportes"));
+
         var modulosPermission = myGroup.AddPermission(SAOPermissions.Modulos.ModulosGroup, L("Permission:Modulos"));
         modulosPermission.AddChild(SAOPermissions.Modulos.CatalagosGenerales, L("Permission:CatalagosGenerales"));
         modulosPermission.AddChild(SAOPermissions.Modulos.CatalogosProductos, L("Permission:CatalogosProductos"));
