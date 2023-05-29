@@ -6,6 +6,7 @@ using System.IO;
 namespace SAO.Web.Controllers
 {
     [Route("api/[controller]/[action]")]
+    [IgnoreAntiforgeryToken]
     public class ReportViewerController : Controller, IReportController
     {
         // Report viewer requires a memory cache to store the information of consecutive client request and
