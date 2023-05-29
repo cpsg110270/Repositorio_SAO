@@ -90,6 +90,11 @@ public class SAOPermissionDefinitionProvider : PermissionDefinitionProvider
         imporExportPermission.AddChild(SAOPermissions.ImporExports.Create, L("Permission:Create"));
         imporExportPermission.AddChild(SAOPermissions.ImporExports.Edit, L("Permission:Edit"));
         imporExportPermission.AddChild(SAOPermissions.ImporExports.Delete, L("Permission:Delete"));
+
+        var cuotaImportadorPermission = myGroup.AddPermission(SAOPermissions.CuotaImportadors.Default, L("Permission:CuotaImportadors"));
+        cuotaImportadorPermission.AddChild(SAOPermissions.CuotaImportadors.Create, L("Permission:Create"));
+        cuotaImportadorPermission.AddChild(SAOPermissions.CuotaImportadors.Edit, L("Permission:Edit"));
+        cuotaImportadorPermission.AddChild(SAOPermissions.CuotaImportadors.Delete, L("Permission:Delete"));
     }
 
     private static LocalizableString L(string name)

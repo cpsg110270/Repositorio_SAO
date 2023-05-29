@@ -151,6 +151,17 @@
     "ImporExport": "Impor export",
     "PermisoRenov": "Permiso renov",
     "Permiso de": "Permiso de",
-    "PermisoDe": "Permiso de"
+    "PermisoDe": "Permiso de",
+    "Permission:CuotaImportadors": "Cuota Importadors",
+    "CuotaImportadors": "Cuota Importadors",
+    "NewCuotaImportador": "New Cuota Importador",
+    "AddCuota": "Agregar Cuota",
+    "Año": "Año",
+    "Cuota": "Cuota",
+    "MinAño": "Min A ño",
+    "MinCuota": "Min Cuota",
+    "MaxAño": "Max A ño",
+    "MaxCuota": "Max Cuota",
+    "Menu:CuotaImportadors": "Cuota Importadors"
   }
 }

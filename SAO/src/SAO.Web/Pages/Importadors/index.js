@@ -16,6 +16,12 @@ $(function () {
         modalClass: "importadorEdit"
     });
 
+    var addCuotaModal = new abp.ModalManager({
+        viewUrl: abp.appPath + "CuotaImportadors/CreateModal",
+        scriptUrl: "/Pages/CuotaImportadors/createModal.js",
+        modalClass: "cuotaImportadorCreate"
+    });
+
 	var getFilter = function() {
         return {
             filterText: $("#FilterText").val(),
@@ -45,6 +51,15 @@ $(function () {
                                     editModal.open({
                                      id: data.record.id
                                      });
+                                }
+                            },
+                            {
+                                text: l("AddCuota"),
+                                visible: abp.auth.isGranted('SAO.Importadors.Edit'),
+                                action: function (data) {
+                                    addCuotaModal.open({
+                                        importadorId: data.record.id
+                                    });
                                 }
                             },
                             {

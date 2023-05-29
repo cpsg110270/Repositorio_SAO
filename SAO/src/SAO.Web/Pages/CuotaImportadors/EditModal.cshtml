@@ -1,0 +1,40 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@using SAO.Web.Pages.CuotaImportadors
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using SAO.CuotaImportadors;
+@using System.Globalization
+@inject IHtmlLocalizer<SAOResource> L
+@model EditModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/CuotaImportadors/EditModal" autocomplete="off">
+    <abp-modal id="CuotaImportadorEditModal">
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    <abp-input asp-for="Id" />
+
+                    
+            <abp-input asp-for="CuotaImportador.Año"  />
+
+            <abp-input asp-for="CuotaImportador.Cuota"  data-val="false"/>
+
+                                <label for="Importador_NombreImportador">@L["Importador"] *</label>
+            <div class="input-group mb-3">
+                <input hidden value="@(Model.CuotaImportador.ImportadorId   == default ? "": Model.CuotaImportador.ImportadorId.ToString()
+)" id="Importador_Id" name="CuotaImportador.ImportadorId"/>
+                <input type="text" id="Importador_NombreImportador" class="form-control" value="@Model.Importador?.NombreImportador" disabled>
+                <abp-button button-type="Info" id="ImportadorLookupOpenButton" class="text-light">@L["Pick"]</abp-button>
+                <abp-button button-type="Danger" class="lookupCleanButton ms-1"><i class="fa fa-times"></i></abp-button>
+            </div>
+
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

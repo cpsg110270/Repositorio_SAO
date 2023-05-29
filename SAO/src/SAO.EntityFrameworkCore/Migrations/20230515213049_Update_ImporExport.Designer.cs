@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SAO.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace SAO.Migrations
 {
     [DbContext(typeof(SAODbContext))]
-    partial class SAODbContextModelSnapshot : ModelSnapshot
+    [Migration("20230515213049_Update_ImporExport")]
+    partial class UpdateImporExport
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,45 +75,6 @@ namespace SAO.Migrations
                         .IsUnique();
 
                     b.ToTable("AppAsraes", (string)null);
-                });
-
-            modelBuilder.Entity("SAO.CuotaImportadors.CuotaImportador", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Año")
-                        .HasColumnType("int")
-                        .HasColumnName("Año");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<decimal>("Cuota")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("Cuota");
-
-                    b.Property<Guid>("ImportadorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("LastModifierId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ImportadorId");
-
-                    b.ToTable("AppCuotaImportadors", (string)null);
                 });
 
             modelBuilder.Entity("SAO.Exportadors.Exportador", b =>
@@ -271,6 +235,9 @@ namespace SAO.Migrations
                     b.HasIndex("ExportadorId");
 
                     b.HasIndex("ImportadorId");
+
+                    b.HasIndex("NoPermiso")
+                        .IsUnique();
 
                     b.HasIndex("PaisDestinoId");
 
@@ -2663,15 +2630,6 @@ namespace SAO.Migrations
                     b.HasKey("TenantId", "Name");
 
                     b.ToTable("SaasTenantConnectionStrings", (string)null);
-                });
-
-            modelBuilder.Entity("SAO.CuotaImportadors.CuotaImportador", b =>
-                {
-                    b.HasOne("SAO.Importadors.Importador", null)
-                        .WithMany()
-                        .HasForeignKey("ImportadorId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("SAO.ImporExports.ImporExport", b =>

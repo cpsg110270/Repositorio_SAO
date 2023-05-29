@@ -1,3 +1,4 @@
+using SAO.CuotaImportadors;
 using SAO.ImporExports;
 using SAO.TipoPermisos;
 using SAO.Productos;
@@ -90,6 +91,8 @@ public class SAOEntityFrameworkCoreModule : AbpModule
             options.AddRepository<TipoPermiso, TipoPermisos.EfCoreTipoPermisoRepository>();
 
             options.AddRepository<ImporExport, ImporExports.EfCoreImporExportRepository>();
+
+            options.AddRepository<CuotaImportador, CuotaImportadors.EfCoreCuotaImportadorRepository>();
 
         });
 

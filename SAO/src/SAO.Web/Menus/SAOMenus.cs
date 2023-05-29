@@ -39,4 +39,6 @@ public class SAOMenus
 
     public const string ImporExports = Prefix + ".ImporExports";
 
+    public const string CuotaImportadors = Prefix + ".CuotaImportadors";
+
 }

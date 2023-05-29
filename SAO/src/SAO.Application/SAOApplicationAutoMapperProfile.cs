@@ -1,3 +1,4 @@
+using SAO.CuotaImportadors;
 using SAO.ImporExports;
 using SAO.TipoPermisos;
 using SAO.Productos;
@@ -91,5 +92,9 @@ public class SAOApplicationAutoMapperProfile : Profile
         CreateMap<ImporExport, LookupDto<Guid>>().ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.NoPermiso));
 
         CreateMap<TipoPermiso, LookupDto<Guid>>().ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.Desripcion));
+
+        CreateMap<CuotaImportador, CuotaImportadorDto>();
+        CreateMap<CuotaImportador, CuotaImportadorExcelDto>();
+        CreateMap<CuotaImportadorWithNavigationProperties, CuotaImportadorWithNavigationPropertiesDto>();
     }
 }

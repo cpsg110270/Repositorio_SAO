@@ -239,6 +239,15 @@ public class SAOMenuContributor : IMenuContributor
                 icon: "fa fa-file-alt",
                 requiredPermissionName: SAOPermissions.ImporExports.Default)
         );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SAOMenus.CuotaImportadors,
+                l["Menu:CuotaImportadors"],
+                url: "/CuotaImportadors",
+                icon: "fa fa-file-alt",
+                requiredPermissionName: SAOPermissions.CuotaImportadors.Default)
+        );
         return Task.CompletedTask;
     }
 }

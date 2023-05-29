@@ -1,3 +1,5 @@
+using SAO.Web.Pages.CuotaImportadors;
+using SAO.CuotaImportadors;
 using SAO.Web.Pages.ImporExports;
 using SAO.ImporExports;
 using SAO.Web.Pages.TipoPermisos;
@@ -92,5 +94,9 @@ public class SAOWebAutoMapperProfile : Profile
         CreateMap<ImporExportDto, ImporExportUpdateViewModel>();
         CreateMap<ImporExportUpdateViewModel, ImporExportUpdateDto>();
         CreateMap<ImporExportCreateViewModel, ImporExportCreateDto>();
+
+        CreateMap<CuotaImportadorDto, CuotaImportadorUpdateViewModel>();
+        CreateMap<CuotaImportadorUpdateViewModel, CuotaImportadorUpdateDto>();
+        CreateMap<CuotaImportadorCreateViewModel, CuotaImportadorCreateDto>();
     }
 }

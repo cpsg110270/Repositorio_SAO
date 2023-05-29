@@ -132,4 +132,12 @@ public static class SAOPermissions
         public const string Create = Default + ".Create";
         public const string Delete = Default + ".Delete";
     }
+
+    public static class CuotaImportadors
+    {
+        public const string Default = GroupName + ".CuotaImportadors";
+        public const string Edit = Default + ".Edit";
+        public const string Create = Default + ".Create";
+        public const string Delete = Default + ".Delete";
+    }
 }

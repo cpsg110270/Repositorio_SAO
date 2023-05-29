@@ -15,9 +15,10 @@
 }
 
 <abp-card>
-    <abp-card-header>@L["Welcome"]</abp-card-header>
+   @* <abp-card-header>@L["Welcome"]</abp-card-header>*@
     <abp-card-body>
         @*<p>@L["LongWelcomeMessage"]</p>*@
+
 
         @if (!CurrentUser.IsAuthenticated)
         {
@@ -25,14 +26,17 @@
         }
 
         <hr />
-        @*<p class="text-end"><a href="https://abp.io?ref=tmpl" target="_blank">abp.io</a></p>*@
+        <p class="text-center"><img src="/images/logo/NombreSistema.png" style="max-width: 600px;" ></p>
     </abp-card-body>
 </abp-card>
 <div class="card mt-5">
     <div class="card-body">
         <div class="row">
-            <div class="col-md-auto text-center">
-                @*<img src="https://abp.io/assets/png/mastering-abp-framework.webp" style="max-width: 400px;" class="w-100 mb-5 my-md-3">*@
+          @*  <div class="col-md-auto text-center">*@
+            <div class="d-flex justify-content-between"> 
+                <img src="/images/logo/dgca.png" style="max-width: 200px;" class="w-100 mb-5 my-md-3" />
+                <img src="/images/logo/descarga.png" style="max-width: 200px;" class="w-100 mb-5 my-md-3" />
+
             </div>
             <div class="col-md d-flex align-items-center">
                 <div class="pe-0 pe-md-4">

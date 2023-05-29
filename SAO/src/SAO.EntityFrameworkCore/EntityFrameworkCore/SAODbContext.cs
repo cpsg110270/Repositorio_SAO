@@ -1,3 +1,4 @@
+using SAO.CuotaImportadors;
 using SAO.ImporExports;
 using SAO.TipoPermisos;
 using SAO.Productos;
@@ -43,6 +44,7 @@ public class SAODbContext :
     IIdentityProDbContext,
     ISaasDbContext
 {
+    public DbSet<CuotaImportador> CuotaImportadors { get; set; }
     public DbSet<ImporExport> ImporExports { get; set; }
     public DbSet<TipoPermiso> TipoPermisos { get; set; }
     public DbSet<Producto> Productos { get; set; }
@@ -363,6 +365,26 @@ public class SAODbContext :
     b.HasOne<Almacen>().WithMany().HasForeignKey(x => x.AlmacenId).OnDelete(DeleteBehavior.NoAction);
     b.HasOne<ImporExport>().WithMany().HasForeignKey(x => x.PermisoRenov).OnDelete(DeleteBehavior.NoAction);
     b.HasOne<TipoPermiso>().WithMany().IsRequired().HasForeignKey(x => x.PermisoDe).OnDelete(DeleteBehavior.NoAction);
+});
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+            builder.Entity<CuotaImportador>(b =>
+{
+    b.ToTable(SAOConsts.DbTablePrefix + "CuotaImportadors", SAOConsts.DbSchema);
+    b.ConfigureByConvention();
+    b.Property(x => x.Año).HasColumnName(nameof(CuotaImportador.Año));
+    b.Property(x => x.Cuota).HasColumnName(nameof(CuotaImportador.Cuota));
+    b.HasOne<Importador>().WithMany().IsRequired().HasForeignKey(x => x.ImportadorId).OnDelete(DeleteBehavior.NoAction);
 });
 
         }

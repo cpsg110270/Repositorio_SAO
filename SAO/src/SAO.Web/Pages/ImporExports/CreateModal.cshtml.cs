@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SAO.ImporExports;
+using Volo.Abp;
 
 namespace SAO.Web.Pages.ImporExports
 {
@@ -92,6 +93,17 @@ namespace SAO.Web.Pages.ImporExports
         public async Task<IActionResult> OnPostAsync()
         {
 
+
+            
+
+
+                if (ImporExport.EsRenovacion && ImporExport.PermisoRenov == default)
+                throw new UserFriendlyException("Debe seleccionar el Permiso a reemplazar");
+
+
+
+
+          
             await _imporExportsAppService.CreateAsync(ObjectMapper.Map<ImporExportCreateViewModel, ImporExportCreateDto>(ImporExport));
             return NoContent();
         }
