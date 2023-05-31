@@ -29,10 +29,16 @@
           <QueryParameter Name="@FechaFin">
             <Value>=Parameters!FechaFin.Value</Value>
           </QueryParameter>
+          <QueryParameter Name="@ImportadorId">
+            <Value>=Parameters!ImportadorId.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@ProductoId">
+            <Value>=Parameters!ProductoId.Value</Value>
+          </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT *
   FROM RepImportacionesExportaciones
-  WHERE (FechaEmision &gt;= @FechaInicio OR @FechaInicio IS NULL) AND (FechaEmision &lt;= @FechaFin OR @FechaFin IS NULL) AND TipoPermisoId IN (@TipoPermisoId)</CommandText>
+  WHERE (FechaEmision &gt;= @FechaInicio OR @FechaInicio IS NULL) AND (FechaEmision &lt;= @FechaFin OR @FechaFin IS NULL) AND TipoPermisoId IN (@TipoPermisoId) AND ImportadorId IN (@ImportadorId) AND ProductoId IN (@ProductoId)</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
@@ -60,6 +66,10 @@
           <DataField>Importador</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="ImportadorId">
+          <DataField>ImportadorId</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
         <Field Name="Exportador">
           <DataField>Exportador</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -71,6 +81,10 @@
         <Field Name="Ingredientes_NombreComun">
           <DataField>Ingredientes/NombreComun</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductoId">
+          <DataField>ProductoId</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
         </Field>
         <Field Name="Codigo_ASHRAE">
           <DataField>Codigo_ASHRAE</DataField>
@@ -160,6 +174,40 @@ where Id is not null and Desripcion is not null</CommandText>
         </Field>
         <Field Name="Desripcion">
           <DataField>Desripcion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="CbxImportadores">
+      <Query>
+        <DataSourceName>SAO</DataSourceName>
+        <CommandText>select Id, NombreImportador from AppImportadors
+where Id is not null and NombreImportador is not null</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="NombreImportador">
+          <DataField>NombreImportador</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="CbxProductos">
+      <Query>
+        <DataSourceName>SAO</DataSourceName>
+        <CommandText>select Id, NombreComercia from AppProductos
+where Id is not null and NombreComercia is not null</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="NombreComercia">
+          <DataField>NombreComercia</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -2111,7 +2159,6 @@ where Id is not null and Desripcion is not null</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0cm</Top>
               <Left>0.3175cm</Left>
               <Height>0.2in</Height>
               <Width>1.28667in</Width>
@@ -2144,7 +2191,6 @@ where Id is not null and Desripcion is not null</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>ReportName</rd:DefaultName>
-              <Top>0cm</Top>
               <Left>40.23131in</Left>
               <Height>0.19167in</Height>
               <Width>3.55334in</Width>
@@ -2178,16 +2224,6 @@ where Id is not null and Desripcion is not null</CommandText>
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="FechaInicio">
-      <DataType>DateTime</DataType>
-      <Nullable>true</Nullable>
-      <Prompt>Fecha Inicio</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="FechaFin">
-      <DataType>DateTime</DataType>
-      <Nullable>true</Nullable>
-      <Prompt>Fecha Fin</Prompt>
-    </ReportParameter>
     <ReportParameter Name="TipoPermisoId">
       <DataType>String</DataType>
       <DefaultValue>
@@ -2206,26 +2242,82 @@ where Id is not null and Desripcion is not null</CommandText>
       </ValidValues>
       <MultiValue>true</MultiValue>
     </ReportParameter>
+    <ReportParameter Name="ImportadorId">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>CbxImportadores</DataSetName>
+          <ValueField>Id</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Importador</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>CbxImportadores</DataSetName>
+          <ValueField>Id</ValueField>
+          <LabelField>NombreImportador</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="ProductoId">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>CbxProductos</DataSetName>
+          <ValueField>Id</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Producto</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>CbxProductos</DataSetName>
+          <ValueField>Id</ValueField>
+          <LabelField>NombreComercia</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="FechaInicio">
+      <DataType>DateTime</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Fecha Inicio</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FechaFin">
+      <DataType>DateTime</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Fecha Fin</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>4</NumberOfRows>
+      <NumberOfRows>5</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>3</RowIndex>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>FechaInicio</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>3</RowIndex>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>FechaFin</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>3</ColumnIndex>
-          <RowIndex>3</RowIndex>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>TipoPermisoId</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ImportadorId</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ProductoId</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
