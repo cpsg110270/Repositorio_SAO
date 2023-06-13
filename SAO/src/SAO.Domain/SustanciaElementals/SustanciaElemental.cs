@@ -8,6 +8,7 @@ using Volo.Abp.MultiTenancy;
 using JetBrains.Annotations;
 
 using Volo.Abp;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SAO.SustanciaElementals
 {
@@ -18,6 +19,9 @@ namespace SAO.SustanciaElementals
 
         [NotNull]
         public virtual string DesSustancia { get; set; }
+
+        [NotMapped]
+        public string Completo { get { return CodCas + " - " + DesSustancia; } }
 
         public SustanciaElemental()
         {

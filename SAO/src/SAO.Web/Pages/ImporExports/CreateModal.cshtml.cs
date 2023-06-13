@@ -94,10 +94,14 @@ namespace SAO.Web.Pages.ImporExports
         {
 
 
-            
+            //ImporExport.PesoNeto = ImporExport.PesoUnitario * ImporExport.CantEnvvase;
+       
+            ImporExport.PesoNeto = ImporExport.PesoUnitario * ImporExport.CantEnvvase;
+            ImporExport.PesoNeto = Math.Round(ImporExport.PesoNeto, 2);
+            ImporExport.Estado = true;
 
 
-                if (ImporExport.EsRenovacion && ImporExport.PermisoRenov == default)
+            if (ImporExport.EsRenovacion && ImporExport.PermisoRenov == default)
                 throw new UserFriendlyException("Debe seleccionar el Permiso a reemplazar");
 
 

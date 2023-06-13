@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Volo.Abp.Application.Dtos;
 using SAO.ImporExports;
 using Volo.Abp;
+using NUglify.JavaScript.Syntax;
 
 namespace SAO.Web.Pages.ImporExports
 {
@@ -109,7 +110,9 @@ namespace SAO.Web.Pages.ImporExports
 
         public async Task<NoContentResult> OnPostAsync()
         {
-
+            ImporExport.PesoNeto = ImporExport.PesoUnitario * ImporExport.CantEnvvase;
+            ImporExport.PesoNeto = Math.Round(ImporExport.PesoNeto, 2);
+            ImporExport.Estado = true;
 
             if (ImporExport.EsRenovacion && ImporExport.PermisoRenov == default)
                 throw new UserFriendlyException("Debe seleccionar el Permiso a reemplazar");

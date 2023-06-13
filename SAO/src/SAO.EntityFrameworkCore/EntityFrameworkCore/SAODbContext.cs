@@ -237,13 +237,6 @@ public class SAODbContext :
         }
         if (builder.IsHostDatabase())
         {
-            builder.Entity<Almacen>(b =>
-{
-    b.ToTable(SAOConsts.DbTablePrefix + "Almacens", SAOConsts.DbSchema);
-    b.ConfigureByConvention();
-    b.Property(x => x.NombreAlmacen).HasColumnName(nameof(Almacen.NombreAlmacen)).IsRequired().HasMaxLength(AlmacenConsts.NombreAlmacenMaxLength);
-    b.Property(x => x.SiglaAlmacen).HasColumnName(nameof(Almacen.SiglaAlmacen)).HasMaxLength(AlmacenConsts.SiglaAlmacenMaxLength);
-});
 
         }
         if (builder.IsHostDatabase())
@@ -385,6 +378,17 @@ public class SAODbContext :
     b.Property(x => x.Año).HasColumnName(nameof(CuotaImportador.Año));
     b.Property(x => x.Cuota).HasColumnName(nameof(CuotaImportador.Cuota));
     b.HasOne<Importador>().WithMany().IsRequired().HasForeignKey(x => x.ImportadorId).OnDelete(DeleteBehavior.NoAction);
+});
+
+        }
+        if (builder.IsHostDatabase())
+        {
+            builder.Entity<Almacen>(b =>
+{
+    b.ToTable(SAOConsts.DbTablePrefix + "Almacens", SAOConsts.DbSchema);
+    b.ConfigureByConvention();
+    b.Property(x => x.NombreAlmacen).HasColumnName(nameof(Almacen.NombreAlmacen)).IsRequired().HasMaxLength(AlmacenConsts.NombreAlmacenMaxLength);
+    b.Property(x => x.SiglaAlmacen).HasColumnName(nameof(Almacen.SiglaAlmacen)).HasMaxLength(AlmacenConsts.SiglaAlmacenMaxLength);
 });
 
         }

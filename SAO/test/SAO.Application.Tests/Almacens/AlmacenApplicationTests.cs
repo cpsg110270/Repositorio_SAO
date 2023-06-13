@@ -48,8 +48,8 @@ namespace SAO.Almacens
             // Arrange
             var input = new AlmacenCreateDto
             {
-                NombreAlmacen = "9653f11ac505418fb80dc7b7a29bd2b71ff5177718ca4fee8a5d3f7e371c469ceb44d27a54a14adb8230b8386b5ad476fcc8844f402e43809049653f79f9d52694c7009b079b41248a673f55be9c2b82392d426e59a4484f8f94bd614ed1ee14717c6f18",
-                SiglaAlmacen = "f313c1949cac48e9b153"
+                NombreAlmacen = "6401b0d36bdd45da8a7f80a651065dda050c73cb4be3437f8c944b5da6305b9d695f57d0ad3a4b979fd7f6ee885ac78370eb2db8076048eaa5d1463df734ec54fd22be5b50cb4a698209f1f0ba385602fffd0f063cb4425490f9deba3a20ee35c9ce64ab",
+                SiglaAlmacen = "44009eddc03c4f8c80cb"
             };
 
             // Act
@@ -59,8 +59,8 @@ namespace SAO.Almacens
             var result = await _almacenRepository.FindAsync(c => c.NombreAlmacen == serviceResult.NombreAlmacen);
 
             result.ShouldNotBe(null);
-            result.NombreAlmacen.ShouldBe("9653f11ac505418fb80dc7b7a29bd2b71ff5177718ca4fee8a5d3f7e371c469ceb44d27a54a14adb8230b8386b5ad476fcc8844f402e43809049653f79f9d52694c7009b079b41248a673f55be9c2b82392d426e59a4484f8f94bd614ed1ee14717c6f18");
-            result.SiglaAlmacen.ShouldBe("f313c1949cac48e9b153");
+            result.NombreAlmacen.ShouldBe("6401b0d36bdd45da8a7f80a651065dda050c73cb4be3437f8c944b5da6305b9d695f57d0ad3a4b979fd7f6ee885ac78370eb2db8076048eaa5d1463df734ec54fd22be5b50cb4a698209f1f0ba385602fffd0f063cb4425490f9deba3a20ee35c9ce64ab");
+            result.SiglaAlmacen.ShouldBe("44009eddc03c4f8c80cb");
         }
 
         [Fact]
@@ -69,8 +69,8 @@ namespace SAO.Almacens
             // Arrange
             var input = new AlmacenUpdateDto()
             {
-                NombreAlmacen = "878c6350930041f6a135d2d92e7c4037d4d9e020c07b4030aa955fefd152b40be2f87aaa00194c7499ffd88bba4cf54dcbdf30a09ea346c390fc725d5e28edc49d285d25e0b74a5eac304938af00898b66718a2b313741a78ace3470b399bb8bae95a688",
-                SiglaAlmacen = "2e6ce152294641de8913"
+                NombreAlmacen = "5a7ab86f8dbd4f6cb097c1409478d8b73b924bb4c788455d8863a0e76d95611e9e1965b7c9f647ae8ae61307e664b31be622d34f3b9d403ea74031b99097d8a8ae5f2a5693424afcbb954c7f523656c8c44c5e4956c6462da5b4ef397a74d9bb32543d5d",
+                SiglaAlmacen = "3bb61d2d1cdb411ca424"
             };
 
             // Act
@@ -80,8 +80,8 @@ namespace SAO.Almacens
             var result = await _almacenRepository.FindAsync(c => c.Id == serviceResult.Id);
 
             result.ShouldNotBe(null);
-            result.NombreAlmacen.ShouldBe("878c6350930041f6a135d2d92e7c4037d4d9e020c07b4030aa955fefd152b40be2f87aaa00194c7499ffd88bba4cf54dcbdf30a09ea346c390fc725d5e28edc49d285d25e0b74a5eac304938af00898b66718a2b313741a78ace3470b399bb8bae95a688");
-            result.SiglaAlmacen.ShouldBe("2e6ce152294641de8913");
+            result.NombreAlmacen.ShouldBe("5a7ab86f8dbd4f6cb097c1409478d8b73b924bb4c788455d8863a0e76d95611e9e1965b7c9f647ae8ae61307e664b31be622d34f3b9d403ea74031b99097d8a8ae5f2a5693424afcbb954c7f523656c8c44c5e4956c6462da5b4ef397a74d9bb32543d5d");
+            result.SiglaAlmacen.ShouldBe("3bb61d2d1cdb411ca424");
         }
 
         [Fact]

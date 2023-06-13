@@ -47,13 +47,16 @@ namespace SAO.Web.Pages.Productos
         {
             var productoWithNavigationPropertiesDto = await _productosAppService.GetWithNavigationPropertiesAsync(Id);
             Producto = ObjectMapper.Map<ProductoDto, ProductoUpdateViewModel>(productoWithNavigationPropertiesDto.Producto);
+            
 
             SustanciaElementals = productoWithNavigationPropertiesDto.SustanciaElementals;
             FabricanteLookupListRequired.AddRange((
                         await _productosAppService.GetFabricanteLookupAsync(new LookupRequestDto
                         {
                             MaxResultCount = LimitedResultRequestDto.MaxMaxResultCount
+
                         })).Items.Select(t => new SelectListItem(t.DisplayName, t.Id.ToString())).ToList()
+
             );
             AsraeLookupListRequired.AddRange((
                                     await _productosAppService.GetAsraeLookupAsync(new LookupRequestDto

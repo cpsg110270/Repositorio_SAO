@@ -22,6 +22,8 @@ public class SAOPermissionDefinitionProvider : PermissionDefinitionProvider
         var modulosPermission = myGroup.AddPermission(SAOPermissions.Modulos.ModulosGroup, L("Permission:Modulos"));
         modulosPermission.AddChild(SAOPermissions.Modulos.CatalagosGenerales, L("Permission:CatalagosGenerales"));
         modulosPermission.AddChild(SAOPermissions.Modulos.CatalogosProductos, L("Permission:CatalogosProductos"));
+        modulosPermission.AddChild(SAOPermissions.Modulos.Reportes, L("Permission:Reportes"));
+
 
         var importadorPermission = myGroup.AddPermission(SAOPermissions.Importadors.Default, L("Permission:Importadors"));
         importadorPermission.AddChild(SAOPermissions.Importadors.Create, L("Permission:Create"));

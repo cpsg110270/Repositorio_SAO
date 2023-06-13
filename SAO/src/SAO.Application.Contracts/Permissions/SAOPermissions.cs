@@ -21,6 +21,7 @@ public static class SAOPermissions
         public const string ModulosGroup = GroupName + ".Modulos";
         public const string CatalagosGenerales = ModulosGroup + ".CatalagosGenerales";
         public const string CatalogosProductos = ModulosGroup + ".CatalogosProductos";
+        public const string Reportes = ModulosGroup + ".Reportes";
     }
 
     public static class Importadors

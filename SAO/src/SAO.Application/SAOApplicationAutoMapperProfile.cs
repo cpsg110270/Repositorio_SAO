@@ -65,7 +65,8 @@ public class SAOApplicationAutoMapperProfile : Profile
         CreateMap<Producto, ProductoExcelDto>();
         CreateMap<ProductoWithNavigationProperties, ProductoWithNavigationPropertiesDto>();
         CreateMap<Fabricante, LookupDto<Guid>>().ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.NombreFabricante));
-        CreateMap<SustanciaElemental, LookupDto<Guid>>().ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.CodCas));
+        //CreateMap<SustanciaElemental, LookupDto<Guid>>().ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.CodCas));
+        CreateMap<SustanciaElemental, LookupDto<Guid>>().ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.Completo));
 
         CreateMap<Asrae, LookupDto<int>>().ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.Codigo_ASHRAE));
 

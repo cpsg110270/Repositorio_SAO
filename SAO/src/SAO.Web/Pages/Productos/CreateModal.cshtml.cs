@@ -17,6 +17,7 @@ namespace SAO.Web.Pages.Productos
 
         [BindProperty]
         public List<Guid> SelectedSustanciaElementalIds { get; set; }
+        //public List<Guid> SelectedSustanciaElementalIds { get; set; }
         public List<SelectListItem> FabricanteLookupListRequired { get; set; } = new List<SelectListItem>
         {
         };

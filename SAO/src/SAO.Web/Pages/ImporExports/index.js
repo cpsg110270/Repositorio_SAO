@@ -159,7 +159,8 @@ $(function () {
                 data: "tipoEnvase.desEnvase",
                 defaultContent: ""
             },
-            { data: "imporExport.pesoUnitario" },
+            {
+                data: "imporExport.pesoUnitario" },
             { data: "imporExport.cantEnvvase" },
             {
                 data: "pais.nombrePais",
