@@ -261,7 +261,7 @@ public class SAOMenuContributor : IMenuContributor
         context.Menu.AddItem(
             new ApplicationMenuItem(
                 SAOMenus.Reportes,
-                l["Menu:Reportes Importaciones Anuales"],
+                l["Menu:ReportesImportacionesAnuales"],
                 url: "/ReportViewer/RepImportacionesAnuales",
                 icon: "fa fa-bar-chart",
                 requiredPermissionName: SAOPermissions.Reportes)
