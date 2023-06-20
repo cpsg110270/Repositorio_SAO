@@ -258,6 +258,15 @@ public class SAOMenuContributor : IMenuContributor
                 requiredPermissionName: SAOPermissions.Reportes)
         );
 
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SAOMenus.Reportes,
+                l["Menu:Reportes Importaciones Anuales"],
+                url: "/ReportViewer/RepImportacionesAnuales",
+                icon: "fa fa-bar-chart",
+                requiredPermissionName: SAOPermissions.Reportes)
+        );
+
         return Task.CompletedTask;
     }
 }
