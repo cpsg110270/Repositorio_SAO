@@ -231,13 +231,21 @@ public class SAOMenuContributor : IMenuContributor
         );
         #endregion
 
-       
+        context.Menu.AddItem(
+           new ApplicationMenuItem(
+               SAOMenus.ImporExports,
+               l["Menu:Registro Importaciones/Exportaciones"],
+                url: "/ImporExports",
+                 icon: "fa fa-file-alt",
+                requiredPermissionName: SAOPermissions.ImporExports.Default)
+        );
+
         context.Menu.AddItem(
            new ApplicationMenuItem(
                SAOMenus.Reportes,
                l["Menu:Informes"],
                "~/ReportViewer",
-               icon: "fa fa-line-chart"
+               icon: "fa fa-folder"
            ).RequirePermissions(SAOPermissions.Reportes)
          );
 
@@ -250,23 +258,23 @@ public class SAOMenuContributor : IMenuContributor
                 requiredPermissionName: SAOPermissions.CuotaImportadors.Default)
         );
 
-        context.Menu.AddItem(
-            new ApplicationMenuItem(
-                SAOMenus.Reportes,
-                l["Menu:Reportes"],
-                url: "/ReportViewer",
-                icon: "fa fa-bar-chart",
-                requiredPermissionName: SAOPermissions.Reportes)
-        );
+        //context.Menu.AddItem(
+        //    new ApplicationMenuItem(
+        //        SAOMenus.Reportes,
+        //        l["Menu:Reportes"],
+        //        url: "/ReportViewer",
+        //        icon: "fa fa-bar-chart",
+        //        requiredPermissionName: SAOPermissions.Reportes)
+        //);
 
-        context.Menu.AddItem(
-            new ApplicationMenuItem(
-                SAOMenus.Reportes,
-                l["Menu:ReportesImportacionesAnuales"],
-                url: "/ReportViewer/RepImportacionesAnuales",
-                icon: "fa fa-bar-chart",
-                requiredPermissionName: SAOPermissions.Reportes)
-        );
+        //context.Menu.AddItem(
+        //    new ApplicationMenuItem(
+        //        SAOMenus.Reportes,
+        //        l["Menu:ReportesImportacionesAnuales"],
+        //        url: "/ReportViewer/RepImportacionesAnuales",
+        //        icon: "fa fa-bar-chart",
+        //        requiredPermissionName: SAOPermissions.Reportes)
+        //);
 
         return Task.CompletedTask;
     }

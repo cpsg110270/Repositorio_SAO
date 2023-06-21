@@ -41,12 +41,29 @@
                 <abp-column size="_4">
                     <div class="form-group">
                         <label for="ImporExport_ImportadorId">@L["Importador"]</label>
+                        <input hidden value="@(Model.ImporExport.ImportadorId == default ? "": Model.ImporExport.ImportadorId.ToString())"
+                               id="ImporExport.ImportadorId1" name="ImporExport.ImportadorId1" />
+                        <input id="Protagonista_NombreCompleto"   value="@Model.Importador?.NombreImportador" disabled>
+
                         <select id="ImporExport_ImportadorId"
                                 class="custom-select form-control"
                                 name="ImporExport.ImportadorId"
                                 data-value="@Model.ImporExport.ImportadorId">
-                        </select>
+                         </select>
                     </div>
+
+
+                   @* <label for="Protagonista_NombreCompleto">@L["Protagonista"] *</label>
+                    <div class="input-group mb-3">
+                        <input hidden value="@(Model.Vivero.ProtagonistaId   == default ? "": Model.Vivero.ProtagonistaId.ToString()
+)" id="Protagonista_Id" name="Vivero.ProtagonistaId" />
+                        <input type="text" id="Protagonista_NombreCompleto" class="form-control" value="@Model.Protagonista?.NombreCompleto" disabled>
+                        <abp-button button-type="Info" id="ProtagonistaLookupOpenButton" class="text-light">@L["Pick"]</abp-button>
+                        <abp-button button-type="Danger" class="lookupCleanButton ms-1"><i class="fa fa-times"></i></abp-button>
+                    </div>*@
+
+
+
                 </abp-column>
 
                 <abp-column size="_4">
