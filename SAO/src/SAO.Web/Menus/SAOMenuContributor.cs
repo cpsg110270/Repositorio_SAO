@@ -241,9 +241,33 @@ public class SAOMenuContributor : IMenuContributor
            ).RequirePermissions(SAOPermissions.Reportes)
          );
 
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SAOMenus.CuotaImportadors,
+                l["Menu:CuotaImportadors"],
+                url: "/CuotaImportadors",
+                icon: "fa fa-file-alt",
+                requiredPermissionName: SAOPermissions.CuotaImportadors.Default)
+        );
 
-     
-                   
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SAOMenus.Reportes,
+                l["Menu:Reportes"],
+                url: "/ReportViewer",
+                icon: "fa fa-bar-chart",
+                requiredPermissionName: SAOPermissions.Reportes)
+        );
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SAOMenus.Reportes,
+                l["Menu:ReportesImportacionesAnuales"],
+                url: "/ReportViewer/RepImportacionesAnuales",
+                icon: "fa fa-bar-chart",
+                requiredPermissionName: SAOPermissions.Reportes)
+        );
+
         return Task.CompletedTask;
     }
 }
