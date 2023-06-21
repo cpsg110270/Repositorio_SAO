@@ -231,52 +231,19 @@ public class SAOMenuContributor : IMenuContributor
         );
         #endregion
 
+       
         context.Menu.AddItem(
-            new ApplicationMenuItem(
-                SAOMenus.ImporExports,
-                l["Menu:ImporExports"],
-                url: "/ImporExports",
-                icon: "fa fa-file-alt",
-                requiredPermissionName: SAOPermissions.ImporExports.Default)
-        );
+           new ApplicationMenuItem(
+               SAOMenus.Reportes,
+               l["Menu:Informes"],
+               "~/ReportViewer",
+               icon: "fa fa-line-chart"
+           ).RequirePermissions(SAOPermissions.Reportes)
+         );
 
 
-        var reportes  = new ApplicationMenuItem(
-        SAOMenus.Reportes,
-        l["Menu:Reportes"],
-        url: "/Reportes",
-        icon: "fa fa-bar-chart",
-        requiredPermissionName: SAOPermissions.Modulos.Reportes);
-
-        context.Menu.AddItem(reportes);
-
-        reportes.AddItem(
-            new ApplicationMenuItem(
-                SAOMenus.Reportes,
-                l["Menu:Lista Importación/Exportación"],
-                url: "/ReportViewer",
-                icon: "fa fa-bar-chart",
-                requiredPermissionName: SAOPermissions.Reportes)
-        ) ;
-
-        //context.Menu.AddItem(
-        //    new ApplicationMenuItem(
-        //        SAOMenus.CuotaImportadors,
-        //        l["Menu:CuotaImportadors"],
-        //        url: "/CuotaImportadors",
-        //        icon: "fa fa-file-alt",
-        //        requiredPermissionName: SAOPermissions.CuotaImportadors.Default)
-        //);
-
-        //context.Menu.AddItem(
-        //    new ApplicationMenuItem(
-        //        SAOMenus.Reportes,
-        //        l["Menu:Reportes"],
-        //        url: "/ReportViewer",
-        //        icon: "fa fa-bar-chart",
-        //        requiredPermissionName: SAOPermissions.Reportes)
-        //);
-
+     
+                   
         return Task.CompletedTask;
     }
 }

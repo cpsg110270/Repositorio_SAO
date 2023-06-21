@@ -2,7 +2,8 @@
 @using Microsoft.AspNetCore.Authorization
 @using Volo.Abp.AspNetCore.Mvc.UI.Layout
 @using SAO.Permissions
-@using SAO.Web.Pages.Productos
+@*@using SAO.Web.Pages.Productos*@
+@using SAO.Web.Pages.ReportViewer
 @using SAO.Web.Menus
 @using Microsoft.AspNetCore.Mvc.Localization
 @using SAO.Localization
@@ -11,22 +12,34 @@
 @model IndexModel
 @inject IPageLayout PageLayout
 @{
-    PageLayout.Content.Title = L["Reportes"].Value;
+    //PageLayout.Content.Title = L["Informes"].Value;
     PageLayout.Content.MenuItemName = SAOMenus.Reportes;
 }
 
-@section content_toolbar {
+@section content_toolbar { }
 
-}
 
-@section scripts {
-    <partial name="_JSBoldReports" />
-}
 
-@section styles {
-    <link href="https://cdn.boldreports.com/4.2.87/content/material/bold.reports.all.min.css" rel="stylesheet" />
-}
+<div class="container">
+    <div class="row">
+       
+            <abp-card class="bg-light border-1">
+                <abp-card-body>
+                    <div class="text-center">
+                        <img src="~/images/logo/NombreSistema.png" style="max-width: 400px ; align-content:center " >
+                    </div>
+                <p></p><p></p>
+                    <abp-card-title style="align-content:center"><h3>Informes</h3></abp-card-title>
+                    <abp-list-group class="text-left">
+                        
+                    <abp-list-group-item href="/ReportViewer/VisorReporte?ReportPathName=CuotasImportacion.rdl&Title=Cuotas de Importacion" target="_self" ><i class="fa fa-lg fa-print"></i> Cuotas de Importación</abp-list-group-item>
+                    <abp-list-group-item href="/ReportViewer/VisorReporte?ReportPathName=reporte-importaciones-exportaciones.rdl&Title=Informe de Licencias de importación/Exportación de SAO" target="_self"><i class="fa fa-lg fa-print"></i> Informe de Licencias de importación/Exportación de SAO</abp-list-group-item>
+                        
+                    </abp-list-group>
+                </abp-card-body>
+                <abp-card-footer class="text-muted"></abp-card-footer>
+            </abp-card>
+        </div>
+  </div>
+ 
 
-<div style="min-height: 600px;width: 100%;">
-    <bold-report-viewer id="viewer" report-path="reporte-importaciones-exportaciones.rdl" report-service-url="/api/ReportViewer"></bold-report-viewer>
-</div>

@@ -18,8 +18,13 @@ $(function () {
 
     var addCuotaModal = new abp.ModalManager({
         viewUrl: abp.appPath + "CuotaImportadors/CreateModal",
-        scriptUrl: "/Pages/CuotaImportadors/createModal.js",
+         scriptUrl: "/Pages/CuotaImportadors/createModal.js",
         modalClass: "cuotaImportadorCreate"
+
+        //viewUrl: abp.appPath + "CuotaImportadors/Index",
+        //scriptUrl: "/Pages/CuotaImportadors/index.js",
+        // modalClass: "cuotaImportadorIndex"
+        
     });
 
 	var getFilter = function() {
