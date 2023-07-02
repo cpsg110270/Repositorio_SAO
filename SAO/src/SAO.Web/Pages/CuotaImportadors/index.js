@@ -52,8 +52,10 @@ $(function () {
 			añoMax: $("#AñoFilterMax").val(),
 			cuotaMin: $("#CuotaFilterMin").val(),
 			cuotaMax: $("#CuotaFilterMax").val(),
-			importadorId: $("#ImportadorIdFilter").val()
+            importadorId: $("#ImportadorIdFilter").val(),
+         
         };
+        alert(importadorId);
     };
 
     var dataTable = $("#CuotaImportadorsTable").DataTable(abp.libs.datatables.normalizeConfiguration({

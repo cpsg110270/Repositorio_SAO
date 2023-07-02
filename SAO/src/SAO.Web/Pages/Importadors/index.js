@@ -16,16 +16,16 @@ $(function () {
         modalClass: "importadorEdit"
     });
 
-    var addCuotaModal = new abp.ModalManager({
-        viewUrl: abp.appPath + "CuotaImportadors/CreateModal",
-         scriptUrl: "/Pages/CuotaImportadors/createModal.js",
-        modalClass: "cuotaImportadorCreate"
+    //var addCuotaModal = new abp.ModalManager({
+    ////    //viewUrl: abp.appPath + "CuotaImportadors/CreateModal",
+    ////    // scriptUrl: "/Pages/CuotaImportadors/createModal.js",
+    ////    //modalClass: "cuotaImportadorCreate"
 
-        //viewUrl: abp.appPath + "CuotaImportadors/Index",
-        //scriptUrl: "/Pages/CuotaImportadors/index.js",
-        // modalClass: "cuotaImportadorIndex"
+    //    viewUrl: abp.appPath + "CuotaImportadors/Index",
+    //    scriptUrl: "/Pages/CuotaImportadors/index.js",
+    //     modalClass: "Index"
         
-    });
+    //});
 
 	var getFilter = function() {
         return {
@@ -54,19 +54,30 @@ $(function () {
                                 visible: abp.auth.isGranted('SAO.Importadors.Edit'),
                                 action: function (data) {
                                     editModal.open({
-                                     id: data.record.id
-                                     });
-                                }
-                            },
-                            {
-                                text: l("AddCuota"),
-                                visible: abp.auth.isGranted('SAO.Importadors.Edit'),
-                                action: function (data) {
-                                    addCuotaModal.open({
-                                        importadorId: data.record.id
+                                        id: data.record.id
                                     });
                                 }
                             },
+                            {
+                                //text: l("AddCuota"),
+                                //visible: abp.auth.isGranted('SAO.Importadors.Edit'),
+                                //action: function (data) {
+                                //    addCuotaModal.open({
+                                //        importadorId: data.record.id
+                                //    });
+
+
+
+                                text: "Cuotas",
+                                visible: abp.auth.isGranted('SAO.Importadors.Edit'),
+                               
+                                action: function (data) {
+                                    cuotaImportador(data.record.id);
+                                }
+                                
+                            },
+
+                                                        
                             {
                                 text: l("Delete"),
                                 visible: abp.auth.isGranted('SAO.Importadors.Delete'),
@@ -88,6 +99,12 @@ $(function () {
         ]
     }));
 
+
+
+    function cuotaImportador(id) {
+         window.location.href = "/CuotaImportadors/Index?ImportadorId=" + id;
+    }
+
     createModal.onResult(function () {
         dataTable.ajax.reload();
     });
@@ -98,7 +115,7 @@ $(function () {
 
     $("#NewImportadorButton").click(function (e) {
         e.preventDefault();
-        createModal.open();
+        createModal.open(data.record.cuotaimportadors.importadors);
     });
 
 	$("#SearchForm").submit(function (e) {
@@ -141,3 +158,4 @@ $(function () {
     
     
 });
+

@@ -13,7 +13,8 @@
 
 <form data-ajaxForm="true" asp-page="/Productos/EditModal" autocomplete="off">
     <abp-modal id="ProductoEditModal">
-        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+       @* <abp-modal-header title="@L["Update"].Value"></abp-modal-header>*@
+        <abp-modal-header title="Edicion Prodcuto"></abp-modal-header>
 
         <abp-modal-body>
              <abp-tabs>
@@ -43,20 +44,22 @@
                     <abp-row>
                         <abp-table style="@(Model.SustanciaElementals.Any() ? "": "display:none")" id="SustanciaElementalTable">
                             <thead Theme="Dark">
-                            <tr style="text-align: center; vertical-align: middle;">
-                                <th scope="Column" style="text-align: left">@L["CodCas"]</th>
-                                <th scope="Column"></th>
+                            <tr style="vertical-align: middle;">
+                                    <th scope="Column" style="text-align: left; width:35%">@L["CodCas"]</th>
+                                    <th scope="Column" style="text-align: left; width:45%"> Nombre Comun</th>
+                                    <th scope="Column" style="text-align: left; width:20%"> </th>
                             </tr>
                             </thead>
                             <tbody id="SustanciaElementalTableRows">
                             @for (var index = 0; index < Model.SustanciaElementals.Count; index++)
                             {
                                 <tr style="text-align: center; vertical-align: middle;" index="@index">
-                                    <td style="display: none" name="id" display-name="@Model.SustanciaElementals[index].CodCas" index="@index">@Model.SustanciaElementals[index].Id</td>
+                                        <td style="display: none" name="id" display-name="@Model.SustanciaElementals[index].CodCas" index="@index">@Model.SustanciaElementals[index].Id</td>
                                     <td style="display: none">
                                         <input value="@Model.SustanciaElementals[index].Id" id="SelectedSustanciaElementalIds[@index]" name="SelectedSustanciaElementalIds[@index]"/>
                                     </td>
                                     <td style="text-align: left">@Model.SustanciaElementals[index].CodCas</td>
+                                    <td style="text-align: left">@Model.SustanciaElementals[index].DesSustancia</td>
                                     <td style="text-align: right">
                                         <abp-button button-type="Danger" size="Small" class="text-light sustanciaElementalDeleteButton" index="@index"> <i class="fa fa-trash"></i> </abp-button>
                                     </td>

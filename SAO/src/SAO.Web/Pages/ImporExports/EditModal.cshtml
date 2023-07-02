@@ -40,7 +40,7 @@
 
                 <abp-column size="_4">
                     <div class="form-group">
-                        <label for="ImporExport_ImportadorId">@L["Importador"]</label>
+                        <label for="ImporExport_ImportadorId">@L["Importador"]*</label>
                          <select id="ImporExport_ImportadorId"
                                 class="custom-select form-control"
                                 name="ImporExport.ImportadorId"
@@ -58,11 +58,18 @@
 
                 <abp-column size="_4">
                     <div class="form-group">
-                        <label for="ImporExport_ExportadorId">@L["Exportador"]</label>
+                        <label for="ImporExport_ExportadorId">@L["Exportador"]*</label>
                         <select id="ImporExport_ExportadorId"
                                 class="custom-select form-control"
-                                name="ImporExport.ExportadorId"
+                                name="ImporExport.ExportadorId" 
                                 data-value="@Model.ImporExport.ExportadorId" required>
+
+                            @if (Model.Exportador != null)
+                            {
+                                <option value="@Model.ImporExport.ExportadorId">@Model.Exportador.NombreExportador</option>
+                            }
+
+
                         </select>
                     </div>
                 </abp-column>
@@ -72,11 +79,18 @@
 
                 <abp-column size="_4">
                     <div class="form-group">
-                        <label for="ImporExport_ProductoId">@L["Producto"]</label>
+                        <label for="ImporExport_ProductoId">@L["Producto"]*</label>
                         <select id="ImporExport_ProductoId"
                                 class="custom-select form-control"
                                 name="ImporExport.ProductoId"
                                 data-value="@Model.ImporExport.ProductoId" required>
+
+                            @if (Model.Producto != null)
+                            {
+                                <option value="@Model.ImporExport.ProductoId">@Model.Producto.NombreComercia</option>
+                            }
+
+
                         </select>
                     </div>
                 </abp-column>
@@ -151,6 +165,16 @@
                                 class="custom-select form-control"
                                 name="ImporExport.PermisoRenov"
                                 data-value="@Model.ImporExport.PermisoRenov" disabled>
+
+
+                            
+
+                            @if (Model.ImporExport.PermisoRenov != null)
+                            {
+                                <option value="@Model.ImporExport.PermisoRenov">@Model.ImporExport.NoPermiso</option>
+                            }
+
+
                         </select>
                     </div>
                 </abp-column>
@@ -161,6 +185,7 @@
 
             </abp-row>
 
+            
             <abp-input asp-for="ImporExport.Estado" disabled hidden />
 
 

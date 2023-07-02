@@ -13,6 +13,7 @@
 @{
     PageLayout.Content.Title = L["CuotaImportadors"].Value;
     PageLayout.Content.MenuItemName = SAOMenus.CuotaImportadors;
+    string idImport = ViewData["ImportId"].ToString();
 }
 
 @section scripts
@@ -24,7 +25,9 @@
     <abp-button id="ExportToExcelButton" text="@L["ExportToExcel"].Value" icon="download" size="Small" button-type="Primary" />
     @if (await Authorization.IsGrantedAsync(SAOPermissions.CuotaImportadors.Create))
     {
-        <abp-button id="NewCuotaImportadorButton" text="@L["NewCuotaImportador"].Value" icon="plus" size="Small" button-type="Primary" />
+        <abp-button id="NewCuotaImportadorButton" text="@L["NewCuotaImportador"].Value" icon="plus" size="Small" button-type="Primary"
+        
+        />
     }
 }
 
@@ -39,12 +42,12 @@
                     </div>
                 </form>
             </abp-column>
-            <abp-column size-md="_12" class="mt-3">
+            <abp-column size-md="_12" class="mt-3" hidden>
                 <a href="javascript:;" id="AdvancedFilterSectionToggler" class="text-decoration-none">@L["SeeAdvancedFilters"]</a>
             </abp-column>
         </abp-row>
 
-        <abp-row id="AdvancedFilterSection" style="display: none;">
+        <abp-row id="AdvancedFilterSection" style="display: none;" hidden>
             <abp-column size="_3">
                 <abp-input asp-for="AñoFilterMin" label="@L["MinAño"].Value" />
             </abp-column>
@@ -60,7 +63,7 @@
                 <abp-column size="_3">
                     <label for="Importador_Filter_NombreImportador">@L["Importador"]</label>
                     <div class="input-group mb-3 mt-2">
-                        <input hidden id="ImportadorIdFilter" />
+                    <input  id="ImportadorIdFilter" value="@idImport" hidden/>
                         <input type="text" id="Importador_Filter_NombreImportador" class="form-control" disabled>
                         <abp-button button-type="Info" id="ImportadorFilterLookupOpenButton" class="text-light">@L["Pick"]</abp-button>
                         <abp-button button-type="Danger" class="lookupCleanButton ms-1"><i class="fa fa-times"></i></abp-button>
