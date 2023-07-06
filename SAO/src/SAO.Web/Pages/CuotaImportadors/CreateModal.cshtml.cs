@@ -19,7 +19,8 @@ namespace SAO.Web.Pages.CuotaImportadors
         [BindProperty]
         public CuotaImportadorCreateViewModel CuotaImportador { get; set; }
 
-        private readonly ICuotaImportadorsAppService _cuotaImportadorsAppService;
+        private readonly ICuotaImportadorsAppService _cuotaImportadorsAppService
+            ;
 
         public CreateModalModel(ICuotaImportadorsAppService cuotaImportadorsAppService)
         {
@@ -31,7 +32,7 @@ namespace SAO.Web.Pages.CuotaImportadors
         public async Task OnGetAsync()
 
         {
-       
+
             CuotaImportador = new CuotaImportadorCreateViewModel();
             CuotaImportador.ImportadorId = ImportadorId;
 

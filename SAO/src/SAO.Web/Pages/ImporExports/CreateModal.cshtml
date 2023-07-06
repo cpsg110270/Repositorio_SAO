@@ -149,7 +149,7 @@
                  </abp-column>
 
                  <abp-column size="_8">
-                    <abp-input asp-for="ImporExport.Observaciones" text-area disabled />
+                    <abp-input asp-for="ImporExport.Observaciones" text-area />
                  </abp-column>
 
             </abp-row>
@@ -168,7 +168,7 @@
     $('#ImporExport_EsRenovacion').click(function () {
         if ($(this).is(':checked')) {
             $('#ImporExport_PermisoRenov').prop("disabled", false);
-            $('#ImporExport_Observaciones').prop("disabled", false);
+            //$('#ImporExport_Observaciones').prop("disabled", false);
             
 
         }

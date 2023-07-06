@@ -55,7 +55,7 @@ $(function () {
             importadorId: $("#ImportadorIdFilter").val(),
          
         };
-        alert(importadorId);
+       
     };
 
     var dataTable = $("#CuotaImportadorsTable").DataTable(abp.libs.datatables.normalizeConfiguration({
@@ -82,6 +82,7 @@ $(function () {
                                      });
                                 }
                             },
+                            
                             {
                                 text: l("Delete"),
                                 visible: abp.auth.isGranted('SAO.CuotaImportadors.Delete'),
@@ -117,8 +118,11 @@ $(function () {
     });
 
     $("#NewCuotaImportadorButton").click(function (e) {
+        alert($("#ImportadorIdFilter").val())
         e.preventDefault();
-        createModal.open();
+        createModal.open({
+            ImportadorId: $("#ImportadorIdFilter").val()
+            });
     });
 
 	$("#SearchForm").submit(function (e) {

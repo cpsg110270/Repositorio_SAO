@@ -9,13 +9,16 @@
 @model CreateModalModel
 @{
     Layout = null;
-    //string idImport = ViewData["ImportId"].ToString();
+  
 }
 
 <form data-ajaxForm="true" asp-page="/CuotaImportadors/CreateModal" autocomplete="off">
     <abp-modal id="CuotaImportadorCreateModal">
       @*  <abp-modal-header title="@L["NewCuotaImportador"].Value"></abp-modal-header>*@
        <abp-modal-header style="font-size:large";" icon="plus" >Nueva Cuota </abp-modal-header>
+
+       
+ 
 
         <abp-modal-body>
                     
@@ -25,7 +28,7 @@
 
             <abp-input asp-for="CuotaImportador.Cuota"  data-val="false"/>
 
-            @*<input id="ImportadorId" value="@idImport" hidden />*@
+            
 
 @*                                <label for="Importador_NombreImportador">@L["Importador"] *</label>
             <div class="input-group mb-3">

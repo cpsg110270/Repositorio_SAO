@@ -280,6 +280,12 @@ namespace SAO.ImporExports
             input.ImportadorId, input.ExportadorId, input.ProductoId, input.UnidadMedidaId, input.TipoEnvaseId, input.PuertoEntradaId, input.PuertoSalidaId, input.PaisProcedenciaId, input.PaisDestinoId, input.PaisOrigenId, input.AlmacenId, input.PermisoRenov, input.PermisoDe, input.NoPermiso, input.FechaEmision, input.FechaSolicitud, input.PesoNeto, input.PesoUnitario, input.CantEnvvase, input.NoFactura, input.Observaciones, input.EsRenovacion, input.Estado
             );
 
+            //Si es Renovacion buscamos el Permiso para cambiar estado
+            var permisoRenovacion = (await _imporExportRepository.GetAsync(input.PermisoRenov.Value));
+            permisoRenovacion.Estado = false;
+            await _imporExportRepository.UpdateAsync(permisoRenovacion);
+
+
             return ObjectMapper.Map<ImporExport, ImporExportDto>(imporExport);
         }
 

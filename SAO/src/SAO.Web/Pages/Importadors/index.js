@@ -115,7 +115,7 @@ $(function () {
 
     $("#NewImportadorButton").click(function (e) {
         e.preventDefault();
-        createModal.open(data.record.cuotaimportadors.importadors);
+        createModal.open();
     });
 
 	$("#SearchForm").submit(function (e) {

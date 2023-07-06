@@ -26,8 +26,7 @@
     @if (await Authorization.IsGrantedAsync(SAOPermissions.CuotaImportadors.Create))
     {
         <abp-button id="NewCuotaImportadorButton" text="@L["NewCuotaImportador"].Value" icon="plus" size="Small" button-type="Primary"
-        
-        />
+             />
     }
 }
 
@@ -39,6 +38,7 @@
                     <div class="input-group">
                         <input class="form-control page-search-filter-text" id="FilterText" placeholder="@L["Search"]"/>
                         <abp-button button-type="Primary" type="submit" icon="search"/>
+                        <label> @idImport</label>
                     </div>
                 </form>
             </abp-column>

@@ -24,11 +24,11 @@
                 </abp-column>
 
                 <abp-column size="_4">
-                    <abp-input asp-for="ImporExport.FechaEmision" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date" />
+                      <abp-input asp-for="ImporExport.FechaEmision" type="date" />
                 </abp-column>
 
                 <abp-column size="_4">
-                    <abp-input asp-for="ImporExport.FechaSolicitud" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date" />
+                    <abp-input asp-for="ImporExport.FechaSolicitud" type="date" />
                 </abp-column>
 
             </abp-row>
@@ -171,7 +171,7 @@
 
                             @if (Model.ImporExport.PermisoRenov != null)
                             {
-                                <option value="@Model.ImporExport.PermisoRenov">@Model.ImporExport.NoPermiso</option>
+                                <option value="@Model.ImporExport.PermisoRenov">@Model.ImporExport.PermisoRenov</option>
                             }
 
 
@@ -180,7 +180,7 @@
                 </abp-column>
 
                 <abp-column size="_8">
-                    <abp-input asp-for="ImporExport.Observaciones" text-area disabled />
+                    <abp-input asp-for="ImporExport.Observaciones" text-area  />
                 </abp-column>
 
             </abp-row>
@@ -208,8 +208,8 @@
             { 
             $('#ImporExport_PermisoRenov').prop("disabled", true);
             $('#ImporExport_PermisoRenov').empty();
-            $('#ImporExport_Observaciones').prop("disabled", true);
-            $('#ImporExport_Observaciones').val('');
+            //$('#ImporExport_Observaciones').prop("disabled", true);
+            //$('#ImporExport_Observaciones').val('');
         }
     });
 
