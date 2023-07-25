@@ -556,7 +556,7 @@ FROM     dbo.AppCuotaImportadors INNER JOIN
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Total</Value>
+                                <Value>Total Toneladas métricas</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>#333333</Color>
@@ -622,10 +622,10 @@ FROM     dbo.AppCuotaImportadors INNER JOIN
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Importdores de SAO </Value>
+                    <Value>Importadores de SAO </Value>
                     <Style>
-                      <FontFamily>Segoe UI Light</FontFamily>
-                      <FontSize>18pt</FontSize>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>16pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -637,10 +637,28 @@ FROM     dbo.AppCuotaImportadors INNER JOIN
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>(R-22)</Value>
+                    <Value>(</Value>
                     <Style>
-                      <FontFamily>Segoe UI Light</FontFamily>
-                      <FontSize>18pt</FontSize>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>16pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>HCFC-22</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>16pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>)</Value>
+                    <Style>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>16pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -652,8 +670,8 @@ FROM     dbo.AppCuotaImportadors INNER JOIN
             </Paragraphs>
             <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
             <rd:DefaultName>ReportTitle</rd:DefaultName>
-            <Top>0.74667in</Top>
-            <Left>1.99166in</Left>
+            <Top>0.705in</Top>
+            <Left>1.85833in</Left>
             <Height>0.71111in</Height>
             <Width>3.71667in</Width>
             <ZIndex>1</ZIndex>

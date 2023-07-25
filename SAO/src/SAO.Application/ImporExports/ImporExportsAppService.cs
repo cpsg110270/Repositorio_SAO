@@ -257,33 +257,42 @@ namespace SAO.ImporExports
         {
             if (input.ExportadorId == default)
             {
-                throw new UserFriendlyException(L["The {0} field is required.", L["Exportador"]]);
+                throw new UserFriendlyException(L["El {0} campo es requerido.", L["Exportador"]]);
             }
             if (input.ProductoId == default)
             {
-                throw new UserFriendlyException(L["The {0} field is required.", L["Producto"]]);
+                throw new UserFriendlyException(L["El {0} campo es requerido.", L["Producto"]]);
             }
             if (input.UnidadMedidaId == default)
             {
-                throw new UserFriendlyException(L["The {0} field is required.", L["UnidadMedida"]]);
+                throw new UserFriendlyException(L["El {0} campo es requerido.", L["UnidadMedida"]]);
             }
             if (input.TipoEnvaseId == default)
             {
-                throw new UserFriendlyException(L["The {0} field is required.", L["TipoEnvase"]]);
+                throw new UserFriendlyException(L["El {0} campo es requerido.", L["TipoEnvase"]]);
             }
             if (input.PermisoDe == default)
             {
-                throw new UserFriendlyException(L["The {0} field is required.", L["TipoPermiso"]]);
+                throw new UserFriendlyException(L["El {0} campo es requerido.", L["TipoPermiso"]]);
             }
+
+            if (input.PermisoRenov != default)
+            {
+                //Si es Renovacion buscamos el Permiso para cambiar estado
+                var permisoRenovacion = (await _imporExportRepository.GetAsync(input.PermisoRenov.Value));
+                if (!permisoRenovacion.Estado  ) 
+                {
+                    throw new UserFriendlyException(L["El permiso a renovar  elegido ya fue renovado."]);
+                }
+                permisoRenovacion.Estado = false;
+                await _imporExportRepository.UpdateAsync(permisoRenovacion);
+            }
+
 
             var imporExport = await _imporExportManager.CreateAsync(
             input.ImportadorId, input.ExportadorId, input.ProductoId, input.UnidadMedidaId, input.TipoEnvaseId, input.PuertoEntradaId, input.PuertoSalidaId, input.PaisProcedenciaId, input.PaisDestinoId, input.PaisOrigenId, input.AlmacenId, input.PermisoRenov, input.PermisoDe, input.NoPermiso, input.FechaEmision, input.FechaSolicitud, input.PesoNeto, input.PesoUnitario, input.CantEnvvase, input.NoFactura, input.Observaciones, input.EsRenovacion, input.Estado
             );
 
-            //Si es Renovacion buscamos el Permiso para cambiar estado
-            var permisoRenovacion = (await _imporExportRepository.GetAsync(input.PermisoRenov.Value));
-            permisoRenovacion.Estado = false;
-            await _imporExportRepository.UpdateAsync(permisoRenovacion);
 
 
             return ObjectMapper.Map<ImporExport, ImporExportDto>(imporExport);
@@ -294,23 +303,23 @@ namespace SAO.ImporExports
         {
             if (input.ExportadorId == default)
             {
-                throw new UserFriendlyException(L["The {0} field is required.", L["Exportador"]]);
+                throw new UserFriendlyException(L["El {0} campo es requerido.", L["Exportador"]]);
             }
             if (input.ProductoId == default)
             {
-                throw new UserFriendlyException(L["The {0} field is required.", L["Producto"]]);
+                throw new UserFriendlyException(L["El {0} campo es requerido.", L["Producto"]]);
             }
             if (input.UnidadMedidaId == default)
             {
-                throw new UserFriendlyException(L["The {0} field is required.", L["UnidadMedida"]]);
+                throw new UserFriendlyException(L["El {0} campo es requerido.", L["UnidadMedida"]]);
             }
             if (input.TipoEnvaseId == default)
             {
-                throw new UserFriendlyException(L["The {0} field is required.", L["TipoEnvase"]]);
+                throw new UserFriendlyException(L["El {0} campo es requerido.", L["TipoEnvase"]]);
             }
             if (input.PermisoDe == default)
             {
-                throw new UserFriendlyException(L["The {0} field is required.", L["TipoPermiso"]]);
+                throw new UserFriendlyException(L["El {0} campo es requerido.", L["TipoPermiso"]]);
             }
 
             var imporExport = await _imporExportManager.UpdateAsync(
