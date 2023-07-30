@@ -17,6 +17,7 @@ using SAO.Shared;
 using Volo.Abp.AutoMapper;
 using SAO.Importadors;
 using AutoMapper;
+using SAO.Reportes;
 
 namespace SAO;
 
@@ -97,5 +98,8 @@ public class SAOApplicationAutoMapperProfile : Profile
         CreateMap<CuotaImportador, CuotaImportadorDto>();
         CreateMap<CuotaImportador, CuotaImportadorExcelDto>();
         CreateMap<CuotaImportadorWithNavigationProperties, CuotaImportadorWithNavigationPropertiesDto>();
+
+        CreateMap<RepCuotasImportadores, RepCuotasImportadoresDto>();
+        CreateMap<RepPesosNetosASHRAE, RepPesosNetosASHRAEDto>();
     }
 }

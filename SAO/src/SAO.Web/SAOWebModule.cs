@@ -58,6 +58,7 @@ using Volo.Abp.LeptonX.Shared;
 using Volo.Abp.OpenIddict;
 using Volo.Abp.OpenIddict.Pro.Web;
 using Volo.Abp.SettingManagement.Web;
+using Volo.Abp.AspNetCore.ExceptionHandling;
 
 namespace SAO.Web;
 
@@ -122,6 +123,12 @@ public class SAOWebModule : AbpModule
             //    builder.SetIssuer(new Uri(configuration["AuthServer:Authority"]));
             //});
         }
+        else
+            Configure<AbpExceptionHandlingOptions>(options =>
+            {
+                options.SendExceptionsDetailsToClients = true;
+                options.SendStackTraceToClients = false;
+            });
     }
 
     public override void ConfigureServices(ServiceConfigurationContext context)

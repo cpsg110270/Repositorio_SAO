@@ -14,6 +14,17 @@
     PageLayout.Content.MenuItemName = SAOMenus.Home;
 }
 
+
+@section scripts {
+    <script src="~/libs/apexcharts/apexcharts.js"></script>
+    <script src="~/libs/apexcharts/data.js"></script>
+    <script src="~/libs/apexcharts/scripts.js"></script>
+}
+
+@section styles {
+    <link href="~/libs/apexcharts/styles.css" rel="stylesheet" />
+}
+
 <abp-card>
    @* <abp-card-header>@L["Welcome"]</abp-card-header>*@
     <abp-card-body>
@@ -25,14 +36,36 @@
             <a abp-button="Primary" href="~/Account/Login">@L["Login"]</a>
         }
 
-        <hr />
         <p class="text-center"><img src="/images/logo/NombreSistema.png" style="max-width: 600px;" ></p>
+        <div class="content-area">
+            <div class="row mt-5 mb-4">
+                <div class="col-md-6">
+                    <div class="card bg-brand-gradient text-white">
+                        <div class="card-body">
+                            <div class="box">
+                                <div id="donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-brand-gradient text-white">
+                        <div class="card-body">
+                            <div class="box">
+                                <div id="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </abp-card-body>
 </abp-card>
-<div class="card mt-5">
+
+@*<div class="card mt-5">
     <div class="card-body">
         <div class="row">
-          @*  <div class="col-md-auto text-center">*@
+          <div class="col-md-auto text-center">
             <div class="d-flex justify-content-between"> 
                 <img src="/images/logo/dgca.png" style="max-width: 200px;" class="w-100 mb-5 my-md-3" />
                 <img src="/images/logo/descarga.png" style="max-width: 200px;" class="w-100 mb-5 my-md-3" />
@@ -40,7 +73,7 @@
             </div>
             <div class="col-md d-flex align-items-center">
                 <div class="pe-0 pe-md-4">
-                   @* <small class="text-uppercase text-muted">The Official Guide</small>
+                   <small class="text-uppercase text-muted">The Official Guide</small>
                     <h2 class="mb-4">Mastering ABP Framework</h2>
                     <p class="mb-4">Written by the creator of the ABP Framework, this book will help you gain a complete understanding of the framework and modern web application development techniques.</p>
                     <div class="mb-4">
@@ -49,10 +82,10 @@
                         </a>
                         <a href="https://www.packtpub.com/product/mastering-abp-framework/9781801079242" class="btn btn-primary mb-1">
                             Buy on PACKT
-                        </a>*@
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div>*@

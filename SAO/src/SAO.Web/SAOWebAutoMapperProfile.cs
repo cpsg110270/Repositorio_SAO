@@ -30,6 +30,7 @@ using SAO.Web.Pages.Importadors;
 using Volo.Abp.AutoMapper;
 using SAO.Importadors;
 using AutoMapper;
+using SAO.Reportes;
 
 namespace SAO.Web;
 
