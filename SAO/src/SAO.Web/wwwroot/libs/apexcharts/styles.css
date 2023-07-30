@@ -1,0 +1,4 @@
+﻿/* Cambiar el color del texto de leyenda a blanco */
+.apexcharts-legend-text {
+    color: #ffffff !important; /* Color blanco */
+}
