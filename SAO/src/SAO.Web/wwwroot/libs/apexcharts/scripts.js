@@ -34,7 +34,7 @@ reportesService.getPesosNetosASHRAE().done(function (result) {
         },
         colors: colorPalette,
         title: {
-            text: 'Pesos Netos ASHRAE',
+            text: 'Importaciones HFC',
             style: {
                 fontSize: '18px',
                 color: 'white'
@@ -114,10 +114,10 @@ reportesService.getCuotasImportadoresData().done(function (result) {
             }
         },
         title: {
-            text: 'Comparativo de Importaciones',
+            text: 'Cuotas de Importacion Vs Importaciones',
             align: 'left',
             style: {
-                fontSize: '18px',
+                fontSize: '16px',
                 color: 'white'
             }
         }
