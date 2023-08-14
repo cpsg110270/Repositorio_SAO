@@ -1,9 +1,8 @@
+using SAO.EntityFrameworkCore;
 using Shouldly;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using SAO.Fabricantes;
-using SAO.EntityFrameworkCore;
 using Xunit;
 
 namespace SAO.Fabricantes

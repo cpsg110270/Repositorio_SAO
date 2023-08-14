@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.UnidadMedidas
 {
     public class UnidadMedidaExcelDto

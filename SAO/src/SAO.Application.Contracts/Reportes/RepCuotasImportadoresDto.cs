@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SAO.Reportes
+﻿namespace SAO.Reportes
 {
     public class RepCuotasImportadoresDto
     {

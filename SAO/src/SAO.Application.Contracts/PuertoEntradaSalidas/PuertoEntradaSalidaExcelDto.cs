@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.PuertoEntradaSalidas
 {
     public class PuertoEntradaSalidaExcelDto

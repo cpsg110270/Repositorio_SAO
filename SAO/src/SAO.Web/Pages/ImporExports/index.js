@@ -150,7 +150,24 @@ $(function () {
                 data: "producto.nombreComercia",
                 defaultContent: ""
             },
-            { data: "imporExport.pesoNeto" },
+            {
+                data: "imporExport.pesoNeto",
+                render: function (pesoNeto) {
+                    var formato = numberWithCommas(pesoNeto);
+                    return '<b>'+ formato +'</b>';
+                },
+               className: "dt-right"
+            },
+
+            {  data: "imporExport.pesoUnitario",
+                render: function (pesoUnitario) {
+                    var formato = numberWithCommas(pesoUnitario);
+                    return formato; },
+                 className: "dt-right"
+            },
+
+            { data: "imporExport.cantEnvvase" },
+
             {
                 data: "unidadMedida.abreviatura",
                 defaultContent: ""
@@ -159,9 +176,7 @@ $(function () {
                 data: "tipoEnvase.desEnvase",
                 defaultContent: ""
             },
-            {
-                data: "imporExport.pesoUnitario" },
-            { data: "imporExport.cantEnvvase" },
+                       
             {
                 data: "pais.nombrePais",
                 defaultContent: ""
@@ -183,7 +198,7 @@ $(function () {
                 data: "almacen.nombreAlmacen",
                 defaultContent: ""
             },
-                        {
+             {
                 data: "pais2.nombrePais",
                 defaultContent: ""
             },
@@ -301,3 +316,15 @@ $(function () {
     
     
 });
+
+function numberWithCommas(numero) {
+    const numeroFormateado = numero.toFixed(2);
+    const partes = numeroFormateado.split(".");
+    const parteEntera = partes[0];
+    const parteDecimal = partes[1];
+    const parteEnteraFormateada = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const numeroFinal = parteEnteraFormateada + "." + parteDecimal;
+    return numeroFinal;
+
+}
+

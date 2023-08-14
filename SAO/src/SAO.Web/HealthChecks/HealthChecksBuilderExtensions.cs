@@ -1,10 +1,10 @@
-﻿using System;
-using HealthChecks.UI.Client;
+﻿using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace SAO.Web.HealthChecks;
 
@@ -21,12 +21,12 @@ public static class HealthChecksBuilderExtensions
         // If you don't want to add HealthChecksUI, remove following configurations.
         var configuration = services.GetConfiguration();
         var healthCheckUrl = configuration["App:HealthCheckUrl"];
-        
+
         if (string.IsNullOrEmpty(healthCheckUrl))
         {
             healthCheckUrl = "/health-status";
         }
-        
+
         var healthChecksUiBuilder = services.AddHealthChecksUI(settings =>
         {
             settings.AddHealthCheckEndpoint("SAO Health Status", healthCheckUrl);

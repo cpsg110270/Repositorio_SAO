@@ -8,7 +8,7 @@ namespace SAO.SustanciaElementals
         public string CodCas { get; set; }
         public string DesSustancia { get; set; }
 
-        public string Completo { get { return CodCas +" - "+DesSustancia; } }
+        public string Completo { get { return CodCas + " - " + DesSustancia; } }
 
     }
 }

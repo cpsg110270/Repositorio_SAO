@@ -1,13 +1,13 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using SAO.ImporExports;
 using SAO.Shared;
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Volo.Abp.Application.Dtos;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using SAO.ImporExports;
 using Volo.Abp;
+using Volo.Abp.Application.Dtos;
 
 namespace SAO.Web.Pages.ImporExports
 {
@@ -95,7 +95,7 @@ namespace SAO.Web.Pages.ImporExports
 
 
             //ImporExport.PesoNeto = ImporExport.PesoUnitario * ImporExport.CantEnvvase;
-       
+
             ImporExport.PesoNeto = ImporExport.PesoUnitario * ImporExport.CantEnvvase;
             ImporExport.PesoNeto = Math.Round(ImporExport.PesoNeto, 2);
             ImporExport.Estado = true;
@@ -107,7 +107,7 @@ namespace SAO.Web.Pages.ImporExports
 
 
 
-          
+
             await _imporExportsAppService.CreateAsync(ObjectMapper.Map<ImporExportCreateViewModel, ImporExportCreateDto>(ImporExport));
             return NoContent();
         }

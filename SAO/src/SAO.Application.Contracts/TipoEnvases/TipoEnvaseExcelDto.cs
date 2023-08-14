@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.TipoEnvases
 {
     public class TipoEnvaseExcelDto

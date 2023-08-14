@@ -1,13 +1,13 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using SAO.Productos;
 using SAO.Shared;
 using SAO.SustanciaElementals;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Volo.Abp.Application.Dtos;
-using SAO.Productos;
 
 namespace SAO.Web.Pages.Productos
 {
@@ -47,7 +47,7 @@ namespace SAO.Web.Pages.Productos
         {
             var productoWithNavigationPropertiesDto = await _productosAppService.GetWithNavigationPropertiesAsync(Id);
             Producto = ObjectMapper.Map<ProductoDto, ProductoUpdateViewModel>(productoWithNavigationPropertiesDto.Producto);
-            
+
 
             SustanciaElementals = productoWithNavigationPropertiesDto.SustanciaElementals;
             FabricanteLookupListRequired.AddRange((

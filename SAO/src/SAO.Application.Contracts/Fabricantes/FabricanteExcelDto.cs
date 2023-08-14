@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.Fabricantes
 {
     public class FabricanteExcelDto

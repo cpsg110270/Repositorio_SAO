@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.Almacens
 {
     public class AlmacenExcelDto

@@ -1,6 +1,3 @@
-using Volo.Abp.Application.Dtos;
-using System;
-
 namespace SAO.UnidadMedidas
 {
     public class UnidadMedidaExcelDownloadDto

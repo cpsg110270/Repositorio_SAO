@@ -1,9 +1,7 @@
+using SAO.EntityFrameworkCore;
 using Shouldly;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
-using SAO.Asraes;
-using SAO.EntityFrameworkCore;
 using Xunit;
 
 namespace SAO.Asraes

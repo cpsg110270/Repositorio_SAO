@@ -6,6 +6,6 @@ public class CookiePolicy : PageModel
 {
     public void OnGet()
     {
-        
+
     }
 }

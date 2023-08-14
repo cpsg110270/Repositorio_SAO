@@ -1,6 +1,3 @@
-using Volo.Abp.Application.Dtos;
-using System;
-
 namespace SAO.TipoProductos
 {
     public class TipoProductoExcelDownloadDto

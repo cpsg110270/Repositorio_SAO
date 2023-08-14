@@ -196,11 +196,13 @@
     </abp-modal>
 </form>
 
-                    <script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ <script>
     $('#ImporExport_EsRenovacion').click(function () {
         if ($(this).is(':checked')) {
             $('#ImporExport_PermisoRenov').prop("disabled", false);
-            $('#ImporExport_Observaciones').prop("disabled", false);
+            //$('#ImporExport_Observaciones').prop("disabled", false);
             
 
         }
@@ -215,15 +217,30 @@
 
 
     function PesoNeto() {
-      
+
         var PesoUni = document.getElementById("PesoUnitario").value;
         var Cant = document.getElementById("CantEnvase").value;
         var PesoNeto = 0;
 
         PesoNeto = PesoUni * Cant;
-        $('#ImporExport_PesoNeto').val(PesoNeto.toFixed(2))
-         
-      }
+     
+        var numeroFormateado = numberWithCommas(PesoNeto);
+
+        $('#ImporExport_PesoNeto').val(numeroFormateado);
+
+    }
+
+
+    function numberWithCommas(numero) {
+        const numeroFormateado = numero.toFixed(2);
+        const partes = numeroFormateado.split(".");
+        const parteEntera = partes[0];
+        const parteDecimal = partes[1];
+        const parteEnteraFormateada = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        const numeroFinal = parteEnteraFormateada + "." + parteDecimal;
+        return numeroFinal;
+
+    }
 
     $('#ImporExport_PermisoRenov').change(function() {
  

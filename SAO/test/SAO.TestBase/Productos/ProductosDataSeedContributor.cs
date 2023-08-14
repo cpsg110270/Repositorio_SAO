@@ -1,12 +1,11 @@
-using SAO.TipoProductos;
 using SAO.Asraes;
 using SAO.Fabricantes;
+using SAO.TipoProductos;
 using System;
 using System.Threading.Tasks;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Uow;
-using SAO.Productos;
 
 namespace SAO.Productos
 {

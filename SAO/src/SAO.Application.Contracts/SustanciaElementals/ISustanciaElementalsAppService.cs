@@ -1,9 +1,9 @@
+using SAO.Shared;
 using System;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Content;
-using SAO.Shared;
 
 namespace SAO.SustanciaElementals
 {

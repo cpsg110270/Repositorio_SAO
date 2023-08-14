@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.SustanciaElementals
 {
     public class SustanciaElementalExcelDto

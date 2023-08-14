@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Uow;
-using SAO.Fabricantes;
 
 namespace SAO.Fabricantes
 {

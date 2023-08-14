@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.Productos
 {
     public class ProductoExcelDto

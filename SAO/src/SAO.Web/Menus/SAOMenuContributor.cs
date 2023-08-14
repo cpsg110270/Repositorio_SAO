@@ -1,15 +1,13 @@
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
-using System.Threading.Tasks;
 using SAO.Localization;
 using SAO.Permissions;
+using System.Threading.Tasks;
 using Volo.Abp.AuditLogging.Web.Navigation;
+using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.LanguageManagement.Navigation;
+using Volo.Abp.OpenIddict.Pro.Web.Menus;
 using Volo.Abp.SettingManagement.Web.Navigation;
 using Volo.Abp.TextTemplateManagement.Web.Navigation;
-using Volo.Abp.Authorization.Permissions;
-using Volo.Abp.OpenIddict.Pro.Web.Menus;
 using Volo.Abp.UI.Navigation;
 using Volo.Saas.Host.Navigation;
 
@@ -42,15 +40,15 @@ public class SAOMenuContributor : IMenuContributor
         );
 
         //HostDashboard
-        context.Menu.AddItem(
-            new ApplicationMenuItem(
-                SAOMenus.HostDashboard,
-                l["Menu:Dashboard"],
-                "~/HostDashboard",
-                icon: "fa fa-line-chart",
-                order: 2
-            ).RequirePermissions(SAOPermissions.Dashboard.Host)
-        );
+        //context.Menu.AddItem(
+        //    new ApplicationMenuItem(
+        //        SAOMenus.HostDashboard,
+        //        l["Menu:Dashboard"],
+        //        "~/HostDashboard",
+        //        icon: "fa fa-line-chart",
+        //        order: 2
+        //    ).RequirePermissions(SAOPermissions.Dashboard.Host)
+        //);
 
         //TenantDashboard
         context.Menu.AddItem(
@@ -99,14 +97,33 @@ public class SAOMenuContributor : IMenuContributor
 
         context.Menu.AddItem(catalogosGenerales);
 
+
         catalogosGenerales.AddItem(
-            new ApplicationMenuItem(
-                SAOMenus.Importadors,
-                l["Menu:Importadors"],
-                url: "/Importadors",
-                icon: "fa fa-file-alt",
-                requiredPermissionName: SAOPermissions.Importadors.Default)
-        );
+          new ApplicationMenuItem(
+               SAOMenus.Almacens,
+               l["Menu:Almacens"],
+               url: "/Almacens",
+               icon: "fa fa-file-alt",
+               requiredPermissionName: SAOPermissions.Almacens.Default)
+       );
+
+        catalogosGenerales.AddItem(
+          new ApplicationMenuItem(
+               SAOMenus.Asraes,
+               l["Menu:Asraes"],
+               url: "/Asraes",
+               icon: "fa fa-file-alt",
+               requiredPermissionName: SAOPermissions.Asraes.Default)
+       );
+
+        catalogosGenerales.AddItem(
+          new ApplicationMenuItem(
+              SAOMenus.SustanciaElementals,
+              l["Menu:SustanciaElementals"],
+              url: "/SustanciaElementals",
+              icon: "fa fa-file-alt",
+              requiredPermissionName: SAOPermissions.SustanciaElementals.Default)
+      );
 
         catalogosGenerales.AddItem(
              new ApplicationMenuItem(
@@ -119,48 +136,30 @@ public class SAOMenuContributor : IMenuContributor
 
         catalogosGenerales.AddItem(
             new ApplicationMenuItem(
-                SAOMenus.TipoProductos,
-                l["Menu:TipoProductos"],
-                url: "/TipoProductos",
+                SAOMenus.Fabricantes,
+                l["Menu:Fabricantes"],
+                url: "/Fabricantes",
                 icon: "fa fa-file-alt",
-                requiredPermissionName: SAOPermissions.TipoProductos.Default)
+                requiredPermissionName: SAOPermissions.Fabricantes.Default)
         );
 
         catalogosGenerales.AddItem(
             new ApplicationMenuItem(
-                SAOMenus.SustanciaElementals,
-                l["Menu:SustanciaElementals"],
-                url: "/SustanciaElementals",
+                SAOMenus.Importadors,
+                l["Menu:Importadors"],
+                url: "/Importadors",
                 icon: "fa fa-file-alt",
-                requiredPermissionName: SAOPermissions.SustanciaElementals.Default)
+                requiredPermissionName: SAOPermissions.Importadors.Default)
         );
 
         catalogosGenerales.AddItem(
-           new ApplicationMenuItem(
-                SAOMenus.UnidadMedidas,
-                l["Menu:UnidadMedidas"],
-                url: "/UnidadMedidas",
-                icon: "fa fa-file-alt",
-                requiredPermissionName: SAOPermissions.UnidadMedidas.Default)
-        );
-
-        catalogosGenerales.AddItem(
-            new ApplicationMenuItem(
-                SAOMenus.TipoEnvases,
-                l["Menu:TipoEnvases"],
-                url: "/TipoEnvases",
-                icon: "fa fa-file-alt",
-                requiredPermissionName: SAOPermissions.TipoEnvases.Default)
-        );
-
-        catalogosGenerales.AddItem(
-           new ApplicationMenuItem(
-                SAOMenus.Paiss,
-                l["Menu:Paiss"],
-                url: "/Paiss",
-                icon: "fa fa-file-alt",
-                requiredPermissionName: SAOPermissions.Paiss.Default)
-        );
+          new ApplicationMenuItem(
+               SAOMenus.Paiss,
+               l["Menu:Paiss"],
+               url: "/Paiss",
+               icon: "fa fa-file-alt",
+               requiredPermissionName: SAOPermissions.Paiss.Default)
+       );
 
         catalogosGenerales.AddItem(
             new ApplicationMenuItem(
@@ -171,40 +170,43 @@ public class SAOMenuContributor : IMenuContributor
                 requiredPermissionName: SAOPermissions.PuertoEntradaSalidas.Default)
         );
 
-        catalogosGenerales.AddItem(
-            new ApplicationMenuItem(
-                SAOMenus.Fabricantes,
-                l["Menu:Fabricantes"],
-                url: "/Fabricantes",
-                icon: "fa fa-file-alt",
-                requiredPermissionName: SAOPermissions.Fabricantes.Default)
-        );
 
-        catalogosGenerales.AddItem(
-           new ApplicationMenuItem(
-                SAOMenus.Almacens,
-                l["Menu:Almacens"],
-                url: "/Almacens",
-                icon: "fa fa-file-alt",
-                requiredPermissionName: SAOPermissions.Almacens.Default)
-        );
 
         catalogosGenerales.AddItem(
           new ApplicationMenuItem(
-               SAOMenus.Asraes,
-               l["Menu:Asraes"],
-               url: "/Asraes",
+              SAOMenus.TipoEnvases,
+              l["Menu:TipoEnvases"],
+              url: "/TipoEnvases",
+              icon: "fa fa-file-alt",
+              requiredPermissionName: SAOPermissions.TipoEnvases.Default)
+      );
+
+        catalogosGenerales.AddItem(
+           new ApplicationMenuItem(
+               SAOMenus.TipoPermisos,
+               l["Menu:TipoPermisos"],
+               url: "/TipoPermisos",
                icon: "fa fa-file-alt",
-               requiredPermissionName: SAOPermissions.Asraes.Default)
+               requiredPermissionName: SAOPermissions.TipoPermisos.Default)
        );
 
         catalogosGenerales.AddItem(
             new ApplicationMenuItem(
-                SAOMenus.TipoPermisos,
-                l["Menu:TipoPermisos"],
-                url: "/TipoPermisos",
+                SAOMenus.TipoProductos,
+                l["Menu:TipoProductos"],
+                url: "/TipoProductos",
                 icon: "fa fa-file-alt",
-                requiredPermissionName: SAOPermissions.TipoPermisos.Default)
+                requiredPermissionName: SAOPermissions.TipoProductos.Default)
+        );
+
+
+        catalogosGenerales.AddItem(
+           new ApplicationMenuItem(
+                SAOMenus.UnidadMedidas,
+                l["Menu:UnidadMedidas"],
+                url: "/UnidadMedidas",
+                icon: "fa fa-file-alt",
+                requiredPermissionName: SAOPermissions.UnidadMedidas.Default)
         );
 
         #endregion

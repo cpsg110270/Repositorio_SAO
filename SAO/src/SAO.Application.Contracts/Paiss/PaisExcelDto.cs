@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.Paiss
 {
     public class PaisExcelDto

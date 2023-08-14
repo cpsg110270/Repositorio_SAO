@@ -1,23 +1,19 @@
-using System;
-using System.IO;
-using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq.Dynamic.Core;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Caching.Distributed;
+using MiniExcelLibs;
+using SAO.Permissions;
+using SAO.Shared;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using Volo.Abp.Domain.Repositories;
-using SAO.Permissions;
-using SAO.SustanciaElementals;
-using MiniExcelLibs;
-using Volo.Abp.Content;
 using Volo.Abp.Authorization;
 using Volo.Abp.Caching;
-using Microsoft.Extensions.Caching.Distributed;
-using SAO.Shared;
-using Microsoft.Data.SqlClient;
+using Volo.Abp.Content;
 
 namespace SAO.SustanciaElementals
 {
@@ -87,9 +83,9 @@ namespace SAO.SustanciaElementals
 
                 throw new UserFriendlyException("Ha ocurrido un error: " + e.Message);
             }
-           
 
-           
+
+
         }
 
         [AllowAnonymous]

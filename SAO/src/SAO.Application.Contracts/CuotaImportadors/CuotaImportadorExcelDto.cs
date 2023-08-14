@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.CuotaImportadors
 {
     public class CuotaImportadorExcelDto

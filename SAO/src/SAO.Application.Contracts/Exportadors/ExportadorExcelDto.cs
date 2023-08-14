@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.Exportadors
 {
     public class ExportadorExcelDto

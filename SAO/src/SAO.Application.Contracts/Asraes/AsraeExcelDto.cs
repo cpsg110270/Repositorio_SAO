@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.Asraes
 {
     public class AsraeExcelDto

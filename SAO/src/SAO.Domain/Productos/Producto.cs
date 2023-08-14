@@ -1,16 +1,10 @@
-using SAO.Fabricantes;
-using SAO.Asraes;
-using SAO.TipoProductos;
+using JetBrains.Annotations;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Volo.Abp.Domain.Entities;
-using Volo.Abp.Domain.Entities.Auditing;
-using Volo.Abp.MultiTenancy;
-using JetBrains.Annotations;
-
+using System.Linq;
 using Volo.Abp;
+using Volo.Abp.Domain.Entities.Auditing;
 
 namespace SAO.Productos
 {

@@ -1,5 +1,3 @@
-using System;
-
 namespace SAO.TipoPermisos
 {
     public class TipoPermisoExcelDto
