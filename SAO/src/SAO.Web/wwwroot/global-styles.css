@@ -1,13 +1,13 @@
 /* Your Global Styles */
 
 :root .lpx-theme-dim, :root .lpx-theme-dark {
-    --lpx-logo: url('/images/logo/logo-light.png');
-    --lpx-logo-icon: url('/images/logo/logo-light-thumbnail.png');
+    --lpx-logo: url('/images/logo/logo-dark.png');
+    --lpx-logo-icon: url('/images/logo/logo-dark-thumbnail.png');
 }
 
 :root .lpx-theme-light {
-    --lpx-logo: url('/images/logo/logo-dark.png');
-    --lpx-logo-icon: url('/images/logo/logo-dark-thumbnail.png');
+    --lpx-logo: url('/images/logo/logo-light.png');
+    --lpx-logo-icon: url('/images/logo/logo-light-thumbnail.png');
    
 }
 

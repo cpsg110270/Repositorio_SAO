@@ -8,7 +8,7 @@
     <DataSource Name="SAO">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=localhost;Initial Catalog=SAO;</ConnectString>
+        <ConnectString>Data Source=localhost;Initial Catalog=SAO</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>

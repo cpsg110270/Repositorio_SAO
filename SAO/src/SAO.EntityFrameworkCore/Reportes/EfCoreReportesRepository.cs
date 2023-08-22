@@ -99,7 +99,8 @@ namespace SAO.Reportes
 
                         };
 
-            query = query.OrderByDescending(x => x.PesoNeto).Take(10);
+            //query = query.OrderByDescending(x => x.PesoNeto).Take(10);
+            query = query.OrderByDescending(x => x.PesoNeto);
 
             return query.ToList();
         }

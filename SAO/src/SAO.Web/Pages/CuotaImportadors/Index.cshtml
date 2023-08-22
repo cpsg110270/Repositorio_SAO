@@ -22,14 +22,16 @@
 }
 
 @section content_toolbar {
+    <a abp-button="Primary" href="/Importadors/Index" icon="arrow-left" size="Small" text="Volver a Importadores" ></a>
     <abp-button id="ExportToExcelButton" text="@L["ExportToExcel"].Value" icon="download" size="Small" button-type="Primary" />
+    
     @if (await Authorization.IsGrantedAsync(SAOPermissions.CuotaImportadors.Create))
     {
-        <abp-button id="NewCuotaImportadorButton" text="@L["NewCuotaImportador"].Value" icon="plus" size="Small" button-type="Primary"
+        <abp-button id="NewCuotaImportadorButton" text="Nueva Cuota Importador" icon="plus" size="Small" button-type="Primary"
              />
     }
 }
-
+ 
 <abp-card>
     <abp-card-body>
 		<abp-row class="mb-3">
@@ -38,28 +40,30 @@
                     <div class="input-group">
                         <input class="form-control page-search-filter-text" id="FilterText" placeholder="@L["Search"]"/>
                         <abp-button button-type="Primary" type="submit" icon="search"/>
-                        @*<label> @idImport</label>*@
+                       @*<label> @idImport</label>*@
                     </div>
                 </form>
             </abp-column>
-            <abp-column size-md="_12" class="mt-3" hidden>
+
+            <abp-column size-md="_12" class="mt-3"  id=filtros hidden>
                 <a href="javascript:;" id="AdvancedFilterSectionToggler" class="text-decoration-none">@L["SeeAdvancedFilters"]</a>
             </abp-column>
         </abp-row>
-
+       
         <abp-row id="AdvancedFilterSection" style="display: none;" hidden>
-            <abp-column size="_3">
-                <abp-input asp-for="AñoFilterMin" label="@L["MinAño"].Value" />
+            
+                   @*<abp-column size="_3">*@
+                @*<abp-input asp-for="AñoFilterMin" label="@L["MinAño"].Value" style="display: none; hidden  />
             </abp-column>
             <abp-column size="_3">
-                <abp-input asp-for="AñoFilterMax" label="@L["MaxAño"].Value" />
+                <abp-input asp-for="AñoFilterMax" label="@L["MaxAño"].Value" style="display: none; hidden/>
             </abp-column>
             <abp-column size="_3">
-                <abp-input asp-for="CuotaFilterMin" label="@L["MinCuota"].Value" />
+                <abp-input asp-for="CuotaFilterMin" label="@L["MinCuota"].Value" style="display: none; hidden  />
             </abp-column>
             <abp-column size="_3">
-                <abp-input asp-for="CuotaFilterMax" label="@L["MaxCuota"].Value" />
-            </abp-column>
+                <abp-input asp-for="CuotaFilterMax" label="@L["MaxCuota"].Value" style="display: none; hidden  />
+            </abp-column>*@
                 <abp-column size="_3">
                     <label for="Importador_Filter_NombreImportador">@L["Importador"]</label>
                     <div class="input-group mb-3 mt-2">
@@ -83,3 +87,20 @@
         </abp-table>
     </abp-card-body>
 </abp-card>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  
+    $(document).ready(function () {
+        const codigo = @idImport
+          
+        if (codigo == 0){
+       $('#AdvancedFilterSection').prop("hidden", false);
+       $('#filtros').prop("hidden", false);
+       $('#NewCuotaImportadorButton').prop("disabled", true);
+        }
+           
+        
+        });
+
+</script>

@@ -8,7 +8,7 @@
     <DataSource Name="SAO">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=localhost;Initial Catalog=SAO;</ConnectString>
+        <ConnectString>Data Source=localhost;Initial Catalog=SAO</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -404,7 +404,6 @@ OPTION (MAXRECURSION 0)</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -1246,7 +1245,7 @@ OPTION (MAXRECURSION 0)</CommandText>
             <Top>0.27272cm</Top>
             <Left>0.3175cm</Left>
             <Height>3.6cm</Height>
-            <Width>26.22096cm</Width>
+            <Width>26.22097cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

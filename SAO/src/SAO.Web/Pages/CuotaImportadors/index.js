@@ -118,7 +118,7 @@ $(function () {
     });
 
     $("#NewCuotaImportadorButton").click(function (e) {
-        alert($("#ImportadorIdFilter").val())
+        /*alert($("#ImportadorIdFilter").val())*/
         e.preventDefault();
         createModal.open({
             ImportadorId: $("#ImportadorIdFilter").val()
