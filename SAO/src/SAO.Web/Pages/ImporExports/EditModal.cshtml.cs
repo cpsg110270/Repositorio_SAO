@@ -22,6 +22,7 @@ namespace SAO.Web.Pages.ImporExports
 
         [BindProperty]
         public ImporExportUpdateViewModel ImporExport { get; set; }
+        public ImporExportWithNavigationPropertiesDto ImporExportWithNavigationPropertiesDto { get; set; }
 
         public ImportadorDto Importador { get; set; }
         public ExportadorDto Exportador { get; set; }
@@ -61,6 +62,7 @@ namespace SAO.Web.Pages.ImporExports
         public async Task OnGetAsync()
         {
             var imporExportWithNavigationPropertiesDto = await _imporExportsAppService.GetWithNavigationPropertiesAsync(Id);
+            ImporExportWithNavigationPropertiesDto = imporExportWithNavigationPropertiesDto;
             ImporExport = ObjectMapper.Map<ImporExportDto, ImporExportUpdateViewModel>(imporExportWithNavigationPropertiesDto.ImporExport);
 
             Importador = imporExportWithNavigationPropertiesDto.Importador;
