@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\SAO",
-    "\\SAO\\src",
-    "\\SAO\\src\\SAO.Web"
+    "\\SAO\\src"
   ],
-  "SelectedNode": "\\SAO\\SAO.sln",
+  "SelectedNode": "\\SAO\\src\\SAO.Web",
   "PreviewInSolutionExplorer": false
 }
