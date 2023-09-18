@@ -153,31 +153,51 @@
                 </abp-column>
 
                 <abp-column size="_4">
-                    <abp-input asp-for="ImporExport.EsRenovacion" />
+                    <abp-input asp-for="ImporExport.Estado" label="Activo" />
+                </abp-column>
+
+                <abp-column size="_4">
+                    <abp-input asp-for="ImporExport.EsRenovacion" label=" Renovacion/Rectificacion?" />
                 </abp-column>
             </abp-row>
 
+            
+
             <abp-row>
-                <abp-column size="_4">
-                    <div class="form-group">
-                        <label for="ImporExport_PermisoRenov">@L["PermisoRenov"]</label>
-                        <select id="ImporExport_PermisoRenov"
+                           
+
+               @if (Model.ImporExport.PermisoRenov != null)
+                {
+                    <abp-column size="_4">
+                        <div class="form-group">
+                            <label for="ImporExport_PermisoRenov">@L["PermisoRenov"]</label>
+                            <select id="ImporExport_PermisoRenov"
                                 class="custom-select form-control"
                                 name="ImporExport.PermisoRenov"
-                                data-value="@Model.ImporExportWithNavigationPropertiesDto.ImporExport1.Id" disabled>
+                                data-value="@Model.ImporExportWithNavigationPropertiesDto.ImporExport1.Id" >
 
+                                @if (Model.ImporExportWithNavigationPropertiesDto.ImporExport1 != null)
+                                {
+                                    <option value="@Model.ImporExportWithNavigationPropertiesDto.ImporExport1.Id">@Model.ImporExportWithNavigationPropertiesDto.ImporExport1.NoPermiso</option>
+                                }
+                            </select>
+                        </div>
+                    </abp-column>
+                }
+                else
+                {
+                    <abp-column size="_4">
+                        <div class="form-group">
+                            <label for="ImporExport_PermisoRenov">@L["PermisoRenov"]</label>
+                            <select id="ImporExport_PermisoRenov"
+                                class="custom-select form-control"
+                                name="ImporExport.PermisoRenov"
+                                data-value="@Model.ImporExport.PermisoRenov" disabled>
+                            </select>
+                        </div>
 
-                            
-
-                            @if (Model.ImporExportWithNavigationPropertiesDto.ImporExport1 != null)
-                            {
-                                <option value="@Model.ImporExportWithNavigationPropertiesDto.ImporExport1.Id">@Model.ImporExportWithNavigationPropertiesDto.ImporExport1.NoPermiso</option>
-                            }
-
-
-                        </select>
-                    </div>
-                </abp-column>
+                    </abp-column>
+                }
 
                 <abp-column size="_8">
                     <abp-input asp-for="ImporExport.Observaciones" text-area  />
@@ -185,20 +205,17 @@
 
             </abp-row>
 
-            
-            <abp-input asp-for="ImporExport.Estado" disabled hidden />
-
-
-                
+                   
         </abp-modal-body>
 
         <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
     </abp-modal>
 </form>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
 
  <script>
+     
     $('#ImporExport_EsRenovacion').click(function () {
         if ($(this).is(':checked')) {
             $('#ImporExport_PermisoRenov').prop("disabled", false);

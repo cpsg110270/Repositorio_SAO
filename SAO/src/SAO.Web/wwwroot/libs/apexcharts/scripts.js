@@ -2,13 +2,13 @@ var reportesService = window.sAO.reportes.reportes;
 
 $("#BtnActualizar").on("click", function () {
     var anio = $("#FiltroAnio").val();
-  /*  alert("En el boton" + $("#FiltroAnio").val());*/
+  //alert("En el boton" + $("#FiltroAnio").val());*/
     CargarDatos(anio)
 });//Fin button
 
 $(document).ready(function () {
     // Handler for .ready() called.
-    /*alert("al cargar" + $("#FiltroAnio").val());*/
+    //alert("al cargar" + $("#FiltroAnio").val());
     var anio = $("#anioInicial").val();
     CargarDatos(anio)
 });

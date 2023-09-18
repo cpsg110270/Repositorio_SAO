@@ -319,6 +319,18 @@ namespace SAO.ImporExports
                 throw new UserFriendlyException(L["El {0} campo es requerido.", L["TipoPermiso"]]);
             }
 
+            if (input.PermisoRenov != default)
+            {
+                //Si es Renovacion buscamos el Permiso para cambiar estado
+                var permisoRenovacion = (await _imporExportRepository.GetAsync(input.PermisoRenov.Value));
+                if (!permisoRenovacion.Estado)
+                {
+                    throw new UserFriendlyException(L["El permiso a renovar  elegido ya fue renovado."]);
+                }
+                permisoRenovacion.Estado = false;
+                await _imporExportRepository.UpdateAsync(permisoRenovacion);
+            }
+
             var imporExport = await _imporExportManager.UpdateAsync(
             id,
             input.ImportadorId, input.ExportadorId, input.ProductoId, input.UnidadMedidaId, input.TipoEnvaseId, input.PuertoEntradaId, input.PuertoSalidaId, input.PaisProcedenciaId, input.PaisDestinoId, input.PaisOrigenId, input.AlmacenId, input.PermisoRenov, input.PermisoDe, input.NoPermiso, input.FechaEmision, input.FechaSolicitud, input.PesoNeto, input.PesoUnitario, input.CantEnvvase, input.NoFactura, input.Observaciones, input.EsRenovacion, input.Estado

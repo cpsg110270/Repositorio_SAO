@@ -14,7 +14,7 @@
     PageLayout.Content.MenuItemName = SAOMenus.Home;
     var añoActual = DateTime.Now.Year;
     var anioInicial = añoActual - 1;
-}
+   }
 
 
 @section scripts {
@@ -53,11 +53,12 @@
                                 {
                                     @if(anioInicial == año) {
                                         <option value="@año" selected>@año</option>
-                                    }
+                                                                           }
                                     else
                                     {
-                                        <option value="@año">@año</option>
-                                    }
+                                        <option value="@año"
+                                        >@año</option>
+                                   }
                                 }
                             </select>
                         </div>

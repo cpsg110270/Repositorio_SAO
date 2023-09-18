@@ -128,12 +128,19 @@
 
             <abp-row>
                 <abp-column size="_4">
-                    <abp-input asp-for="ImporExport.NoFactura" />
+                    <abp-input asp-for="ImporExport.NoFactura"  />
                 </abp-column>
 
                 <abp-column size="_4">
-                    <abp-input asp-for="ImporExport.EsRenovacion" />
+                    <abp-input asp-for="ImporExport.Estado" label = "Activo" />
                 </abp-column>
+
+                <abp-column size="_4">
+                    <abp-input asp-for="ImporExport.EsRenovacion" label =" Renovacion/Rectificacion?" />
+                </abp-column>
+
+                
+
             </abp-row>
 
             <abp-row>
