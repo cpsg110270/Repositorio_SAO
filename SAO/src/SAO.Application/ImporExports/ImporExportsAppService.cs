@@ -323,10 +323,10 @@ namespace SAO.ImporExports
             {
                 //Si es Renovacion buscamos el Permiso para cambiar estado
                 var permisoRenovacion = (await _imporExportRepository.GetAsync(input.PermisoRenov.Value));
-                if (!permisoRenovacion.Estado)
-                {
-                    throw new UserFriendlyException(L["El permiso a renovar  elegido ya fue renovado."]);
-                }
+                //if (!permisoRenovacion.Estado)
+                //{
+                //    throw new UserFriendlyException(L["El permiso a renovar  elegido ya fue renovado."]);
+                //}
                 permisoRenovacion.Estado = false;
                 await _imporExportRepository.UpdateAsync(permisoRenovacion);
             }
