@@ -160,12 +160,6 @@ public class SAODbContext :
         }
         if (builder.IsHostDatabase())
         {
-            builder.Entity<Importador>(b =>
-{
-    b.ToTable(SAOConsts.DbTablePrefix + "Importadors", SAOConsts.DbSchema);
-    b.ConfigureByConvention();
-    b.Property(x => x.NombreImportador).HasColumnName(nameof(Importador.NombreImportador)).IsRequired().HasMaxLength(ImportadorConsts.NombreImportadorMaxLength);
-});
 
         }
         if (builder.IsHostDatabase())
@@ -389,6 +383,33 @@ public class SAODbContext :
     b.ConfigureByConvention();
     b.Property(x => x.NombreAlmacen).HasColumnName(nameof(Almacen.NombreAlmacen)).IsRequired().HasMaxLength(AlmacenConsts.NombreAlmacenMaxLength);
     b.Property(x => x.SiglaAlmacen).HasColumnName(nameof(Almacen.SiglaAlmacen)).HasMaxLength(AlmacenConsts.SiglaAlmacenMaxLength);
+});
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+            builder.Entity<Importador>(b =>
+{
+    b.ToTable(SAOConsts.DbTablePrefix + "Importadors", SAOConsts.DbSchema);
+    b.ConfigureByConvention();
+    b.Property(x => x.NombreImportador).HasColumnName(nameof(Importador.NombreImportador)).IsRequired().HasMaxLength(ImportadorConsts.NombreImportadorMaxLength);
+    b.Property(x => x.NoRUC).HasColumnName(nameof(Importador.NoRUC)).HasMaxLength(ImportadorConsts.NoRUCMaxLength);
 });
 
         }

@@ -11,5 +11,6 @@ namespace SAO.Importadors
 
         public const int NombreImportadorMinLength = 1;
         public const int NombreImportadorMaxLength = 250;
+        public const int NoRUCMaxLength = 20;
     }
 }

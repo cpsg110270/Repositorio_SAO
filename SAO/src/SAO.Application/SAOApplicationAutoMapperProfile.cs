@@ -1,3 +1,4 @@
+using Volo.Abp.AutoMapper;
 using AutoMapper;
 using SAO.Almacens;
 using SAO.Asraes;

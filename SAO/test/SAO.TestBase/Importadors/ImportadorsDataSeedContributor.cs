@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Uow;
+using SAO.Importadors;
 
 namespace SAO.Importadors
 {
@@ -28,14 +29,16 @@ namespace SAO.Importadors
 
             await _importadorRepository.InsertAsync(new Importador
             (
-                id: Guid.Parse("7a33d145-8971-4bbf-aa7f-72ffbf6d0e37"),
-                nombreImportador: "feb89470a4784cdfbfeef824b32e07d0a2df7a87497d4f5dbbe4f84d5713ac2ab595505bacde4f9ea6f41aa69c777c70297a6fe148ff48b7a786d4fdfb5aa033b645320ff6e74090a76df7720acf7191327cfbd70f00428f97341236d03769604192b2d40c034d16b090ea38af27fa486f7ee4d543d64d3ab55719aaf2"
+                id: Guid.Parse("7f4bc753-28f7-474a-a2d3-90ce35f5dbe0"),
+                nombreImportador: "6dd81afdab9b45df857c12bbf9b016daf6c8c107c1044325a362a431b21db14e394680b87a974594971a8607072b7a853dcceeb95f3c4d19a6e7bd51a73fe65322135b4557d14f598f1f65b3228be0178bb15ba9aba64d76a9ef9dca0f54f2edbb0c6c82ef5242049033f752052061dbcfa26767a5cf46c69234f8a2e8",
+                noRUC: "37522ccc58e74f8e9361"
             ));
 
             await _importadorRepository.InsertAsync(new Importador
             (
-                id: Guid.Parse("356eac29-4fd5-494f-b442-597bfe47ceb2"),
-                nombreImportador: "baa98a605fa345e49bf6b63ea633a8e45fb2781c08944c00aa3fe709f04faaa59f00ad5736164c22a3e5428f8ce2d4ce5e55f6cf2aba469ba0cc9122931e647ddd3fa0fa3a2f411fabb671c9614e135f35aededf705546d58afbddaf9d1363a7a428d66cdaa24000ae7d3e06a81ac2f94aa1f7d2237746c3a19062fd92"
+                id: Guid.Parse("dc15f0ac-c05a-4df1-a379-2c730f920eb2"),
+                nombreImportador: "265aaff039a14983a08dbde1747da1b5d3098c9197624b2783084f4d4f18e585f83f1afb0565488b984aae0f6ea7365452993e18a8c14592a6d6834066202e70f9cbd4372702445393d3e201838d78c90f24c42d4eac49b7b9750b82d08e2e1b17fafbed46aa45bdac494ba20bf14f226be2ef40894f46c1945f46c7b0",
+                noRUC: "acde0330bb5644949178"
             ));
 
             await _unitOfWorkManager.Current.SaveChangesAsync();

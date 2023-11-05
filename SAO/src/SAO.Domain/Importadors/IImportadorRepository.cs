@@ -11,6 +11,7 @@ namespace SAO.Importadors
         Task<List<Importador>> GetListAsync(
             string filterText = null,
             string nombreImportador = null,
+            string noRUC = null,
             string sorting = null,
             int maxResultCount = int.MaxValue,
             int skipCount = 0,
@@ -20,6 +21,7 @@ namespace SAO.Importadors
         Task<long> GetCountAsync(
             string filterText = null,
             string nombreImportador = null,
+            string noRUC = null,
             CancellationToken cancellationToken = default);
     }
 }

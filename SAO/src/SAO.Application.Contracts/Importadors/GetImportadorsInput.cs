@@ -1,4 +1,5 @@
 using Volo.Abp.Application.Dtos;
+using System;
 
 namespace SAO.Importadors
 {
@@ -7,6 +8,7 @@ namespace SAO.Importadors
         public string? FilterText { get; set; }
 
         public string? NombreImportador { get; set; }
+        public string? NoRUC { get; set; }
 
         public GetImportadorsInput()
         {

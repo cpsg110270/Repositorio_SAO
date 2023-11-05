@@ -1,9 +1,7 @@
-using SAO.Shared;
 using System;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using Volo.Abp.Content;
 
 namespace SAO.Importadors
 {
@@ -18,9 +16,5 @@ namespace SAO.Importadors
         Task<ImportadorDto> CreateAsync(ImportadorCreateDto input);
 
         Task<ImportadorDto> UpdateAsync(Guid id, ImportadorUpdateDto input);
-
-        Task<IRemoteStreamContent> GetListAsExcelFileAsync(ImportadorExcelDownloadDto input);
-
-        Task<DownloadTokenResultDto> GetDownloadTokenAsync();
     }
 }
