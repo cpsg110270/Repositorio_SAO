@@ -13,26 +13,29 @@ namespace SAO.Importadors
 {
     public class Importador : Entity<Guid>
     {
-        [NotNull]
-        public virtual string NombreImportador { get; set; }
+        public virtual int NoImportador { get; set; }
 
         [CanBeNull]
         public virtual string? NoRUC { get; set; }
+
+        [NotNull]
+        public virtual string NombreImportador { get; set; }
 
         public Importador()
         {
 
         }
 
-        public Importador(Guid id, string nombreImportador, string noRUC)
+        public Importador(Guid id, int noImportador, string noRUC, string nombreImportador)
         {
 
             Id = id;
+            Check.Length(noRUC, nameof(noRUC), ImportadorConsts.NoRUCMaxLength, 0);
             Check.NotNull(nombreImportador, nameof(nombreImportador));
             Check.Length(nombreImportador, nameof(nombreImportador), ImportadorConsts.NombreImportadorMaxLength, ImportadorConsts.NombreImportadorMinLength);
-            Check.Length(noRUC, nameof(noRUC), ImportadorConsts.NoRUCMaxLength, 0);
-            NombreImportador = nombreImportador;
+            NoImportador = noImportador;
             NoRUC = noRUC;
+            NombreImportador = nombreImportador;
         }
 
     }

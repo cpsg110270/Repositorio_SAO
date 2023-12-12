@@ -8,6 +8,7 @@ namespace SAO.CuotaImportadors
         public int Año { get; set; }
         public decimal Cuota { get; set; }
         public Guid ImportadorId { get; set; }
+        public int AsraeId { get; set; }
 
     }
 }

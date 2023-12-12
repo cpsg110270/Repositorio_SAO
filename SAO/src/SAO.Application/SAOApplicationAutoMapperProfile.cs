@@ -101,5 +101,7 @@ public class SAOApplicationAutoMapperProfile : Profile
 
         CreateMap<RepCuotasImportadores, RepCuotasImportadoresDto>();
         CreateMap<RepPesosNetosASHRAE, RepPesosNetosASHRAEDto>();
+
+        CreateMap<Asrae, LookupDto<Guid>>().ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.Codigo_ASHRAE));
     }
 }

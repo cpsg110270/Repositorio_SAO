@@ -1,7 +1,9 @@
-using SAO.Asraes;
 using SAO.Fabricantes;
-using SAO.SustanciaElementals;
+using SAO.Asraes;
 using SAO.TipoProductos;
+using SAO.SustanciaElementals;
+
+using System;
 using System.Collections.Generic;
 
 namespace SAO.Productos
@@ -13,9 +15,9 @@ namespace SAO.Productos
         public Fabricante Fabricante { get; set; }
         public Asrae Asrae { get; set; }
         public TipoProducto TipoProducto { get; set; }
-
+        
 
         public List<SustanciaElemental> SustanciaElementals { get; set; }
-
+        
     }
 }

@@ -3,7 +3,6 @@ using System;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using Volo.Abp.Content;
 
 namespace SAO.ImporExports
 {
@@ -40,9 +39,5 @@ namespace SAO.ImporExports
         Task<ImporExportDto> CreateAsync(ImporExportCreateDto input);
 
         Task<ImporExportDto> UpdateAsync(Guid id, ImporExportUpdateDto input);
-
-        Task<IRemoteStreamContent> GetListAsExcelFileAsync(ImporExportExcelDownloadDto input);
-
-        Task<DownloadTokenResultDto> GetDownloadTokenAsync();
     }
 }

@@ -1,11 +1,12 @@
+using SAO.TipoProductos;
 using SAO.Asraes;
 using SAO.Fabricantes;
-using SAO.TipoProductos;
 using System;
 using System.Threading.Tasks;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Uow;
+using SAO.Productos;
 
 namespace SAO.Productos
 {
@@ -40,9 +41,10 @@ namespace SAO.Productos
 
             await _productoRepository.InsertAsync(new Producto
             (
-                id: Guid.Parse("456e2e3a-e84d-417d-9251-4cd05ad039d4"),
-                nombreComercia: "58bba7c256ef410bb6edcb3133f706a730d58dcb2bef4c8f80d3aacda98e1effab31d809051e40a98401d7a57d",
-                uso: "545a1743eb0a49a88d09522f753837c0c74c7c8bc56f4f7b8192449cd4d1ef141d70ee885be44bcaa4d562d8212325cf6aaad0071357484baea5530a00d4f61c22f65f3126624f8e96ee0c07276499e767b438091b7f457eba34af28fce0a831761129d5",
+                id: Guid.Parse("5338bf0f-ccbd-49d4-b14c-ccf54337da63"),
+                noProducto: 204154099,
+                nombreComercia: "ac34139e76984a0296adbdb08a191f64c4d636e162564ec6a4d69293d72b5d4b0e807c81d4fd4d2f84645b246b",
+                uso: "cec430b57fd949288199bffd43954a63f31c2a4e6d504c0aa488e098ad0d58c44ba7d8965435426394b9ff2de05bb6d4bd0519c4827e405b87b1c167e2b2aad3b310beeb38034863940dbea79edaa8716ab43221deaf44ef9d905973de3705492313837c",
                 fabricanteId: Guid.Parse("d4944455-6f12-40c8-b177-99ce52c6ac28"),
                 asraeId: 1,
                 tipoProductoId: null
@@ -50,9 +52,10 @@ namespace SAO.Productos
 
             await _productoRepository.InsertAsync(new Producto
             (
-                id: Guid.Parse("ecc645bf-6504-4920-80a3-3edc9b48e3a6"),
-                nombreComercia: "43aa8902827f4e47af95c3ba0df93b10c416c0ea343441faa3e2b0bef7951760dddae64b1f1e43a18807e53183",
-                uso: "a8d4ff9d9043467588bcadc8403696d6ed01f678006d498294a824ae24d78b9b312939618ef94f1fa7c7412ad164f7a7f0ac6d5a2df34e9b843a0eeb723658ec61f9f402824f42c2991d02a819c50389085a05e810634e1482808956760a870939463234",
+                id: Guid.Parse("466775b9-3409-4237-9871-5725a0947eb5"),
+                noProducto: 579696757,
+                nombreComercia: "646ef38b07ab442dbbff0e9ed39d8bb348f01411f96a410fa09081c89a376a63990107732159439d800d03d6dd",
+                uso: "7373e5c7400b46bfb5370d8feea44550cdba9d691ee14d47911ca8414f4b35ff43db76835f7b4890a8264965dc3d315833e54bfd1f7b47a789dd08bee90f1192f6b3da87b394400c9d1d3048cffe4847a83e15e859b44a5fbd73602f8473e8750cf50f56",
                 fabricanteId: Guid.Parse("d4944455-6f12-40c8-b177-99ce52c6ac28"),
                 asraeId: 2,
                 tipoProductoId: null

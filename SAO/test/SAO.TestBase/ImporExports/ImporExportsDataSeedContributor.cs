@@ -1,17 +1,19 @@
+using SAO.TipoPermisos;
+using SAO.ImporExports;
 using SAO.Almacens;
-using SAO.Exportadors;
-using SAO.Importadors;
 using SAO.Paiss;
-using SAO.Productos;
 using SAO.PuertoEntradaSalidas;
 using SAO.TipoEnvases;
-using SAO.TipoPermisos;
 using SAO.UnidadMedidas;
+using SAO.Productos;
+using SAO.Exportadors;
+using SAO.Importadors;
 using System;
 using System.Threading.Tasks;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Uow;
+using SAO.ImporExports;
 
 namespace SAO.ImporExports
 {
@@ -67,15 +69,15 @@ namespace SAO.ImporExports
 
             await _imporExportRepository.InsertAsync(new ImporExport
             (
-                id: Guid.Parse("a1bdbd90-a5ae-42f6-842f-395a52b70947"),
-                noPermiso: "6919c449",
-                fechaEmision: new DateTime(2007, 5, 10),
-                fechaSolicitud: new DateTime(2018, 9, 8),
-                pesoNeto: 911620457,
-                pesoUnitario: 2044930474,
-                cantEnvvase: 147070886,
-                noFactura: "379a278d08de",
-                observaciones: "c702a1fdd4bb44aeb6554727d879a01f75d2741e8cd24136abc4c0e00e775e566c0e2b9c2f4e4232ae9c34853108aa44eaceec067885402a8b4fe5084bbf59fa6e35f32f8b35469faf901705698f97467f9000fe68644cdaab38197321d9020305f3bd1061684605b03f56ad1054632d741ff67d9df0487fab7811d85d1f4ec53dd822593bef423c9ded06f281ab6f1ce8cb89acff5a",
+                id: Guid.Parse("b9680f28-6f29-4b16-aee6-1b5c9e3db1cb"),
+                noPermiso: "fafd4ec1",
+                fechaEmision: new DateTime(2018, 9, 4),
+                fechaSolicitud: new DateTime(2008, 6, 2),
+                pesoNeto: 1052513259,
+                pesoUnitario: 1773907177,
+                cantEnvvase: 1186787215,
+                noFactura: "e79d2f518ff847f198b4d4c4cf863d",
+                observaciones: "5b76b50ec1514eaa9264890e49aa7b3981055a5789694d7881844278f1a8a742d6c98518f6aa4123808cab7ad6a802614e2000efa8c84c38b5262faa2f893676e366d2bdcb01454497dd28ef5fd2295674dd4297cad94e75ba1d28accd678e3e4cc0dd71a704425c8c47402b8f0866bfbed647653b9f4360a2dd40c187c4b20b219f57e2f0bb474a8be6a4c122e8f4b9a12982064864",
                 esRenovacion: true,
                 estado: true,
                 importadorId: null,
@@ -95,15 +97,15 @@ namespace SAO.ImporExports
 
             await _imporExportRepository.InsertAsync(new ImporExport
             (
-                id: Guid.Parse("6faa3da5-873e-4002-a197-233d029685e8"),
-                noPermiso: "d948eafb",
-                fechaEmision: new DateTime(2005, 11, 3),
-                fechaSolicitud: new DateTime(2001, 8, 3),
-                pesoNeto: 1423904740,
-                pesoUnitario: 630052434,
-                cantEnvvase: 556033453,
-                noFactura: "cebd4eedf3f0",
-                observaciones: "7ac236c14bac4c3baf18cf5ec541105cc42428c0927b42eb9200dc57f596a99c1cbfa30516f3409f871367546ffd41213bf563d4820f4fba976e8f88e4cdea91ec5c93a3cdc1447b84d80e58120f41490d74aeacca76494986a03b13111ecca5c5f6991015334ba4b5fbd3fbadca05ef8584ecf0b85c4c61bbe611f91afe852f8be26d3bd5184b63a554f48b0c9213513169d3bf81be",
+                id: Guid.Parse("6b5d90e7-4b57-48b2-b56a-3ccdaf0e4e13"),
+                noPermiso: "cc29d75c",
+                fechaEmision: new DateTime(2009, 6, 8),
+                fechaSolicitud: new DateTime(2019, 1, 22),
+                pesoNeto: 934289620,
+                pesoUnitario: 164346702,
+                cantEnvvase: 1336622671,
+                noFactura: "e66c525e10934a36b27bdc16467d37",
+                observaciones: "74e3fc89d0284cbcb9b560f3b0fd7c6d5b69fa378f224721a44ceba651dfe81703d2ba663fd140e59f1b277884787a3b751cb073d54248988d5e4e7bd24d3cd9fb02baeefcc94c59a73f03cc255be421a4216226398641218a0755947929513441e7b5a710e24f7aa9f1f8648d4234f0978e65b9e7534a1ab3f5af154e3c6e37a9e2021392ac447a855f408a545b30dcd63682bb01f5",
                 esRenovacion: true,
                 estado: true,
                 importadorId: null,

@@ -1,6 +1,6 @@
-using Shouldly;
 using System;
 using System.Linq;
+using Shouldly;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories;
 using Xunit;
@@ -27,19 +27,19 @@ namespace SAO.CuotaImportadors
             // Assert
             result.TotalCount.ShouldBe(2);
             result.Items.Count.ShouldBe(2);
-            result.Items.Any(x => x.CuotaImportador.Id == Guid.Parse("c4967a32-1e44-4e3d-9798-af87dd9e5c23")).ShouldBe(true);
-            result.Items.Any(x => x.CuotaImportador.Id == Guid.Parse("b957dc8f-fc60-4d39-8296-07639568a9ae")).ShouldBe(true);
+            result.Items.Any(x => x.CuotaImportador.Id == Guid.Parse("5c6dbff7-f7eb-4b3d-a718-a76b73def62c")).ShouldBe(true);
+            result.Items.Any(x => x.CuotaImportador.Id == Guid.Parse("298e7061-ab4f-4c2c-a631-122a8e5157fb")).ShouldBe(true);
         }
 
         [Fact]
         public async Task GetAsync()
         {
             // Act
-            var result = await _cuotaImportadorsAppService.GetAsync(Guid.Parse("c4967a32-1e44-4e3d-9798-af87dd9e5c23"));
+            var result = await _cuotaImportadorsAppService.GetAsync(Guid.Parse("5c6dbff7-f7eb-4b3d-a718-a76b73def62c"));
 
             // Assert
             result.ShouldNotBeNull();
-            result.Id.ShouldBe(Guid.Parse("c4967a32-1e44-4e3d-9798-af87dd9e5c23"));
+            result.Id.ShouldBe(Guid.Parse("5c6dbff7-f7eb-4b3d-a718-a76b73def62c"));
         }
 
         [Fact]
@@ -48,9 +48,10 @@ namespace SAO.CuotaImportadors
             // Arrange
             var input = new CuotaImportadorCreateDto
             {
-                Año = 1219464437,
-                Cuota = 328707030,
-                ImportadorId = Guid.Parse("7a33d145-8971-4bbf-aa7f-72ffbf6d0e37")
+                Año = 81942612,
+                Cuota = 385432084,
+                ImportadorId = Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf"),
+                AsraeId = 1
             };
 
             // Act
@@ -60,8 +61,8 @@ namespace SAO.CuotaImportadors
             var result = await _cuotaImportadorRepository.FindAsync(c => c.Id == serviceResult.Id);
 
             result.ShouldNotBe(null);
-            result.Año.ShouldBe(1219464437);
-            result.Cuota.ShouldBe(328707030);
+            result.Año.ShouldBe(81942612);
+            result.Cuota.ShouldBe(385432084);
         }
 
         [Fact]
@@ -70,30 +71,31 @@ namespace SAO.CuotaImportadors
             // Arrange
             var input = new CuotaImportadorUpdateDto()
             {
-                Año = 2089345013,
-                Cuota = 1964732662,
-                ImportadorId = Guid.Parse("7a33d145-8971-4bbf-aa7f-72ffbf6d0e37")
+                Año = 767718782,
+                Cuota = 1678347853,
+                ImportadorId = Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf"),
+                AsraeId = 1
             };
 
             // Act
-            var serviceResult = await _cuotaImportadorsAppService.UpdateAsync(Guid.Parse("c4967a32-1e44-4e3d-9798-af87dd9e5c23"), input);
+            var serviceResult = await _cuotaImportadorsAppService.UpdateAsync(Guid.Parse("5c6dbff7-f7eb-4b3d-a718-a76b73def62c"), input);
 
             // Assert
             var result = await _cuotaImportadorRepository.FindAsync(c => c.Id == serviceResult.Id);
 
             result.ShouldNotBe(null);
-            result.Año.ShouldBe(2089345013);
-            result.Cuota.ShouldBe(1964732662);
+            result.Año.ShouldBe(767718782);
+            result.Cuota.ShouldBe(1678347853);
         }
 
         [Fact]
         public async Task DeleteAsync()
         {
             // Act
-            await _cuotaImportadorsAppService.DeleteAsync(Guid.Parse("c4967a32-1e44-4e3d-9798-af87dd9e5c23"));
+            await _cuotaImportadorsAppService.DeleteAsync(Guid.Parse("5c6dbff7-f7eb-4b3d-a718-a76b73def62c"));
 
             // Assert
-            var result = await _cuotaImportadorRepository.FindAsync(c => c.Id == Guid.Parse("c4967a32-1e44-4e3d-9798-af87dd9e5c23"));
+            var result = await _cuotaImportadorRepository.FindAsync(c => c.Id == Guid.Parse("5c6dbff7-f7eb-4b3d-a718-a76b73def62c"));
 
             result.ShouldBeNull();
         }

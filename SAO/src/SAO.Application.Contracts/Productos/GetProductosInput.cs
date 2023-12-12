@@ -1,5 +1,5 @@
-using System;
 using Volo.Abp.Application.Dtos;
+using System;
 
 namespace SAO.Productos
 {
@@ -7,6 +7,8 @@ namespace SAO.Productos
     {
         public string? FilterText { get; set; }
 
+        public int? NoProductoMin { get; set; }
+        public int? NoProductoMax { get; set; }
         public string? NombreComercia { get; set; }
         public string? Uso { get; set; }
         public Guid? FabricanteId { get; set; }

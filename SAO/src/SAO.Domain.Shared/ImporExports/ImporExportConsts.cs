@@ -10,7 +10,7 @@ namespace SAO.ImporExports
         }
 
         public const int NoPermisoMaxLength = 8;
-        public const int NoFacturaMaxLength = 12;
+        public const int NoFacturaMaxLength = 30;
         public const int ObservacionesMaxLength = 300;
     }
 }

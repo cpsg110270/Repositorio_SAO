@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SAO.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace SAO.Migrations
 {
     [DbContext(typeof(SAODbContext))]
-    partial class SAODbContextModelSnapshot : ModelSnapshot
+    [Migration("20231212220002_Updated_ImporExport_23121215594635")]
+    partial class UpdatedImporExport23121215594635
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +82,6 @@ namespace SAO.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("AsraeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Año")
                         .HasColumnType("int")
                         .HasColumnName("Año");
@@ -111,8 +111,6 @@ namespace SAO.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AsraeId");
-
                     b.HasIndex("ImportadorId");
 
                     b.ToTable("AppCuotaImportadors", (string)null);
@@ -122,10 +120,6 @@ namespace SAO.Migrations
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("NoImportador")
-                        .HasColumnType("int")
-                        .HasColumnName("NoImportador");
 
                     b.Property<string>("NombreExportador")
                         .IsRequired()
@@ -309,10 +303,6 @@ namespace SAO.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("NoImportador")
-                        .HasColumnType("int")
-                        .HasColumnName("NoImportador");
-
                     b.Property<string>("NoRUC")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
@@ -388,10 +378,6 @@ namespace SAO.Migrations
                     b.Property<Guid?>("LastModifierId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("LastModifierId");
-
-                    b.Property<int>("NoProducto")
-                        .HasColumnType("int")
-                        .HasColumnName("NoProducto");
 
                     b.Property<string>("NombreComercia")
                         .IsRequired()
@@ -2689,12 +2675,6 @@ namespace SAO.Migrations
 
             modelBuilder.Entity("SAO.CuotaImportadors.CuotaImportador", b =>
                 {
-                    b.HasOne("SAO.Asraes.Asrae", null)
-                        .WithMany()
-                        .HasForeignKey("AsraeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("SAO.Importadors.Importador", null)
                         .WithMany()
                         .HasForeignKey("ImportadorId")

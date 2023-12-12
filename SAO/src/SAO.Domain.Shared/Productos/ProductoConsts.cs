@@ -2,7 +2,7 @@ namespace SAO.Productos
 {
     public static class ProductoConsts
     {
-        private const string DefaultSorting = "{0}NombreComercia asc";
+        private const string DefaultSorting = "{0}NoProducto asc";
 
         public static string GetDefaultSorting(bool withEntityName)
         {

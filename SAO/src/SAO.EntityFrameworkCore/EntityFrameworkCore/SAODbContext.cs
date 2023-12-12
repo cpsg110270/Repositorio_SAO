@@ -150,12 +150,6 @@ public class SAODbContext :
         }
         if (builder.IsHostDatabase())
         {
-            builder.Entity<Exportador>(b =>
-{
-    b.ToTable(SAOConsts.DbTablePrefix + "Exportadors", SAOConsts.DbSchema);
-    b.ConfigureByConvention();
-    b.Property(x => x.NombreExportador).HasColumnName(nameof(Exportador.NombreExportador)).IsRequired().HasMaxLength(ExportadorConsts.NombreExportadorMaxLength);
-});
 
         }
         if (builder.IsHostDatabase())
@@ -274,34 +268,54 @@ public class SAODbContext :
         }
         if (builder.IsHostDatabase())
         {
-            builder.Entity<Producto>(b =>
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+            builder.Entity<Almacen>(b =>
 {
-    b.ToTable(SAOConsts.DbTablePrefix + "Productos", SAOConsts.DbSchema);
+    b.ToTable(SAOConsts.DbTablePrefix + "Almacens", SAOConsts.DbSchema);
     b.ConfigureByConvention();
-    b.Property(x => x.NombreComercia).HasColumnName(nameof(Producto.NombreComercia)).IsRequired().HasMaxLength(ProductoConsts.NombreComerciaMaxLength);
-    b.Property(x => x.Uso).HasColumnName(nameof(Producto.Uso)).HasMaxLength(ProductoConsts.UsoMaxLength);
-    b.HasOne<Fabricante>().WithMany().IsRequired().HasForeignKey(x => x.FabricanteId).OnDelete(DeleteBehavior.NoAction);
-    b.HasOne<Asrae>().WithMany().IsRequired().HasForeignKey(x => x.AsraeId).OnDelete(DeleteBehavior.NoAction);
-    b.HasOne<TipoProducto>().WithMany().HasForeignKey(x => x.TipoProductoId).OnDelete(DeleteBehavior.NoAction);
-    b.HasMany(x => x.SustanciaElementals).WithOne().HasForeignKey(x => x.ProductoId).IsRequired().OnDelete(DeleteBehavior.NoAction);
+    b.Property(x => x.NombreAlmacen).HasColumnName(nameof(Almacen.NombreAlmacen)).IsRequired().HasMaxLength(AlmacenConsts.NombreAlmacenMaxLength);
+    b.Property(x => x.SiglaAlmacen).HasColumnName(nameof(Almacen.SiglaAlmacen)).HasMaxLength(AlmacenConsts.SiglaAlmacenMaxLength);
 });
 
-            builder.Entity<ProductoSustanciaElemental>(b =>
-{
-    b.ToTable(SAOConsts.DbTablePrefix + "ProductoSustanciaElemental" + SAOConsts.DbSchema);
-    b.ConfigureByConvention();
-
-    b.HasKey(
-        x => new { x.ProductoId, x.SustanciaElementalId }
-    );
-
-    b.HasOne<Producto>().WithMany(x => x.SustanciaElementals).HasForeignKey(x => x.ProductoId).IsRequired().OnDelete(DeleteBehavior.NoAction);
-    b.HasOne<SustanciaElemental>().WithMany().HasForeignKey(x => x.SustanciaElementalId).IsRequired().OnDelete(DeleteBehavior.NoAction);
-
-    b.HasIndex(
-            x => new { x.ProductoId, x.SustanciaElementalId }
-    );
-});
         }
         if (builder.IsHostDatabase())
         {
@@ -357,6 +371,73 @@ public class SAODbContext :
         }
         if (builder.IsHostDatabase())
         {
+            builder.Entity<Exportador>(b =>
+{
+    b.ToTable(SAOConsts.DbTablePrefix + "Exportadors", SAOConsts.DbSchema);
+    b.ConfigureByConvention();
+    b.Property(x => x.NoImportador).HasColumnName(nameof(Exportador.NoImportador));
+    b.Property(x => x.NombreExportador).HasColumnName(nameof(Exportador.NombreExportador)).IsRequired().HasMaxLength(ExportadorConsts.NombreExportadorMaxLength);
+});
+
+        }
+        if (builder.IsHostDatabase())
+        {
+            builder.Entity<Importador>(b =>
+{
+    b.ToTable(SAOConsts.DbTablePrefix + "Importadors", SAOConsts.DbSchema);
+    b.ConfigureByConvention();
+    b.Property(x => x.NoImportador).HasColumnName(nameof(Importador.NoImportador));
+    b.Property(x => x.NoRUC).HasColumnName(nameof(Importador.NoRUC)).HasMaxLength(ImportadorConsts.NoRUCMaxLength);
+    b.Property(x => x.NombreImportador).HasColumnName(nameof(Importador.NombreImportador)).IsRequired().HasMaxLength(ImportadorConsts.NombreImportadorMaxLength);
+});
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+            builder.Entity<Producto>(b =>
+{
+    b.ToTable(SAOConsts.DbTablePrefix + "Productos", SAOConsts.DbSchema);
+    b.ConfigureByConvention();
+    b.Property(x => x.NoProducto).HasColumnName(nameof(Producto.NoProducto));
+    b.Property(x => x.NombreComercia).HasColumnName(nameof(Producto.NombreComercia)).IsRequired().HasMaxLength(ProductoConsts.NombreComerciaMaxLength);
+    b.Property(x => x.Uso).HasColumnName(nameof(Producto.Uso)).HasMaxLength(ProductoConsts.UsoMaxLength);
+    b.HasOne<Fabricante>().WithMany().IsRequired().HasForeignKey(x => x.FabricanteId).OnDelete(DeleteBehavior.NoAction);
+    b.HasOne<Asrae>().WithMany().IsRequired().HasForeignKey(x => x.AsraeId).OnDelete(DeleteBehavior.NoAction);
+    b.HasOne<TipoProducto>().WithMany().HasForeignKey(x => x.TipoProductoId).OnDelete(DeleteBehavior.NoAction);
+    b.HasMany(x => x.SustanciaElementals).WithOne().HasForeignKey(x => x.ProductoId).IsRequired().OnDelete(DeleteBehavior.NoAction);
+});
+
+            builder.Entity<ProductoSustanciaElemental>(b =>
+{
+    b.ToTable(SAOConsts.DbTablePrefix + "ProductoSustanciaElemental" + SAOConsts.DbSchema);
+    b.ConfigureByConvention();
+
+    b.HasKey(
+        x => new { x.ProductoId, x.SustanciaElementalId }
+    );
+
+    b.HasOne<Producto>().WithMany(x => x.SustanciaElementals).HasForeignKey(x => x.ProductoId).IsRequired().OnDelete(DeleteBehavior.NoAction);
+    b.HasOne<SustanciaElemental>().WithMany().HasForeignKey(x => x.SustanciaElementalId).IsRequired().OnDelete(DeleteBehavior.NoAction);
+
+    b.HasIndex(
+            x => new { x.ProductoId, x.SustanciaElementalId }
+    );
+});
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
 
         }
         if (builder.IsHostDatabase())
@@ -372,44 +453,7 @@ public class SAODbContext :
     b.Property(x => x.Año).HasColumnName(nameof(CuotaImportador.Año));
     b.Property(x => x.Cuota).HasColumnName(nameof(CuotaImportador.Cuota));
     b.HasOne<Importador>().WithMany().IsRequired().HasForeignKey(x => x.ImportadorId).OnDelete(DeleteBehavior.NoAction);
-});
-
-        }
-        if (builder.IsHostDatabase())
-        {
-            builder.Entity<Almacen>(b =>
-{
-    b.ToTable(SAOConsts.DbTablePrefix + "Almacens", SAOConsts.DbSchema);
-    b.ConfigureByConvention();
-    b.Property(x => x.NombreAlmacen).HasColumnName(nameof(Almacen.NombreAlmacen)).IsRequired().HasMaxLength(AlmacenConsts.NombreAlmacenMaxLength);
-    b.Property(x => x.SiglaAlmacen).HasColumnName(nameof(Almacen.SiglaAlmacen)).HasMaxLength(AlmacenConsts.SiglaAlmacenMaxLength);
-});
-
-        }
-        if (builder.IsHostDatabase())
-        {
-
-        }
-        if (builder.IsHostDatabase())
-        {
-
-        }
-        if (builder.IsHostDatabase())
-        {
-
-        }
-        if (builder.IsHostDatabase())
-        {
-
-        }
-        if (builder.IsHostDatabase())
-        {
-            builder.Entity<Importador>(b =>
-{
-    b.ToTable(SAOConsts.DbTablePrefix + "Importadors", SAOConsts.DbSchema);
-    b.ConfigureByConvention();
-    b.Property(x => x.NombreImportador).HasColumnName(nameof(Importador.NombreImportador)).IsRequired().HasMaxLength(ImportadorConsts.NombreImportadorMaxLength);
-    b.Property(x => x.NoRUC).HasColumnName(nameof(Importador.NoRUC)).HasMaxLength(ImportadorConsts.NoRUCMaxLength);
+    b.HasOne<Asrae>().WithMany().IsRequired().HasForeignKey(x => x.AsraeId).OnDelete(DeleteBehavior.NoAction);
 });
 
         }

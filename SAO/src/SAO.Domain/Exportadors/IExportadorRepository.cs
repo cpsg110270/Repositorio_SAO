@@ -10,6 +10,8 @@ namespace SAO.Exportadors
     {
         Task<List<Exportador>> GetListAsync(
             string filterText = null,
+            int? noImportadorMin = null,
+            int? noImportadorMax = null,
             string nombreExportador = null,
             string sorting = null,
             int maxResultCount = int.MaxValue,
@@ -19,6 +21,8 @@ namespace SAO.Exportadors
 
         Task<long> GetCountAsync(
             string filterText = null,
+            int? noImportadorMin = null,
+            int? noImportadorMax = null,
             string nombreExportador = null,
             CancellationToken cancellationToken = default);
     }

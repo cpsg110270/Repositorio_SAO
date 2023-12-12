@@ -1,17 +1,18 @@
-using Microsoft.EntityFrameworkCore;
+using SAO.TipoProductos;
 using SAO.Asraes;
-using SAO.EntityFrameworkCore;
 using SAO.Fabricantes;
 using SAO.SustanciaElementals;
-using SAO.TipoProductos;
+using SAO.SustanciaElementals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
+using SAO.EntityFrameworkCore;
 
 namespace SAO.Productos
 {
@@ -42,6 +43,8 @@ namespace SAO.Productos
 
         public async Task<List<ProductoWithNavigationProperties>> GetListWithNavigationPropertiesAsync(
             string filterText = null,
+            int? noProductoMin = null,
+            int? noProductoMax = null,
             string nombreComercia = null,
             string uso = null,
             Guid? fabricanteId = null,
@@ -54,7 +57,7 @@ namespace SAO.Productos
             CancellationToken cancellationToken = default)
         {
             var query = await GetQueryForNavigationPropertiesAsync();
-            query = ApplyFilter(query, filterText, nombreComercia, uso, fabricanteId, asraeId, tipoProductoId, sustanciaElementalId);
+            query = ApplyFilter(query, filterText, noProductoMin, noProductoMax, nombreComercia, uso, fabricanteId, asraeId, tipoProductoId, sustanciaElementalId);
             query = query.OrderBy(string.IsNullOrWhiteSpace(sorting) ? ProductoConsts.GetDefaultSorting(true) : sorting);
             return await query.PageBy(skipCount, maxResultCount).ToListAsync(cancellationToken);
         }
@@ -81,6 +84,8 @@ namespace SAO.Productos
         protected virtual IQueryable<ProductoWithNavigationProperties> ApplyFilter(
             IQueryable<ProductoWithNavigationProperties> query,
             string filterText,
+            int? noProductoMin = null,
+            int? noProductoMax = null,
             string nombreComercia = null,
             string uso = null,
             Guid? fabricanteId = null,
@@ -90,6 +95,8 @@ namespace SAO.Productos
         {
             return query
                 .WhereIf(!string.IsNullOrWhiteSpace(filterText), e => e.Producto.NombreComercia.Contains(filterText) || e.Producto.Uso.Contains(filterText))
+                    .WhereIf(noProductoMin.HasValue, e => e.Producto.NoProducto >= noProductoMin.Value)
+                    .WhereIf(noProductoMax.HasValue, e => e.Producto.NoProducto <= noProductoMax.Value)
                     .WhereIf(!string.IsNullOrWhiteSpace(nombreComercia), e => e.Producto.NombreComercia.Contains(nombreComercia))
                     .WhereIf(!string.IsNullOrWhiteSpace(uso), e => e.Producto.Uso.Contains(uso))
                     .WhereIf(fabricanteId != null && fabricanteId != Guid.Empty, e => e.Fabricante != null && e.Fabricante.Id == fabricanteId)
@@ -100,6 +107,8 @@ namespace SAO.Productos
 
         public async Task<List<Producto>> GetListAsync(
             string filterText = null,
+            int? noProductoMin = null,
+            int? noProductoMax = null,
             string nombreComercia = null,
             string uso = null,
             string sorting = null,
@@ -107,13 +116,15 @@ namespace SAO.Productos
             int skipCount = 0,
             CancellationToken cancellationToken = default)
         {
-            var query = ApplyFilter((await GetQueryableAsync()), filterText, nombreComercia, uso);
+            var query = ApplyFilter((await GetQueryableAsync()), filterText, noProductoMin, noProductoMax, nombreComercia, uso);
             query = query.OrderBy(string.IsNullOrWhiteSpace(sorting) ? ProductoConsts.GetDefaultSorting(false) : sorting);
             return await query.PageBy(skipCount, maxResultCount).ToListAsync(cancellationToken);
         }
 
         public async Task<long> GetCountAsync(
             string filterText = null,
+            int? noProductoMin = null,
+            int? noProductoMax = null,
             string nombreComercia = null,
             string uso = null,
             Guid? fabricanteId = null,
@@ -123,18 +134,22 @@ namespace SAO.Productos
             CancellationToken cancellationToken = default)
         {
             var query = await GetQueryForNavigationPropertiesAsync();
-            query = ApplyFilter(query, filterText, nombreComercia, uso, fabricanteId, asraeId, tipoProductoId, sustanciaElementalId);
+            query = ApplyFilter(query, filterText, noProductoMin, noProductoMax, nombreComercia, uso, fabricanteId, asraeId, tipoProductoId, sustanciaElementalId);
             return await query.LongCountAsync(GetCancellationToken(cancellationToken));
         }
 
         protected virtual IQueryable<Producto> ApplyFilter(
             IQueryable<Producto> query,
             string filterText,
+            int? noProductoMin = null,
+            int? noProductoMax = null,
             string nombreComercia = null,
             string uso = null)
         {
             return query
                     .WhereIf(!string.IsNullOrWhiteSpace(filterText), e => e.NombreComercia.Contains(filterText) || e.Uso.Contains(filterText))
+                    .WhereIf(noProductoMin.HasValue, e => e.NoProducto >= noProductoMin.Value)
+                    .WhereIf(noProductoMax.HasValue, e => e.NoProducto <= noProductoMax.Value)
                     .WhereIf(!string.IsNullOrWhiteSpace(nombreComercia), e => e.NombreComercia.Contains(nombreComercia))
                     .WhereIf(!string.IsNullOrWhiteSpace(uso), e => e.Uso.Contains(uso));
         }

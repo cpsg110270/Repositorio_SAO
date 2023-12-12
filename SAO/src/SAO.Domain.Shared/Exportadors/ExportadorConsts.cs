@@ -2,7 +2,7 @@ namespace SAO.Exportadors
 {
     public static class ExportadorConsts
     {
-        private const string DefaultSorting = "{0}NombreExportador asc";
+        private const string DefaultSorting = "{0}NoImportador asc";
 
         public static string GetDefaultSorting(bool withEntityName)
         {

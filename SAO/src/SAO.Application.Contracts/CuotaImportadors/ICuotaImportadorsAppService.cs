@@ -3,7 +3,6 @@ using System;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using Volo.Abp.Content;
 
 namespace SAO.CuotaImportadors
 {
@@ -17,14 +16,12 @@ namespace SAO.CuotaImportadors
 
         Task<PagedResultDto<LookupDto<Guid>>> GetImportadorLookupAsync(LookupRequestDto input);
 
+        Task<PagedResultDto<LookupDto<int>>> GetAsraeLookupAsync(LookupRequestDto input);
+
         Task DeleteAsync(Guid id);
 
         Task<CuotaImportadorDto> CreateAsync(CuotaImportadorCreateDto input);
 
         Task<CuotaImportadorDto> UpdateAsync(Guid id, CuotaImportadorUpdateDto input);
-
-        Task<IRemoteStreamContent> GetListAsExcelFileAsync(CuotaImportadorExcelDownloadDto input);
-
-        Task<DownloadTokenResultDto> GetDownloadTokenAsync();
     }
 }

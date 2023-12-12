@@ -1,12 +1,19 @@
-using SAO.Almacens;
-using SAO.Exportadors;
 using SAO.Importadors;
-using SAO.Paiss;
+using SAO.Exportadors;
 using SAO.Productos;
-using SAO.PuertoEntradaSalidas;
-using SAO.TipoEnvases;
-using SAO.TipoPermisos;
 using SAO.UnidadMedidas;
+using SAO.TipoEnvases;
+using SAO.PuertoEntradaSalidas;
+using SAO.PuertoEntradaSalidas;
+using SAO.Paiss;
+using SAO.Paiss;
+using SAO.Paiss;
+using SAO.Almacens;
+using SAO.ImporExports;
+using SAO.TipoPermisos;
+
+using System;
+using System.Collections.Generic;
 
 namespace SAO.ImporExports
 {
@@ -27,8 +34,8 @@ namespace SAO.ImporExports
         public Almacen Almacen { get; set; }
         public ImporExport ImporExport1 { get; set; }
         public TipoPermiso TipoPermiso { get; set; }
+        
 
-
-
+        
     }
 }

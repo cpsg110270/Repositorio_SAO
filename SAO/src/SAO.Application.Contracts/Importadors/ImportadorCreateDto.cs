@@ -6,10 +6,11 @@ namespace SAO.Importadors
 {
     public class ImportadorCreateDto
     {
+        public int NoImportador { get; set; }
+        [StringLength(ImportadorConsts.NoRUCMaxLength)]
+        public string? NoRUC { get; set; }
         [Required]
         [StringLength(ImportadorConsts.NombreImportadorMaxLength, MinimumLength = ImportadorConsts.NombreImportadorMinLength)]
         public string NombreImportador { get; set; }
-        [StringLength(ImportadorConsts.NoRUCMaxLength)]
-        public string? NoRUC { get; set; }
     }
 }

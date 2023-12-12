@@ -31,8 +31,8 @@ namespace SAO.Importadors
 
         public virtual async Task<PagedResultDto<ImportadorDto>> GetListAsync(GetImportadorsInput input)
         {
-            var totalCount = await _importadorRepository.GetCountAsync(input.FilterText, input.NombreImportador, input.NoRUC);
-            var items = await _importadorRepository.GetListAsync(input.FilterText, input.NombreImportador, input.NoRUC, input.Sorting, input.MaxResultCount, input.SkipCount);
+            var totalCount = await _importadorRepository.GetCountAsync(input.FilterText, input.NoImportadorMin, input.NoImportadorMax, input.NoRUC, input.NombreImportador);
+            var items = await _importadorRepository.GetListAsync(input.FilterText, input.NoImportadorMin, input.NoImportadorMax, input.NoRUC, input.NombreImportador, input.Sorting, input.MaxResultCount, input.SkipCount);
 
             return new PagedResultDto<ImportadorDto>
             {
@@ -57,7 +57,7 @@ namespace SAO.Importadors
         {
 
             var importador = await _importadorManager.CreateAsync(
-            input.NombreImportador, input.NoRUC
+            input.NoImportador, input.NoRUC, input.NombreImportador
             );
 
             return ObjectMapper.Map<Importador, ImportadorDto>(importador);
@@ -69,7 +69,7 @@ namespace SAO.Importadors
 
             var importador = await _importadorManager.UpdateAsync(
             id,
-            input.NombreImportador, input.NoRUC
+            input.NoImportador, input.NoRUC, input.NombreImportador
             );
 
             return ObjectMapper.Map<Importador, ImportadorDto>(importador);

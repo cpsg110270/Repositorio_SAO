@@ -10,9 +10,9 @@
   "PrimaryKeyType": "Guid",
   "IsMultiTenant": false,
   "CheckConcurrency": false,
-  "ShouldCreateUserInterface": true,
+  "ShouldCreateUserInterface": false,
   "ShouldCreateBackend": true,
-  "ShouldExportExcel": true,
+  "ShouldExportExcel": false,
   "ShouldAddMigration": true,
   "ShouldUpdateDatabase": true,
   "CreateTests": true,
@@ -77,6 +77,21 @@
       "DtoNamespace": "SAO.Importadors",
       "DtoEntityName": "ImportadorDto",
       "Type": "Guid"
+    },
+    {
+      "EntityNameWithDuplicationNumber": "Asrae",
+      "EntitySetNameWithDuplicationNumber": "Asraes",
+      "ReferencePropertyName": "Asrae",
+      "UiPickType": "Typeahead",
+      "IsRequired": true,
+      "Name": "AsraeId",
+      "DisplayProperty": "Codigo_ASHRAE",
+      "Namespace": "SAO.Asraes",
+      "EntityName": "Asrae",
+      "EntitySetName": "Asraes",
+      "DtoNamespace": "SAO.Asraes",
+      "DtoEntityName": "AsraeDto",
+      "Type": "int"
     }
   ],
   "NavigationConnections": [],

@@ -7,8 +7,10 @@ namespace SAO.Importadors
     {
         public string? FilterText { get; set; }
 
-        public string? NombreImportador { get; set; }
+        public int? NoImportadorMin { get; set; }
+        public int? NoImportadorMax { get; set; }
         public string? NoRUC { get; set; }
+        public string? NombreImportador { get; set; }
 
         public GetImportadorsInput()
         {

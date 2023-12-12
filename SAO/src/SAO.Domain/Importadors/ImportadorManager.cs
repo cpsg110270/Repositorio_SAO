@@ -19,15 +19,15 @@ namespace SAO.Importadors
         }
 
         public async Task<Importador> CreateAsync(
-        string nombreImportador, string noRUC)
+        int noImportador, string noRUC, string nombreImportador)
         {
+            Check.Length(noRUC, nameof(noRUC), ImportadorConsts.NoRUCMaxLength);
             Check.NotNullOrWhiteSpace(nombreImportador, nameof(nombreImportador));
             Check.Length(nombreImportador, nameof(nombreImportador), ImportadorConsts.NombreImportadorMaxLength, ImportadorConsts.NombreImportadorMinLength);
-            Check.Length(noRUC, nameof(noRUC), ImportadorConsts.NoRUCMaxLength);
 
             var importador = new Importador(
              GuidGenerator.Create(),
-             nombreImportador, noRUC
+             noImportador, noRUC, nombreImportador
              );
 
             return await _importadorRepository.InsertAsync(importador);
@@ -35,17 +35,18 @@ namespace SAO.Importadors
 
         public async Task<Importador> UpdateAsync(
             Guid id,
-            string nombreImportador, string noRUC
+            int noImportador, string noRUC, string nombreImportador
         )
         {
+            Check.Length(noRUC, nameof(noRUC), ImportadorConsts.NoRUCMaxLength);
             Check.NotNullOrWhiteSpace(nombreImportador, nameof(nombreImportador));
             Check.Length(nombreImportador, nameof(nombreImportador), ImportadorConsts.NombreImportadorMaxLength, ImportadorConsts.NombreImportadorMinLength);
-            Check.Length(noRUC, nameof(noRUC), ImportadorConsts.NoRUCMaxLength);
 
             var importador = await _importadorRepository.GetAsync(id);
 
-            importador.NombreImportador = nombreImportador;
+            importador.NoImportador = noImportador;
             importador.NoRUC = noRUC;
+            importador.NombreImportador = nombreImportador;
 
             return await _importadorRepository.UpdateAsync(importador);
         }

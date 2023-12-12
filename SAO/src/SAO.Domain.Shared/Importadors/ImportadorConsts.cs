@@ -2,15 +2,15 @@ namespace SAO.Importadors
 {
     public static class ImportadorConsts
     {
-        private const string DefaultSorting = "{0}NombreImportador asc";
+        private const string DefaultSorting = "{0}NoImportador asc";
 
         public static string GetDefaultSorting(bool withEntityName)
         {
             return string.Format(DefaultSorting, withEntityName ? "Importador." : string.Empty);
         }
 
+        public const int NoRUCMaxLength = 20;
         public const int NombreImportadorMinLength = 1;
         public const int NombreImportadorMaxLength = 250;
-        public const int NoRUCMaxLength = 20;
     }
 }

@@ -3,7 +3,6 @@ using System;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using Volo.Abp.Content;
 
 namespace SAO.Productos
 {
@@ -28,9 +27,5 @@ namespace SAO.Productos
         Task<ProductoDto> CreateAsync(ProductoCreateDto input);
 
         Task<ProductoDto> UpdateAsync(Guid id, ProductoUpdateDto input);
-
-        Task<IRemoteStreamContent> GetListAsExcelFileAsync(ProductoExcelDownloadDto input);
-
-        Task<DownloadTokenResultDto> GetDownloadTokenAsync();
     }
 }

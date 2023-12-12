@@ -1,11 +1,12 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace SAO.Productos
 {
     public class ProductoCreateDto
     {
+        public int NoProducto { get; set; }
         [Required]
         [StringLength(ProductoConsts.NombreComerciaMaxLength, MinimumLength = ProductoConsts.NombreComerciaMinLength)]
         public string NombreComercia { get; set; }

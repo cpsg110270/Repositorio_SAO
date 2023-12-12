@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Volo.Abp;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Domain.Services;
@@ -23,7 +24,7 @@ namespace SAO.Productos
 
         public async Task<Producto> CreateAsync(
         List<Guid> sustanciaElementalIds,
-        Guid fabricanteId, int asraeId, Guid? tipoProductoId, string nombreComercia, string uso)
+        Guid fabricanteId, int asraeId, Guid? tipoProductoId, int noProducto, string nombreComercia, string uso)
         {
             Check.NotNull(fabricanteId, nameof(fabricanteId));
             Check.NotNull(asraeId, nameof(asraeId));
@@ -33,7 +34,7 @@ namespace SAO.Productos
 
             var producto = new Producto(
              GuidGenerator.Create(),
-             fabricanteId, asraeId, tipoProductoId, nombreComercia, uso
+             fabricanteId, asraeId, tipoProductoId, noProducto, nombreComercia, uso
              );
 
             await SetSustanciaElementalsAsync(producto, sustanciaElementalIds);
@@ -44,7 +45,7 @@ namespace SAO.Productos
         public async Task<Producto> UpdateAsync(
             Guid id,
             List<Guid> sustanciaElementalIds,
-        Guid fabricanteId, int asraeId, Guid? tipoProductoId, string nombreComercia, string uso
+        Guid fabricanteId, int asraeId, Guid? tipoProductoId, int noProducto, string nombreComercia, string uso
         )
         {
             Check.NotNull(fabricanteId, nameof(fabricanteId));
@@ -61,6 +62,7 @@ namespace SAO.Productos
             producto.FabricanteId = fabricanteId;
             producto.AsraeId = asraeId;
             producto.TipoProductoId = tipoProductoId;
+            producto.NoProducto = noProducto;
             producto.NombreComercia = nombreComercia;
             producto.Uso = uso;
 

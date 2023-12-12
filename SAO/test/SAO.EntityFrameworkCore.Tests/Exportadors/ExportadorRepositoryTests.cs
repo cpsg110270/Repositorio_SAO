@@ -1,8 +1,9 @@
-using SAO.EntityFrameworkCore;
 using Shouldly;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using SAO.Exportadors;
+using SAO.EntityFrameworkCore;
 using Xunit;
 
 namespace SAO.Exportadors
@@ -24,13 +25,13 @@ namespace SAO.Exportadors
             {
                 // Act
                 var result = await _exportadorRepository.GetListAsync(
-                    nombreExportador: "fa05910eacc04eed84410c02e676d0129bafa3df0e7140c0becd87fc64c160edd80154cea9b4413faa73337085b289a4645dd38992f2409988c8ee7ef32ec4cb26995d37898a46dc94ef9b9b009ea7c7f7c805211e7f4aa38aa7b122fb24c0cc8ee01088af6e4b9db06386bdc9c822b8d9403a524478471c8912ef077e"
+                    nombreExportador: "62da3494f29542a188664cce75a05cc02626e4ff87544c98aaa6d1e2ae236367172d6848a0c64d6eb2856c22fc5d53170e689ebda5fe44f08c9538964d7c7f82703c56e22b0a48ac959f2d183677ce6a80ceb60dc3d24e93b401d4788d52d14b2ed0bdb346de47b981b3b87e64a4ecda2fe42b9c9bf647aebd5cd6b01b"
                 );
 
                 // Assert
                 result.Count.ShouldBe(1);
                 result.FirstOrDefault().ShouldNotBe(null);
-                result.First().Id.ShouldBe(Guid.Parse("1c1f1bcc-d95b-49e1-b7c9-befd55eab051"));
+                result.First().Id.ShouldBe(Guid.Parse("64f96866-1a1b-41f1-a2d4-e0a690fc6a37"));
             });
         }
 
@@ -42,7 +43,7 @@ namespace SAO.Exportadors
             {
                 // Act
                 var result = await _exportadorRepository.GetCountAsync(
-                    nombreExportador: "ea2375fcec124d43bf6b9b3df17c07776b6b9856ab43419a986c6b99ae4e66e1bc447e3645664f9fbc66be9f7069cce58266e7d4f8a845aa8a11c7b9f6cacba76d9a71321be9411ca6e1263c544c1e1c3d04c4c8024b424d9aebc7ecccfa5e061a290e4b7c01450c8bdb507a154aff721b34e3d12f154a8aa1f52ff941"
+                    nombreExportador: "ec1f9e03820c4e82a9d5c2181864decba75c04e9736544f7a258f816bedf8a3526d35afd59154370a4e827543af437c36cf0ac7a4d8f449593537ce2e9700a59a5c5ba34d8874bb5917ff2ed43978339ad8c7f3db4a849ee99958cf6b4ef7fb3835143ea9eb94b8899ee51ac779d833f5e4148dc6d404017a970fcba4b"
                 );
 
                 // Assert

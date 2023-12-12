@@ -15,6 +15,8 @@ namespace SAO.Productos
 
         Task<List<ProductoWithNavigationProperties>> GetListWithNavigationPropertiesAsync(
             string filterText = null,
+            int? noProductoMin = null,
+            int? noProductoMax = null,
             string nombreComercia = null,
             string uso = null,
             Guid? fabricanteId = null,
@@ -29,6 +31,8 @@ namespace SAO.Productos
 
         Task<List<Producto>> GetListAsync(
                     string filterText = null,
+                    int? noProductoMin = null,
+                    int? noProductoMax = null,
                     string nombreComercia = null,
                     string uso = null,
                     string sorting = null,
@@ -39,6 +43,8 @@ namespace SAO.Productos
 
         Task<long> GetCountAsync(
             string filterText = null,
+            int? noProductoMin = null,
+            int? noProductoMax = null,
             string nombreComercia = null,
             string uso = null,
             Guid? fabricanteId = null,

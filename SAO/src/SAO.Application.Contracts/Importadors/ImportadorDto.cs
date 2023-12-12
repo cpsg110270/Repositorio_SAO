@@ -5,8 +5,9 @@ namespace SAO.Importadors
 {
     public class ImportadorDto : EntityDto<Guid>
     {
-        public string NombreImportador { get; set; }
+        public int NoImportador { get; set; }
         public string? NoRUC { get; set; }
+        public string NombreImportador { get; set; }
 
     }
 }

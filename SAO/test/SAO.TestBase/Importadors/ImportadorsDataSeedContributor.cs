@@ -29,16 +29,18 @@ namespace SAO.Importadors
 
             await _importadorRepository.InsertAsync(new Importador
             (
-                id: Guid.Parse("7f4bc753-28f7-474a-a2d3-90ce35f5dbe0"),
-                nombreImportador: "6dd81afdab9b45df857c12bbf9b016daf6c8c107c1044325a362a431b21db14e394680b87a974594971a8607072b7a853dcceeb95f3c4d19a6e7bd51a73fe65322135b4557d14f598f1f65b3228be0178bb15ba9aba64d76a9ef9dca0f54f2edbb0c6c82ef5242049033f752052061dbcfa26767a5cf46c69234f8a2e8",
-                noRUC: "37522ccc58e74f8e9361"
+                id: Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf"),
+                noImportador: 41491847,
+                noRUC: "bb14a057c1564faeb56c",
+                nombreImportador: "dd5037f5d5b44152befe3699ce3590b96bd78158739843d8a2498e17d3df874ba3f403b709874de09047aa4f35e6bce4c7d2ba53116f4ebeab65e2aa4d5002fa6550a30330d14dd2be466c725e83d84aa5c5a1a844fd4e989202387b89c133c7b607f45dc7244ac79eb1da344302bf8532570ef3558842aba327e116a4"
             ));
 
             await _importadorRepository.InsertAsync(new Importador
             (
-                id: Guid.Parse("dc15f0ac-c05a-4df1-a379-2c730f920eb2"),
-                nombreImportador: "265aaff039a14983a08dbde1747da1b5d3098c9197624b2783084f4d4f18e585f83f1afb0565488b984aae0f6ea7365452993e18a8c14592a6d6834066202e70f9cbd4372702445393d3e201838d78c90f24c42d4eac49b7b9750b82d08e2e1b17fafbed46aa45bdac494ba20bf14f226be2ef40894f46c1945f46c7b0",
-                noRUC: "acde0330bb5644949178"
+                id: Guid.Parse("8b1e0137-3086-4b35-8eff-5fe1c0316bb4"),
+                noImportador: 1489060147,
+                noRUC: "eb7b9d6ce55b4a48be5a",
+                nombreImportador: "18cb1aa854924961a5a35123902fad61934a375b99bf4a95993bfb986afd81c02c6fa9087b124ce3a8a9de6bd2748475192a1d1bf01e43bfb41e989901d4434baeb761a6a3af44a69168b10af65f97047776a7a9883d45bf8212be8d31597dff3149675d5de646aab8611b3117e203fbecb63722ce9c47e09f814d32d5"
             ));
 
             await _unitOfWorkManager.Current.SaveChangesAsync();

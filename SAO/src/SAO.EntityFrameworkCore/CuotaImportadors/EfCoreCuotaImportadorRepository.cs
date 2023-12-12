@@ -1,5 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using SAO.EntityFrameworkCore;
+using SAO.Asraes;
 using SAO.Importadors;
 using System;
 using System.Collections.Generic;
@@ -7,8 +6,10 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
+using SAO.EntityFrameworkCore;
 
 namespace SAO.CuotaImportadors
 {
@@ -28,7 +29,8 @@ namespace SAO.CuotaImportadors
                 .Select(cuotaImportador => new CuotaImportadorWithNavigationProperties
                 {
                     CuotaImportador = cuotaImportador,
-                    Importador = dbContext.Set<Importador>().FirstOrDefault(c => c.Id == cuotaImportador.ImportadorId)
+                    Importador = dbContext.Set<Importador>().FirstOrDefault(c => c.Id == cuotaImportador.ImportadorId),
+                    Asrae = dbContext.Set<Asrae>().FirstOrDefault(c => c.Id == cuotaImportador.AsraeId)
                 }).FirstOrDefault();
         }
 
@@ -39,13 +41,14 @@ namespace SAO.CuotaImportadors
             decimal? cuotaMin = null,
             decimal? cuotaMax = null,
             Guid? importadorId = null,
+            int? asraeId = null,
             string sorting = null,
             int maxResultCount = int.MaxValue,
             int skipCount = 0,
             CancellationToken cancellationToken = default)
         {
             var query = await GetQueryForNavigationPropertiesAsync();
-            query = ApplyFilter(query, filterText, añoMin, añoMax, cuotaMin, cuotaMax, importadorId);
+            query = ApplyFilter(query, filterText, añoMin, añoMax, cuotaMin, cuotaMax, importadorId, asraeId);
             query = query.OrderBy(string.IsNullOrWhiteSpace(sorting) ? CuotaImportadorConsts.GetDefaultSorting(true) : sorting);
             return await query.PageBy(skipCount, maxResultCount).ToListAsync(cancellationToken);
         }
@@ -55,10 +58,13 @@ namespace SAO.CuotaImportadors
             return from cuotaImportador in (await GetDbSetAsync())
                    join importador in (await GetDbContextAsync()).Set<Importador>() on cuotaImportador.ImportadorId equals importador.Id into importadors
                    from importador in importadors.DefaultIfEmpty()
+                   join asrae in (await GetDbContextAsync()).Set<Asrae>() on cuotaImportador.AsraeId equals asrae.Id into asraes
+                   from asrae in asraes.DefaultIfEmpty()
                    select new CuotaImportadorWithNavigationProperties
                    {
                        CuotaImportador = cuotaImportador,
-                       Importador = importador
+                       Importador = importador,
+                       Asrae = asrae
                    };
         }
 
@@ -69,7 +75,8 @@ namespace SAO.CuotaImportadors
             int? añoMax = null,
             decimal? cuotaMin = null,
             decimal? cuotaMax = null,
-            Guid? importadorId = null)
+            Guid? importadorId = null,
+            int? asraeId = null)
         {
             return query
                 .WhereIf(!string.IsNullOrWhiteSpace(filterText), e => true)
@@ -77,7 +84,8 @@ namespace SAO.CuotaImportadors
                     .WhereIf(añoMax.HasValue, e => e.CuotaImportador.Año <= añoMax.Value)
                     .WhereIf(cuotaMin.HasValue, e => e.CuotaImportador.Cuota >= cuotaMin.Value)
                     .WhereIf(cuotaMax.HasValue, e => e.CuotaImportador.Cuota <= cuotaMax.Value)
-                    .WhereIf(importadorId != null && importadorId != Guid.Empty, e => e.Importador != null && e.Importador.Id == importadorId);
+                    .WhereIf(importadorId != null && importadorId != Guid.Empty, e => e.Importador != null && e.Importador.Id == importadorId)
+                    .WhereIf(asraeId != null, e => e.Asrae != null && e.Asrae.Id == asraeId);
         }
 
         public async Task<List<CuotaImportador>> GetListAsync(
@@ -103,10 +111,11 @@ namespace SAO.CuotaImportadors
             decimal? cuotaMin = null,
             decimal? cuotaMax = null,
             Guid? importadorId = null,
+            int? asraeId = null,
             CancellationToken cancellationToken = default)
         {
             var query = await GetQueryForNavigationPropertiesAsync();
-            query = ApplyFilter(query, filterText, añoMin, añoMax, cuotaMin, cuotaMax, importadorId);
+            query = ApplyFilter(query, filterText, añoMin, añoMax, cuotaMin, cuotaMax, importadorId, asraeId);
             return await query.LongCountAsync(GetCancellationToken(cancellationToken));
         }
 

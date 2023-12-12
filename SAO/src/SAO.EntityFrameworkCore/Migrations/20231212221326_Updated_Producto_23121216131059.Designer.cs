@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SAO.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace SAO.Migrations
 {
     [DbContext(typeof(SAODbContext))]
-    partial class SAODbContextModelSnapshot : ModelSnapshot
+    [Migration("20231212221326_Updated_Producto_23121216131059")]
+    partial class UpdatedProducto23121216131059
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +82,6 @@ namespace SAO.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("AsraeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Año")
                         .HasColumnType("int")
                         .HasColumnName("Año");
@@ -110,8 +110,6 @@ namespace SAO.Migrations
                         .HasColumnName("LastModifierId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AsraeId");
 
                     b.HasIndex("ImportadorId");
 
@@ -2689,12 +2687,6 @@ namespace SAO.Migrations
 
             modelBuilder.Entity("SAO.CuotaImportadors.CuotaImportador", b =>
                 {
-                    b.HasOne("SAO.Asraes.Asrae", null)
-                        .WithMany()
-                        .HasForeignKey("AsraeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("SAO.Importadors.Importador", null)
                         .WithMany()
                         .HasForeignKey("ImportadorId")

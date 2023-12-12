@@ -1,4 +1,8 @@
 using SAO.Importadors;
+using SAO.Asraes;
+
+using System;
+using System.Collections.Generic;
 
 namespace SAO.CuotaImportadors
 {
@@ -7,8 +11,9 @@ namespace SAO.CuotaImportadors
         public CuotaImportador CuotaImportador { get; set; }
 
         public Importador Importador { get; set; }
+        public Asrae Asrae { get; set; }
+        
 
-
-
+        
     }
 }

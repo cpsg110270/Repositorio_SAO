@@ -1,6 +1,6 @@
-using Shouldly;
 using System;
 using System.Linq;
+using Shouldly;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories;
 using Xunit;
@@ -27,19 +27,19 @@ namespace SAO.Exportadors
             // Assert
             result.TotalCount.ShouldBe(2);
             result.Items.Count.ShouldBe(2);
-            result.Items.Any(x => x.Id == Guid.Parse("1c1f1bcc-d95b-49e1-b7c9-befd55eab051")).ShouldBe(true);
-            result.Items.Any(x => x.Id == Guid.Parse("3ce1ea30-6071-4a85-a84e-6a2074fd3373")).ShouldBe(true);
+            result.Items.Any(x => x.Id == Guid.Parse("64f96866-1a1b-41f1-a2d4-e0a690fc6a37")).ShouldBe(true);
+            result.Items.Any(x => x.Id == Guid.Parse("edcb2c94-15f1-4d74-84e8-be72e1e6d87b")).ShouldBe(true);
         }
 
         [Fact]
         public async Task GetAsync()
         {
             // Act
-            var result = await _exportadorsAppService.GetAsync(Guid.Parse("1c1f1bcc-d95b-49e1-b7c9-befd55eab051"));
+            var result = await _exportadorsAppService.GetAsync(Guid.Parse("64f96866-1a1b-41f1-a2d4-e0a690fc6a37"));
 
             // Assert
             result.ShouldNotBeNull();
-            result.Id.ShouldBe(Guid.Parse("1c1f1bcc-d95b-49e1-b7c9-befd55eab051"));
+            result.Id.ShouldBe(Guid.Parse("64f96866-1a1b-41f1-a2d4-e0a690fc6a37"));
         }
 
         [Fact]
@@ -48,7 +48,8 @@ namespace SAO.Exportadors
             // Arrange
             var input = new ExportadorCreateDto
             {
-                NombreExportador = "4d8fad2bf0fd4df0b55737d3d469769ef61f011b73e147eb8640d50c7117060ee2570ecc8ca9425f88d8f63de39211b4376beca8fb6b471daa0a3b79cc115185dd32ad5030364f5c919acfa8b31efac883774b7edb114e9abb45a13afa3d248a435d624ccc524c25a08e21cca21ca42b062a8ffff3cb45c595c390652b"
+                NoImportador = 1457304762,
+                NombreExportador = "bf692e8b45b94dc0a301dc2358c8c9810dfb8f434c044fadaff86a269c079276b6a25314af40438b8c59af4674dba5b438a420d3411841ab95d02c76e73a85161eb00e2730f04246bdee2d9571ac89536ca654eb12024600859595322517c8ed3e6ba5096b374102b9a8ba629f6ac6659d55c23422aa4f958feef5f313"
             };
 
             // Act
@@ -58,7 +59,8 @@ namespace SAO.Exportadors
             var result = await _exportadorRepository.FindAsync(c => c.Id == serviceResult.Id);
 
             result.ShouldNotBe(null);
-            result.NombreExportador.ShouldBe("4d8fad2bf0fd4df0b55737d3d469769ef61f011b73e147eb8640d50c7117060ee2570ecc8ca9425f88d8f63de39211b4376beca8fb6b471daa0a3b79cc115185dd32ad5030364f5c919acfa8b31efac883774b7edb114e9abb45a13afa3d248a435d624ccc524c25a08e21cca21ca42b062a8ffff3cb45c595c390652b");
+            result.NoImportador.ShouldBe(1457304762);
+            result.NombreExportador.ShouldBe("bf692e8b45b94dc0a301dc2358c8c9810dfb8f434c044fadaff86a269c079276b6a25314af40438b8c59af4674dba5b438a420d3411841ab95d02c76e73a85161eb00e2730f04246bdee2d9571ac89536ca654eb12024600859595322517c8ed3e6ba5096b374102b9a8ba629f6ac6659d55c23422aa4f958feef5f313");
         }
 
         [Fact]
@@ -67,27 +69,29 @@ namespace SAO.Exportadors
             // Arrange
             var input = new ExportadorUpdateDto()
             {
-                NombreExportador = "702d8f262e09447dbff3f6caa232c3841ae207bf7a694852a0ac791893f925acc14bb7e0bd224462a41c553fa72f7aae4b90ebe37ae843b1ab055a60871b9c32c094ee04a0804ab3b8abfe28210911c0780d3f4f2d7d4e8884304b5efb1a6b711626353d0c204532a0a67ed899ec3fd74e93e7d6f1fd435eab187a7645"
+                NoImportador = 617556795,
+                NombreExportador = "3690fbbf02c6473798735d07eafc85461e3e7ff750aa49edb875a65e036b4b1d9f688df053a843e38cf631ceee5a0154b1fd434b27dc4f909f011326b1b2ef67ce1648699f9544809a652cf4407d10c3b14f6ee1a27c4e209c8d56bdfa5632eae10dadcae33c4a0785555cf32a0c0a47cf92b1c2b0164c3688f91bfb5a"
             };
 
             // Act
-            var serviceResult = await _exportadorsAppService.UpdateAsync(Guid.Parse("1c1f1bcc-d95b-49e1-b7c9-befd55eab051"), input);
+            var serviceResult = await _exportadorsAppService.UpdateAsync(Guid.Parse("64f96866-1a1b-41f1-a2d4-e0a690fc6a37"), input);
 
             // Assert
             var result = await _exportadorRepository.FindAsync(c => c.Id == serviceResult.Id);
 
             result.ShouldNotBe(null);
-            result.NombreExportador.ShouldBe("702d8f262e09447dbff3f6caa232c3841ae207bf7a694852a0ac791893f925acc14bb7e0bd224462a41c553fa72f7aae4b90ebe37ae843b1ab055a60871b9c32c094ee04a0804ab3b8abfe28210911c0780d3f4f2d7d4e8884304b5efb1a6b711626353d0c204532a0a67ed899ec3fd74e93e7d6f1fd435eab187a7645");
+            result.NoImportador.ShouldBe(617556795);
+            result.NombreExportador.ShouldBe("3690fbbf02c6473798735d07eafc85461e3e7ff750aa49edb875a65e036b4b1d9f688df053a843e38cf631ceee5a0154b1fd434b27dc4f909f011326b1b2ef67ce1648699f9544809a652cf4407d10c3b14f6ee1a27c4e209c8d56bdfa5632eae10dadcae33c4a0785555cf32a0c0a47cf92b1c2b0164c3688f91bfb5a");
         }
 
         [Fact]
         public async Task DeleteAsync()
         {
             // Act
-            await _exportadorsAppService.DeleteAsync(Guid.Parse("1c1f1bcc-d95b-49e1-b7c9-befd55eab051"));
+            await _exportadorsAppService.DeleteAsync(Guid.Parse("64f96866-1a1b-41f1-a2d4-e0a690fc6a37"));
 
             // Assert
-            var result = await _exportadorRepository.FindAsync(c => c.Id == Guid.Parse("1c1f1bcc-d95b-49e1-b7c9-befd55eab051"));
+            var result = await _exportadorRepository.FindAsync(c => c.Id == Guid.Parse("64f96866-1a1b-41f1-a2d4-e0a690fc6a37"));
 
             result.ShouldBeNull();
         }

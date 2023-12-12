@@ -1,15 +1,23 @@
-using JetBrains.Annotations;
+using SAO.Fabricantes;
+using SAO.Asraes;
+using SAO.TipoProductos;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using Volo.Abp;
+using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.MultiTenancy;
+using JetBrains.Annotations;
+
+using Volo.Abp;
 
 namespace SAO.Productos
 {
     public class Producto : FullAuditedEntity<Guid>
     {
+        public virtual int NoProducto { get; set; }
+
         [NotNull]
         public virtual string NombreComercia { get; set; }
 
@@ -25,13 +33,14 @@ namespace SAO.Productos
 
         }
 
-        public Producto(Guid id, Guid fabricanteId, int asraeId, Guid? tipoProductoId, string nombreComercia, string uso)
+        public Producto(Guid id, Guid fabricanteId, int asraeId, Guid? tipoProductoId, int noProducto, string nombreComercia, string uso)
         {
 
             Id = id;
             Check.NotNull(nombreComercia, nameof(nombreComercia));
             Check.Length(nombreComercia, nameof(nombreComercia), ProductoConsts.NombreComerciaMaxLength, ProductoConsts.NombreComerciaMinLength);
             Check.Length(uso, nameof(uso), ProductoConsts.UsoMaxLength, 0);
+            NoProducto = noProducto;
             NombreComercia = nombreComercia;
             Uso = uso;
             FabricanteId = fabricanteId;
