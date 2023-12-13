@@ -20,7 +20,6 @@ namespace SAO.CuotaImportadors
             decimal? cuotaMin = null,
             decimal? cuotaMax = null,
             Guid? importadorId = null,
-            int? asraeId = null,
             string sorting = null,
             int maxResultCount = int.MaxValue,
             int skipCount = 0,
@@ -46,7 +45,6 @@ namespace SAO.CuotaImportadors
             decimal? cuotaMin = null,
             decimal? cuotaMax = null,
             Guid? importadorId = null,
-            int? asraeId = null,
             CancellationToken cancellationToken = default);
     }
 }

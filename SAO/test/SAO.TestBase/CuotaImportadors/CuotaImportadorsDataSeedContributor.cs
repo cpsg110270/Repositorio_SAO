@@ -1,4 +1,3 @@
-using SAO.Asraes;
 using SAO.Importadors;
 using System;
 using System.Threading.Tasks;
@@ -16,13 +15,11 @@ namespace SAO.CuotaImportadors
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly ImportadorsDataSeedContributor _importadorsDataSeedContributor;
 
-        private readonly AsraesDataSeedContributor _asraesDataSeedContributor;
-
-        public CuotaImportadorsDataSeedContributor(ICuotaImportadorRepository cuotaImportadorRepository, IUnitOfWorkManager unitOfWorkManager, ImportadorsDataSeedContributor importadorsDataSeedContributor, AsraesDataSeedContributor asraesDataSeedContributor)
+        public CuotaImportadorsDataSeedContributor(ICuotaImportadorRepository cuotaImportadorRepository, IUnitOfWorkManager unitOfWorkManager, ImportadorsDataSeedContributor importadorsDataSeedContributor)
         {
             _cuotaImportadorRepository = cuotaImportadorRepository;
             _unitOfWorkManager = unitOfWorkManager;
-            _importadorsDataSeedContributor = importadorsDataSeedContributor; _asraesDataSeedContributor = asraesDataSeedContributor;
+            _importadorsDataSeedContributor = importadorsDataSeedContributor;
         }
 
         public async Task SeedAsync(DataSeedContext context)
@@ -33,24 +30,21 @@ namespace SAO.CuotaImportadors
             }
 
             await _importadorsDataSeedContributor.SeedAsync(context);
-            await _asraesDataSeedContributor.SeedAsync(context);
 
             await _cuotaImportadorRepository.InsertAsync(new CuotaImportador
             (
-                id: Guid.Parse("5c6dbff7-f7eb-4b3d-a718-a76b73def62c"),
-                año: 1666648358,
-                cuota: 1252537514,
-                importadorId: Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf"),
-                asraeId: 1
+                id: Guid.Parse("bdc70f50-4bfd-423d-8018-8ad9995035b1"),
+                año: 766170516,
+                cuota: 108058313,
+                importadorId: Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf")
             ));
 
             await _cuotaImportadorRepository.InsertAsync(new CuotaImportador
             (
-                id: Guid.Parse("298e7061-ab4f-4c2c-a631-122a8e5157fb"),
-                año: 1380996054,
-                cuota: 865915050,
-                importadorId: Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf"),
-                asraeId: 2
+                id: Guid.Parse("fa080ef6-e159-4a0c-838b-9190d30092a7"),
+                año: 2065945524,
+                cuota: 668582100,
+                importadorId: Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf")
             ));
 
             await _unitOfWorkManager.Current.SaveChangesAsync();
