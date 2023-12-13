@@ -1,0 +1,98 @@
+﻿@*@page
+@using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using SAO.Permissions
+@using SAO.Web.Pages.ImporExports
+@using SAO.Web.Menus
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@inject IHtmlLocalizer<SAOResource> L
+@inject IAuthorizationService Authorization
+@model SAO.Web.Pages.ImporExports.importarmodel
+@inject IPageLayout PageLayout
+ 
+
+@{
+    PageLayout.Content.Title = L["Importar"].Value;
+    PageLayout.Content.MenuItemName = SAOMenus.ImporExports;
+}
+
+@section styles
+    {
+    <style>
+        .input-group > .custom-file:not(:last-child) .custom-file-label, .input-group > .custom-file:not(:last-child) .custom-file-label::after {
+            content: "Examinar";
+        }
+    </style>
+}
+
+@section scripts
+    {
+    <abp-script src="/Pages/ImportExports/importar.js" />
+    }
+
+@section content_toolbar {
+    @if (await Authorization.IsGrantedAsync(SAOPermissions.ImporExports.Create))
+    {
+        <abp-button id="SaveTiposCambiosButton"
+            text="@L["Save"].Value"
+            icon="plus"
+            button-type="Success" />
+    }
+}
+
+<abp-card>
+    <abp-card-body>
+        @if (Model.ErrorMessage != null)
+        {
+            <abp-alert alert-type="Danger" dismissible="true">
+                @Model.ErrorMessage.
+            </abp-alert>
+        }
+        <abp-row class="mb-3">
+            <abp-column size-md="_12">
+                <form method="post" asp-page-handler="Import" class="text-left form-validate" enctype="multipart/form-data" id="form-import">
+                    <div class="container py-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-paperclip"></i></span>
+                            </div>
+                            <div class="custom-file">
+                                <input asp-for="XlsFile" class="custom-file-input" type="file" id="chooseFile" required>
+                                <label class="custom-file-label" for="myInput">Subir Archivo</label>
+                            </div>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Leer archivo de Excel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </abp-column>
+        </abp-row>
+        <abp-table striped-rows="true" id="tableTiposCambios">
+            <thead>
+                <tr>
+                    <th>@L["Fecha"]</th>
+                    <th>@L["Valor"]</th>
+                    <th>@L["Estado"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListaTipoCambio)
+                {
+                    <tr>
+                        <td>@item.Fecha.ToShortDateString()</td>
+                        <td>@item.valor</td>
+                        <td data-toggle="tooltip" data-placement="top" title=""></td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="1"><b class="text-primary">Total de Entradas</b></td>
+                    <td><b class="text-primary">@Model.ListaTipoCambio.Count()</b></td>
+                </tr>
+            </tfoot>
+        </abp-table>
+    </abp-card-body>
+</abp-card>*@
