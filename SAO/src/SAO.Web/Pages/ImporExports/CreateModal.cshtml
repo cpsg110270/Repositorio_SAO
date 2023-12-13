@@ -161,7 +161,7 @@
 
             </abp-row>
            
-            <abp-input asp-for="ImporExport.Estado" disabled hidden />
+          @*  <abp-input asp-for="ImporExport.Estado" disabled hidden />*@
 
     
    </abp-modal-body>
@@ -200,22 +200,22 @@
 
         PesoNeto = PesoUni * Cant;
 
-        //var numeroFormateado = numberWithCommas(PesoNeto);
-        var numeroFormateado = PesoNeto;
-                   
+        var numeroFormateado = numberWithCommas(PesoNeto);
+        //var numeroFormateado = PesoNeto;
+                 
        $('#ImporExport_PesoNeto').val(numeroFormateado);
        
       }
 
 
-    //function numberWithCommas(numero) {
-    //    const numeroFormateado = numero.toFixed(2);
-    //    const partes = numeroFormateado.split(".");
-    //    const parteEntera = partes[0];
-    //    const parteDecimal = partes[1];
-    //    const parteEnteraFormateada = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    //    const numeroFinal = parteEnteraFormateada + "." + parteDecimal;
-    //    return numeroFinal;
+    function numberWithCommas(numero) {
+        const numeroFormateado = numero.toFixed(2);
+        const partes = numeroFormateado.split(".");
+        const parteEntera = partes[0];
+        const parteDecimal = partes[1];
+        const parteEnteraFormateada = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        const numeroFinal = parteEnteraFormateada + "." + parteDecimal;
+        return numeroFinal;
               
     }
 

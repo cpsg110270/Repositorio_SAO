@@ -8,9 +8,22 @@
 @using SAO.Localization
 @inject IHtmlLocalizer<SAOResource> L
 @inject IAuthorizationService Authorization
-@model SAO.Web.Pages.ImporExports.importarmodel
-@inject IPageLayout PageLayout
- 
+@model importarmodel
+@inject IPageLayout PageLayout *@
+
+
+@*@page
+@using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using SAO.Permissions
+@using SAO.Web.Pages.ImporExports
+@using SAO.Web.Menus 
+@inherits SAO.Web.Pages.SAOPageModel  
+@inject IAuthorizationService Authorization
+@model ImportarModel
+@inject IPageLayout PageLayout*@
+
+ @*
 
 @{
     PageLayout.Content.Title = L["Importar"].Value;
