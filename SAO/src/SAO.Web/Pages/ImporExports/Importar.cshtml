@@ -1,4 +1,4 @@
-﻿@*@page
+﻿@page
 @using Microsoft.AspNetCore.Authorization
 @using Volo.Abp.AspNetCore.Mvc.UI.Layout
 @using SAO.Permissions
@@ -8,22 +8,8 @@
 @using SAO.Localization
 @inject IHtmlLocalizer<SAOResource> L
 @inject IAuthorizationService Authorization
-@model importarmodel
-@inject IPageLayout PageLayout *@
-
-
-@*@page
-@using Microsoft.AspNetCore.Authorization
-@using Volo.Abp.AspNetCore.Mvc.UI.Layout
-@using SAO.Permissions
-@using SAO.Web.Pages.ImporExports
-@using SAO.Web.Menus 
-@inherits SAO.Web.Pages.SAOPageModel  
-@inject IAuthorizationService Authorization
-@model ImportarModel
-@inject IPageLayout PageLayout*@
-
- @*
+@model  ImportarModel
+@inject IPageLayout PageLayout 
 
 @{
     PageLayout.Content.Title = L["Importar"].Value;
@@ -85,17 +71,27 @@
         <abp-table striped-rows="true" id="tableTiposCambios">
             <thead>
                 <tr>
-                    <th>@L["Fecha"]</th>
-                    <th>@L["Valor"]</th>
-                    <th>@L["Estado"]</th>
+                    <th>@L["NoPermiso"]</th>
+                    <th>@L["Fecha Emision"]</th>
+                    <th>@L["Fecha Solicitud"]</th>
+                    <th>@L["Peso Neto"]</th>
+                    <th>@L["Peso Unitario"]</th>
+                    <th>@L["Cant. Envases"]</th>
+                    <th>@L["No. Factura"]</th>
+
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.ListaTipoCambio)
+                @foreach (var item in Model.ListaLiecncias)
                 {
                     <tr>
-                        <td>@item.Fecha.ToShortDateString()</td>
-                        <td>@item.valor</td>
+                        <td>@item.NoPermiso</td>
+                        <td>@item.FechaEmision.ToShortDateString()</td>
+                        <td>@item.FechaSolicitud.ToShortDateString()</td>
+                        <td>@item.PesoNeto</td>
+                        <td>@item.PesoUnitario</td>
+                        <td>@item.CantEnvvase</td>
+                        <td>@item.NoFactura</td>
                         <td data-toggle="tooltip" data-placement="top" title=""></td>
                     </tr>
                 }
@@ -103,9 +99,9 @@
             <tfoot>
                 <tr>
                     <td colspan="1"><b class="text-primary">Total de Entradas</b></td>
-                    <td><b class="text-primary">@Model.ListaTipoCambio.Count()</b></td>
+                    <td><b class="text-primary">@Model.ListaLiecncias.Count()</b></td>
                 </tr>
             </tfoot>
         </abp-table>
     </abp-card-body>
-</abp-card>*@
+</abp-card>
