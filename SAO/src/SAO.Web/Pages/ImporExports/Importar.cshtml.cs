@@ -17,7 +17,7 @@ namespace SAO.Web.Pages.ImporExports
         public string ErrorMessage { get; set; }
 
         [BindProperty]
-        public List<ImporExportCreateDto> ListaLiecncias { get; set; } = new List<ImporExportCreateDto>();
+        public List<ImporExportCreateDto> ListaLicencias { get; set; } = new List<ImporExportCreateDto>();
 
         public IActionResult OnGet()
         {
@@ -30,6 +30,8 @@ namespace SAO.Web.Pages.ImporExports
 
             try
             {
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // O Commercial si tienes una licencia comercial
+
                 var stream = XlsFile.OpenReadStream();
 
                 //After save excel file in wwwroot and then
@@ -56,7 +58,7 @@ namespace SAO.Web.Pages.ImporExports
                             string Factura = (worksheet.Cells[row, 7].Value ?? string.Empty).ToString().Trim(); 
                              
                             
-                            ListaLiecncias.Add(new ImporExportCreateDto
+                            ListaLicencias.Add(new ImporExportCreateDto
                             {
                                 NoPermiso = Permiso,
                                 FechaEmision = DateTime.Parse(FechaE),

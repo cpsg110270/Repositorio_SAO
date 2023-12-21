@@ -20,18 +20,32 @@ document.querySelector('.custom-file-input').addEventListener('change', function
     nextSibling.innerText = fileName
 })
 
-$("#SaveTiposCambiosButton").click(function () {
+$("#GuardarLicenciasButton").click(function () {
+    alert("EN GUADAR");
+   
+    $.each($("#tableLicencias tbody tr"), function (i, item) {
+        var Permiso = $(this).find('td:eq(0)').html().toString().trim();
+        ALERT(Permiso);
+        var FechaE  = $(this).find('td:eq(1)').html().toString().trim();
+        var FechaS  = $(this).find('td:eq(2)').html().toString().trim();
+        var PesoN   = $(this).find('td:eq(3)').html().toString().trim();
+        var PesoU   = $(this).find('td:eq(4)').html().toString().trim();
+        var CanEnv  = $(this).find('td:eq(5)').html().toString().trim();
+        var Factura = $(this).find('td:eq(6)').html().toString().trim();
+       
 
-    $.each($("#tableTiposCambios tbody tr"), function (i, item) {
-        var fecha = $(this).find('td:eq(0)').html().toString().trim();
-        var valor = $(this).find('td:eq(1)').html().toString().trim();
         abp.ajax({
-            url: '/api/app/tipoCambio',
+            url: '/api/app/ImporExports',
             type: 'POST',
             abpHandleError: false, //DISABLE AUTO ERROR HANDLING
             data: JSON.stringify({
-                fecha: fecha,
-                valor: valor
+                NoPemiso: Permiso,
+                FechaEmision: FechaE,
+                FechaSolicitud: FechaS,
+                PesoNeto: PesoN,
+                PesoUnitario: PesoU,
+                CantEnnvase: CanEnv,
+                NoFactura:Factura
             }),
             success: function (data) {
                 $(item).find('td:eq(2)').html('<span class="badge badge-success">Éxito</span>');

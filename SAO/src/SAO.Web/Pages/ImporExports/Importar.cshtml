@@ -27,13 +27,13 @@
 
 @section scripts
     {
-    <abp-script src="/Pages/ImportExports/importar.js" />
+    <abp-script src="/Pages/ImporExports/importar.js" />
     }
 
 @section content_toolbar {
     @if (await Authorization.IsGrantedAsync(SAOPermissions.ImporExports.Create))
     {
-        <abp-button id="SaveTiposCambiosButton"
+        <abp-button id="GuardarLicenciasButton"
             text="@L["Save"].Value"
             icon="plus"
             button-type="Success" />
@@ -68,7 +68,7 @@
                 </form>
             </abp-column>
         </abp-row>
-        <abp-table striped-rows="true" id="tableTiposCambios">
+        <abp-table striped-rows="true" id="tableLicencias">
             <thead>
                 <tr>
                     <th>@L["NoPermiso"]</th>
@@ -82,7 +82,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.ListaLiecncias)
+                @foreach (var item in Model.ListaLicencias)
                 {
                     <tr>
                         <td>@item.NoPermiso</td>
@@ -99,7 +99,7 @@
             <tfoot>
                 <tr>
                     <td colspan="1"><b class="text-primary">Total de Entradas</b></td>
-                    <td><b class="text-primary">@Model.ListaLiecncias.Count()</b></td>
+                    <td><b class="text-primary">@Model.ListaLicencias.Count()</b></td>
                 </tr>
             </tfoot>
         </abp-table>
