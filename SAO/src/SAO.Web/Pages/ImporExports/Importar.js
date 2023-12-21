@@ -20,12 +20,16 @@ document.querySelector('.custom-file-input').addEventListener('change', function
     nextSibling.innerText = fileName
 })
 
+
+
+
 $("#GuardarLicenciasButton").click(function () {
     alert("EN GUADAR");
-   
-    $.each($("#tableLicencias tbody tr"), function (i, item) {
+
+    $("#tableLicencias > tbody > tr").each(function (i, tr) {
+    /*$.each($("#tableLicencias tbody tr"), function (i, item) {*/
         var Permiso = $(this).find('td:eq(0)').html().toString().trim();
-        ALERT(Permiso);
+        alert(Permiso);
         var FechaE  = $(this).find('td:eq(1)').html().toString().trim();
         var FechaS  = $(this).find('td:eq(2)').html().toString().trim();
         var PesoN   = $(this).find('td:eq(3)').html().toString().trim();
