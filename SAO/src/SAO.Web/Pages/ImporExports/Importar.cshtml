@@ -78,10 +78,25 @@
                     <th>@L["Peso Unitario"]</th>
                     <th>@L["Cant. Envases"]</th>
                     <th>@L["No. Factura"]</th>
-
+                    <th>@L["Obser"]</th>
+                    <th>@L["Es Renovacion"]</th>
+                    <th>@L["Estado"]</th>
+                    <th>@L["Importador"]</th>
+                   @*  <th>@L["Exportador"]</th>
+                    <th>@L["Producto"]</th>
+                    <th>@L["Uni.Medida"]</th>
+                    <th>@L["Tipo Envase"]</th>
+                    <th>@L["Puerto Eentrada"]</th>
+                    <th>@L["Puerto Salida"]</th>
+                    <th>@L["Pais Procedencia"]</th>
+                    <th>@L["Pais Destino"]</th>
+                    <th>@L["Pais Origen"]</th>
+                    <th>@L["Almacen"]</th>
+                    <th>@L["Permiso Renv."]</th> *@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach (var item in Model.ListaLicencias)
                 {
                     <tr>
@@ -92,6 +107,25 @@
                         <td>@item.PesoUnitario</td>
                         <td>@item.CantEnvvase</td>
                         <td>@item.NoFactura</td>
+                        <td>@item.Observaciones</td>
+                        <td>@item.EsRenovacion</td>
+                        <td>@item.Estado</td>
+                        <td>@item.ImportadorId</td>
+                        @* <td>@item.ExportadorId</td>
+                        <td>@item.ProductoId</td>
+                        <td>@item.UnidadMedidaId</td>
+                        <td>@item.TipoEnvaseId</td>
+                        <td>@item.PuertoEntradaId</td>
+                        <td>@item.PuertoSalidaId</td>
+                        <td>@item.PaisProcedenciaId</td>
+                        <td>@item.PaisDestinoId</td>
+                        <td>@item.PaisOrigenId</td>
+                        <td>@item.AlmacenId</td>
+                        <td>@item.PermisoRenov</td>
+ *@
+
+
+                         
                         <td data-toggle="tooltip" data-placement="top" title=""></td>
                     </tr>
                 }

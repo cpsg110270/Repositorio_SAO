@@ -30,7 +30,7 @@ namespace SAO.Web.Pages.ImporExports
 
             try
             {
-                ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // O Commercial si tienes una licencia comercial
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial; 
 
                 var stream = XlsFile.OpenReadStream();
 
@@ -80,33 +80,37 @@ namespace SAO.Web.Pages.ImporExports
                             { estado = "False"; }
                             else { estado = "True"; }
 
+                            if (PermisoR == "")
+                            { PermisoR = "NULL"; }
+
 
                             ListaLicencias.Add(new ImporExportCreateDto
                             {
-                                NoPermiso       = Permiso,
-                                FechaEmision    = DateTime.Parse(FechaE),
-                                FechaSolicitud  = DateTime.Parse(FechaS),
-                                PesoNeto        = Double.Parse(PesoN),
-                                PesoUnitario    = Double.Parse(PesoU),
-                                CantEnvvase     = int.Parse(CantEnv),
-                                NoFactura       = Factura,
-                                Observaciones   = Obser,
-                                EsRenovacion    = bool.Parse(esRen),
-                                Estado          = bool.Parse(estado),
-                                ImportadorId    = Guid.Parse(Impor),
-                                ExportadorId    = Guid.Parse(Expor),
-                                ProductoId      = Guid.Parse(Product),
-                                UnidadMedidaId  = int.Parse(MedidaU),
-                                TipoEnvaseId    = int.Parse(EnvTipo),
+                                NoPermiso = Permiso,
+                                FechaEmision = DateTime.Parse(FechaE),
+                                FechaSolicitud = DateTime.Parse(FechaS),
+                                PesoNeto = Double.Parse(PesoN),
+                                PesoUnitario = Double.Parse(PesoU),
+                                CantEnvvase = int.Parse(CantEnv),
+                                NoFactura = Factura,
+                                Observaciones = Obser,
+                                EsRenovacion = bool.Parse(esRen),
+                                Estado = bool.Parse(estado),
+                                ImportadorId = Guid.Parse(Impor),
+                                ExportadorId = Guid.Parse(Expor),
+                                ProductoId = Guid.Parse(Product),
+                                UnidadMedidaId = int.Parse(MedidaU),
+                                TipoEnvaseId = int.Parse(EnvTipo),
                                 PuertoEntradaId = int.Parse(PuertoE),
-                                PuertoSalidaId  = int.Parse(PuertoS),
-                                PaisProcedenciaId  = int.Parse(PaisP),
-                                PaisDestinoId  = int.Parse(PaisD),
-                                PaisOrigenId    = int.Parse(PaisO),
-                                AlmacenId       = int.Parse(Almacen)
-                              
-                               
-                             });
+                                PuertoSalidaId = int.Parse(PuertoS),
+                                PaisProcedenciaId = int.Parse(PaisP),
+                                PaisDestinoId = int.Parse(PaisD),
+                                PaisOrigenId = int.Parse(PaisO),
+                                AlmacenId = int.Parse(Almacen),
+                                //PermisoRenov=Guid.Parse(PermisoR)
+
+
+                            });
                         }
 
                     }

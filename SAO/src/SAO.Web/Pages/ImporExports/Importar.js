@@ -36,7 +36,23 @@ $("#GuardarLicenciasButton").click(function () {
         var PesoU   = $(this).find('td:eq(4)').html().toString().trim();
         var CanEnv  = $(this).find('td:eq(5)').html().toString().trim();
         var Factura = $(this).find('td:eq(6)').html().toString().trim();
-       
+        var Obser   = $(this).find('td:eq(7)').html().toString().trim();
+        var esREn   = $(this).find('td:eq(8)').html().toString().trim();
+        var estado  = $(this).find('td:eq(9)').html().toString().trim();
+        var Impor   = $(this).find('td:eq(10)').html().toString().trim();
+        var Expor  = $(this).find('td:eq(11)').html().toString().trim();
+        var Product = $(this).find('td:eq(12)').html().toString().trim();
+        var MedidaU = $(this).find('td:eq(13)').html().toString().trim();
+        var EnvTipo = $(this).find('td:eq(14)').html().toString().trim();
+        var PuertoE = $(this).find('td:eq(15)').html().toString().trim();
+        var PuertoS = $(this).find('td:eq(16)').html().toString().trim();
+        var PaisP   = $(this).find('td:eq(17)').html().toString().trim();
+        var PaisD   = $(this).find('td:eq(18)').html().toString().trim();
+        var PaisO   = $(this).find('td:eq(19)').html().toString().trim();
+        var Almacen = $(this).find('td:eq(20)').html().toString().trim();
+        var PermisoR = $(this).find('td:eq(21)').html().toString().trim();
+
+               
 
         abp.ajax({
             url: '/api/app/ImporExports',
@@ -49,7 +65,23 @@ $("#GuardarLicenciasButton").click(function () {
                 PesoNeto: PesoN,
                 PesoUnitario: PesoU,
                 CantEnnvase: CanEnv,
-                NoFactura:Factura
+                NoFactura: Factura,
+                Observaciones = Obser,
+                EsRenovacion = esRen,
+                Estado = estado,
+                ImportadorId = Impor,
+                ExportadorId = Expor,
+                ProductoId = Product,
+                UnidadMedidaId=MedidaU,
+                TipoEnvaseId = EnvTipo,
+                PuertoEntradaId = PuertoE,
+                PuertoSalidaId = PuertoS,
+                PaisProcedenciaId = PaisP,
+                PaisDestinoId = PaisD,
+                PaisOrigenId = PaisO,
+                AlmacenId = Almacen,
+                PermisoRenov=PermisoR
+
             }),
             success: function (data) {
                 $(item).find('td:eq(2)').html('<span class="badge badge-success">Éxito</span>');
