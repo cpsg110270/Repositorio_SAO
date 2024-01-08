@@ -7,6 +7,10 @@ namespace SAO.Web.Pages.Importadors
     public class IndexModel : AbpPageModel
     {
         public string? NombreImportadorFilter { get; set; }
+        public int? NoImportadorFilter { get; set; }
+
+        public string? NoRUCFilter { get; set; }
+
 
         private readonly IImportadorsAppService _importadorsAppService;
 
@@ -14,6 +18,7 @@ namespace SAO.Web.Pages.Importadors
         {
             _importadorsAppService = importadorsAppService;
         }
+
 
         public async Task OnGetAsync()
         {

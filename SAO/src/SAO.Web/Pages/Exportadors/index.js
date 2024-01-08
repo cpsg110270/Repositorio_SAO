@@ -19,6 +19,7 @@ $(function () {
 	var getFilter = function() {
         return {
             filterText: $("#FilterText").val(),
+            noImportador: $("#NoImportadorFilter"),
             nombreExportador: $("#NombreExportadorFilter").val()
         };
     };
@@ -64,6 +65,7 @@ $(function () {
                         ]
                 }
             },
+			{ data: "noImportador" },
 			{ data: "nombreExportador" }
         ]
     }));

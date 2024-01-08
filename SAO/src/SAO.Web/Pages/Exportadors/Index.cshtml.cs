@@ -6,6 +6,7 @@ namespace SAO.Web.Pages.Exportadors
 {
     public class IndexModel : AbpPageModel
     {
+        public string? NoImportadorFilter { get; set; }
         public string? NombreExportadorFilter { get; set; }
 
         private readonly IExportadorsAppService _exportadorsAppService;

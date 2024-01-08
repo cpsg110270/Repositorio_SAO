@@ -75,15 +75,15 @@
                     <th>@L["Fecha Emision"]</th>
                     <th>@L["Fecha Solicitud"]</th>
                     <th>@L["Peso Neto"]</th>
+                    <th>@L["Importador"]</th>
+                    <th>@L["Exportador"]</th>
+                    <th>@L["Producto"]</th>
                     <th>@L["Peso Unitario"]</th>
                     <th>@L["Cant. Envases"]</th>
                     <th>@L["No. Factura"]</th>
                     <th>@L["Obser"]</th>
                     <th>@L["Es Renovacion"]</th>
                     <th>@L["Estado"]</th>
-                    <th>@L["Importador"]</th>
-                   @*  <th>@L["Exportador"]</th>
-                    <th>@L["Producto"]</th>
                     <th>@L["Uni.Medida"]</th>
                     <th>@L["Tipo Envase"]</th>
                     <th>@L["Puerto Eentrada"]</th>
@@ -92,7 +92,7 @@
                     <th>@L["Pais Destino"]</th>
                     <th>@L["Pais Origen"]</th>
                     <th>@L["Almacen"]</th>
-                    <th>@L["Permiso Renv."]</th> *@
+                    <th>@L["Permiso Renv."]</th>  
                 </tr>
             </thead>
             <tbody>
@@ -104,15 +104,15 @@
                         <td>@item.FechaEmision.ToShortDateString()</td>
                         <td>@item.FechaSolicitud.ToShortDateString()</td>
                         <td>@item.PesoNeto</td>
+                        <td>@item.ImportadorId</td>
+                        <td>@item.ExportadorId</td>
+                        <td>@item.ProductoId</td>
                         <td>@item.PesoUnitario</td>
                         <td>@item.CantEnvvase</td>
                         <td>@item.NoFactura</td>
                         <td>@item.Observaciones</td>
                         <td>@item.EsRenovacion</td>
-                        <td>@item.Estado</td>
-                        <td>@item.ImportadorId</td>
-                        @* <td>@item.ExportadorId</td>
-                        <td>@item.ProductoId</td>
+                        <td>@item.Estado</td> 
                         <td>@item.UnidadMedidaId</td>
                         <td>@item.TipoEnvaseId</td>
                         <td>@item.PuertoEntradaId</td>
@@ -122,7 +122,7 @@
                         <td>@item.PaisOrigenId</td>
                         <td>@item.AlmacenId</td>
                         <td>@item.PermisoRenov</td>
- *@
+ 
 
 
                          

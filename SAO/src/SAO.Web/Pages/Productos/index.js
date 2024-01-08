@@ -37,6 +37,7 @@ $(function () {
 	var getFilter = function() {
         return {
             filterText: $("#FilterText").val(),
+            noProducto: $("#NoProductoFilter").val(),
             nombreComercia: $("#NombreComerciaFilter").val(),
 			uso: $("#UsoFilter").val(),
 			fabricanteId: $("#FabricanteIdFilter").val(),			asraeId: $("#AsraeIdFilter").val(),			tipoProductoId: $("#TipoProductoIdFilter").val(),			sustanciaElementalId: $("#SustanciaElementalFilter").val()
@@ -84,6 +85,7 @@ $(function () {
                         ]
                 }
             },
+			{ data: "producto.noProducto" },
 			{ data: "producto.nombreComercia" },
 			{ data: "producto.uso" },
             {

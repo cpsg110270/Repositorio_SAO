@@ -26,11 +26,16 @@ $(function () {
     //     modalClass: "Index"
         
     //});
-
-	var getFilter = function() {
+    alert("enla funcion");
+    var getFilter = function () {
+       
         return {
+            
             filterText: $("#FilterText").val(),
-            nombreImportador: $("#NombreImportadorFilter").val()
+            nombreImportador: $("#NombreImportadorFilter").val(),
+            noRuc: $("#NoRUCFilter").val(),
+            noImportador: $("#NoImportadorFilter").val()
+
         };
     };
 
@@ -95,7 +100,9 @@ $(function () {
                         ]
                 }
             },
-			{ data: "nombreImportador" }
+			{ data: "noImportador" },
+			{ data: "nombreImportador" },
+			{ data: "noRUC" }
         ]
     }));
 

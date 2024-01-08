@@ -13,6 +13,7 @@ namespace SAO.Web.Pages.Productos
 {
     public class IndexModel : AbpPageModel
     {
+        public int? NoProducto { get; set; }
         public string? NombreComerciaFilter { get; set; }
         public string? UsoFilter { get; set; }
         [SelectItems(nameof(FabricanteLookupList))]

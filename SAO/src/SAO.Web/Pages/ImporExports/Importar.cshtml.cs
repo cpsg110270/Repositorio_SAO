@@ -49,14 +49,14 @@ namespace SAO.Web.Pages.ImporExports
                         var rowCount = worksheet.Dimension.Rows;
                         for (int row = 2; row <= rowCount; row++)
                         {
-                            string Permiso  = (worksheet.Cells[row, 1].Value ?? string.Empty).ToString().Trim();
-                            string FechaE   = (worksheet.Cells[row, 2].Value ?? string.Empty).ToString().Trim();
-                            string FechaS   = (worksheet.Cells[row, 3].Value ?? string.Empty).ToString().Trim();
-                            string PesoN    = (worksheet.Cells[row, 4].Value ?? string.Empty).ToString().Trim(); 
-                            string PesoU    = (worksheet.Cells[row, 5].Value ?? string.Empty).ToString().Trim(); 
-                            string CantEnv  = (worksheet.Cells[row, 6].Value ?? string.Empty).ToString().Trim(); 
-                            string Factura  = (worksheet.Cells[row, 7].Value ?? string.Empty).ToString().Trim(); 
-                            string Obser    = (worksheet.Cells[row, 8].Value ?? string.Empty).ToString().Trim(); 
+                            string Permiso = (worksheet.Cells[row, 1].Value ?? string.Empty).ToString().Trim();
+                            string FechaE = (worksheet.Cells[row, 2].Value ?? string.Empty).ToString().Trim();
+                            string FechaS = (worksheet.Cells[row, 3].Value ?? string.Empty).ToString().Trim();
+                            string PesoN = (worksheet.Cells[row, 4].Value ?? string.Empty).ToString().Trim();
+                            string PesoU = (worksheet.Cells[row, 5].Value ?? string.Empty).ToString().Trim();
+                            string CantEnv = (worksheet.Cells[row, 6].Value ?? string.Empty).ToString().Trim();
+                            string Factura = (worksheet.Cells[row, 7].Value ?? string.Empty).ToString().Trim();
+                            string Obser = (worksheet.Cells[row, 8].Value ?? string.Empty).ToString().Trim();
                             string esRen    = (worksheet.Cells[row, 9].Value ?? string.Empty).ToString().Trim(); 
                             string estado   = (worksheet.Cells[row, 10].Value ?? string.Empty).ToString().Trim(); 
                             string Impor    = (worksheet.Cells[row, 11].Value ?? string.Empty).ToString().Trim(); 
@@ -81,8 +81,16 @@ namespace SAO.Web.Pages.ImporExports
                             else { estado = "True"; }
 
                             if (PermisoR == "")
-                            { PermisoR = "NULL"; }
+                            { PermisoR = "00000000-0000-0000-0000-000000000000"; }
+                                          
 
+                            if (PuertoS == "")
+                            { PuertoS = "0"; }
+
+                            if (PaisD == "")
+                            { PaisD = "0"; }
+
+                            
 
                             ListaLicencias.Add(new ImporExportCreateDto
                             {
@@ -107,7 +115,7 @@ namespace SAO.Web.Pages.ImporExports
                                 PaisDestinoId = int.Parse(PaisD),
                                 PaisOrigenId = int.Parse(PaisO),
                                 AlmacenId = int.Parse(Almacen),
-                                //PermisoRenov=Guid.Parse(PermisoR)
+                               PermisoRenov=Guid.Parse(PermisoR)
 
 
                             });
