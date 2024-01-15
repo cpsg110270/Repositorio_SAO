@@ -77,6 +77,21 @@
       "DtoNamespace": "SAO.Importadors",
       "DtoEntityName": "ImportadorDto",
       "Type": "Guid"
+    },
+    {
+      "EntityNameWithDuplicationNumber": "Asrae",
+      "EntitySetNameWithDuplicationNumber": "Asraes",
+      "ReferencePropertyName": "Asrae",
+      "UiPickType": "Dropdown",
+      "IsRequired": false,
+      "Name": "AsraeId",
+      "DisplayProperty": "Codigo_ASHRAE",
+      "Namespace": "SAO.Asraes",
+      "EntityName": "Asrae",
+      "EntitySetName": "Asraes",
+      "DtoNamespace": "SAO.Asraes",
+      "DtoEntityName": "AsraeDto",
+      "Type": "int"
     }
   ],
   "NavigationConnections": [],

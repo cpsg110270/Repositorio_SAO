@@ -79,6 +79,9 @@ namespace SAO.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int?>("AsraeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Año")
                         .HasColumnType("int")
                         .HasColumnName("Año");
@@ -107,6 +110,8 @@ namespace SAO.Migrations
                         .HasColumnName("LastModifierId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AsraeId");
 
                     b.HasIndex("ImportadorId");
 
@@ -2684,6 +2689,11 @@ namespace SAO.Migrations
 
             modelBuilder.Entity("SAO.CuotaImportadors.CuotaImportador", b =>
                 {
+                    b.HasOne("SAO.Asraes.Asrae", null)
+                        .WithMany()
+                        .HasForeignKey("AsraeId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
                     b.HasOne("SAO.Importadors.Importador", null)
                         .WithMany()
                         .HasForeignKey("ImportadorId")

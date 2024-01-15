@@ -19,13 +19,13 @@ namespace SAO.CuotaImportadors
         }
 
         public async Task<CuotaImportador> CreateAsync(
-        Guid importadorId, int año, decimal cuota)
+        Guid importadorId, int? asraeId, int año, decimal cuota)
         {
             Check.NotNull(importadorId, nameof(importadorId));
 
             var cuotaImportador = new CuotaImportador(
              GuidGenerator.Create(),
-             importadorId, año, cuota
+             importadorId, asraeId, año, cuota
              );
 
             return await _cuotaImportadorRepository.InsertAsync(cuotaImportador);
@@ -33,7 +33,7 @@ namespace SAO.CuotaImportadors
 
         public async Task<CuotaImportador> UpdateAsync(
             Guid id,
-            Guid importadorId, int año, decimal cuota
+            Guid importadorId, int? asraeId, int año, decimal cuota
         )
         {
             Check.NotNull(importadorId, nameof(importadorId));
@@ -41,6 +41,7 @@ namespace SAO.CuotaImportadors
             var cuotaImportador = await _cuotaImportadorRepository.GetAsync(id);
 
             cuotaImportador.ImportadorId = importadorId;
+            cuotaImportador.AsraeId = asraeId;
             cuotaImportador.Año = año;
             cuotaImportador.Cuota = cuota;
 
