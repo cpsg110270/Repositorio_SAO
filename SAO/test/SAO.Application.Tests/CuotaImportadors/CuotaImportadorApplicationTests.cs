@@ -27,19 +27,19 @@ namespace SAO.CuotaImportadors
             // Assert
             result.TotalCount.ShouldBe(2);
             result.Items.Count.ShouldBe(2);
-            result.Items.Any(x => x.CuotaImportador.Id == Guid.Parse("bdc70f50-4bfd-423d-8018-8ad9995035b1")).ShouldBe(true);
-            result.Items.Any(x => x.CuotaImportador.Id == Guid.Parse("fa080ef6-e159-4a0c-838b-9190d30092a7")).ShouldBe(true);
+            result.Items.Any(x => x.CuotaImportador.Id == Guid.Parse("9792ab87-5e58-4884-b7ac-642ab57a3303")).ShouldBe(true);
+            result.Items.Any(x => x.CuotaImportador.Id == Guid.Parse("46fe4e12-301c-4aa7-84c3-81a4e4cbaaa1")).ShouldBe(true);
         }
 
         [Fact]
         public async Task GetAsync()
         {
             // Act
-            var result = await _cuotaImportadorsAppService.GetAsync(Guid.Parse("bdc70f50-4bfd-423d-8018-8ad9995035b1"));
+            var result = await _cuotaImportadorsAppService.GetAsync(Guid.Parse("9792ab87-5e58-4884-b7ac-642ab57a3303"));
 
             // Assert
             result.ShouldNotBeNull();
-            result.Id.ShouldBe(Guid.Parse("bdc70f50-4bfd-423d-8018-8ad9995035b1"));
+            result.Id.ShouldBe(Guid.Parse("9792ab87-5e58-4884-b7ac-642ab57a3303"));
         }
 
         [Fact]
@@ -48,9 +48,10 @@ namespace SAO.CuotaImportadors
             // Arrange
             var input = new CuotaImportadorCreateDto
             {
-                Año = 1957684780,
-                Cuota = 1214897360,
-                ImportadorId = Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf")
+                Año = 1050951241,
+                Cuota = 373261600,
+                ImportadorId = Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf"),
+
             };
 
             // Act
@@ -60,8 +61,8 @@ namespace SAO.CuotaImportadors
             var result = await _cuotaImportadorRepository.FindAsync(c => c.Id == serviceResult.Id);
 
             result.ShouldNotBe(null);
-            result.Año.ShouldBe(1957684780);
-            result.Cuota.ShouldBe(1214897360);
+            result.Año.ShouldBe(1050951241);
+            result.Cuota.ShouldBe(373261600);
         }
 
         [Fact]
@@ -70,30 +71,31 @@ namespace SAO.CuotaImportadors
             // Arrange
             var input = new CuotaImportadorUpdateDto()
             {
-                Año = 1507602845,
-                Cuota = 663668842,
-                ImportadorId = Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf")
+                Año = 2144386981,
+                Cuota = 60086001,
+                ImportadorId = Guid.Parse("5ba62d29-2b7d-4f81-b985-290658f73cbf"),
+
             };
 
             // Act
-            var serviceResult = await _cuotaImportadorsAppService.UpdateAsync(Guid.Parse("bdc70f50-4bfd-423d-8018-8ad9995035b1"), input);
+            var serviceResult = await _cuotaImportadorsAppService.UpdateAsync(Guid.Parse("9792ab87-5e58-4884-b7ac-642ab57a3303"), input);
 
             // Assert
             var result = await _cuotaImportadorRepository.FindAsync(c => c.Id == serviceResult.Id);
 
             result.ShouldNotBe(null);
-            result.Año.ShouldBe(1507602845);
-            result.Cuota.ShouldBe(663668842);
+            result.Año.ShouldBe(2144386981);
+            result.Cuota.ShouldBe(60086001);
         }
 
         [Fact]
         public async Task DeleteAsync()
         {
             // Act
-            await _cuotaImportadorsAppService.DeleteAsync(Guid.Parse("bdc70f50-4bfd-423d-8018-8ad9995035b1"));
+            await _cuotaImportadorsAppService.DeleteAsync(Guid.Parse("9792ab87-5e58-4884-b7ac-642ab57a3303"));
 
             // Assert
-            var result = await _cuotaImportadorRepository.FindAsync(c => c.Id == Guid.Parse("bdc70f50-4bfd-423d-8018-8ad9995035b1"));
+            var result = await _cuotaImportadorRepository.FindAsync(c => c.Id == Guid.Parse("9792ab87-5e58-4884-b7ac-642ab57a3303"));
 
             result.ShouldBeNull();
         }

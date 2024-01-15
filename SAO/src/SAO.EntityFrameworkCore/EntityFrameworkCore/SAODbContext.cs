@@ -450,6 +450,18 @@ public class SAODbContext :
         }
         if (builder.IsHostDatabase())
         {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
+
+        }
+        if (builder.IsHostDatabase())
+        {
             builder.Entity<CuotaImportador>(b =>
 {
     b.ToTable(SAOConsts.DbTablePrefix + "CuotaImportadors", SAOConsts.DbSchema);
@@ -457,6 +469,7 @@ public class SAODbContext :
     b.Property(x => x.Año).HasColumnName(nameof(CuotaImportador.Año));
     b.Property(x => x.Cuota).HasColumnName(nameof(CuotaImportador.Cuota));
     b.HasOne<Importador>().WithMany().IsRequired().HasForeignKey(x => x.ImportadorId).OnDelete(DeleteBehavior.NoAction);
+    b.HasOne<Asrae>().WithMany().HasForeignKey(x => x.AsraeId).OnDelete(DeleteBehavior.NoAction);
 });
 
         }

@@ -5,33 +5,16 @@
 namespace SAO.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdatedCuotaImportador23121222040634 : Migration
+    public partial class UpdatedCuotaImportador24011421561577 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropForeignKey(
-                name: "FK_AppCuotaImportadors_AppAsraes_AsraeId",
-                table: "AppCuotaImportadors");
-
-            migrationBuilder.DropIndex(
-                name: "IX_AppCuotaImportadors_AsraeId",
-                table: "AppCuotaImportadors");
-
-            migrationBuilder.DropColumn(
-                name: "AsraeId",
-                table: "AppCuotaImportadors");
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
                 name: "AsraeId",
                 table: "AppCuotaImportadors",
                 type: "int",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppCuotaImportadors_AsraeId",
@@ -44,6 +27,22 @@ namespace SAO.Migrations
                 column: "AsraeId",
                 principalTable: "AppAsraes",
                 principalColumn: "Id");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_AppCuotaImportadors_AppAsraes_AsraeId",
+                table: "AppCuotaImportadors");
+
+            migrationBuilder.DropIndex(
+                name: "IX_AppCuotaImportadors_AsraeId",
+                table: "AppCuotaImportadors");
+
+            migrationBuilder.DropColumn(
+                name: "AsraeId",
+                table: "AppCuotaImportadors");
         }
     }
 }
