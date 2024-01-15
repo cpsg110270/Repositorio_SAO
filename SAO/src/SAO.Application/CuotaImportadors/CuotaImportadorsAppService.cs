@@ -1,5 +1,4 @@
 using SAO.Shared;
-using SAO.Asraes;
 using SAO.Importadors;
 using System;
 using System.IO;
@@ -25,20 +24,18 @@ namespace SAO.CuotaImportadors
         private readonly ICuotaImportadorRepository _cuotaImportadorRepository;
         private readonly CuotaImportadorManager _cuotaImportadorManager;
         private readonly IRepository<Importador, Guid> _importadorRepository;
-        private readonly IRepository<Asrae, int> _asraeRepository;
 
-        public CuotaImportadorsAppService(ICuotaImportadorRepository cuotaImportadorRepository, CuotaImportadorManager cuotaImportadorManager, IRepository<Importador, Guid> importadorRepository, IRepository<Asrae, int> asraeRepository)
+        public CuotaImportadorsAppService(ICuotaImportadorRepository cuotaImportadorRepository, CuotaImportadorManager cuotaImportadorManager, IRepository<Importador, Guid> importadorRepository)
         {
 
             _cuotaImportadorRepository = cuotaImportadorRepository;
             _cuotaImportadorManager = cuotaImportadorManager; _importadorRepository = importadorRepository;
-            _asraeRepository = asraeRepository;
         }
 
         public virtual async Task<PagedResultDto<CuotaImportadorWithNavigationPropertiesDto>> GetListAsync(GetCuotaImportadorsInput input)
         {
-            var totalCount = await _cuotaImportadorRepository.GetCountAsync(input.FilterText, input.AñoMin, input.AñoMax, input.CuotaMin, input.CuotaMax, input.ImportadorId, input.AsraeId);
-            var items = await _cuotaImportadorRepository.GetListWithNavigationPropertiesAsync(input.FilterText, input.AñoMin, input.AñoMax, input.CuotaMin, input.CuotaMax, input.ImportadorId, input.AsraeId, input.Sorting, input.MaxResultCount, input.SkipCount);
+            var totalCount = await _cuotaImportadorRepository.GetCountAsync(input.FilterText, input.AñoMin, input.AñoMax, input.CuotaMin, input.CuotaMax, input.ImportadorId);
+            var items = await _cuotaImportadorRepository.GetListWithNavigationPropertiesAsync(input.FilterText, input.AñoMin, input.AñoMax, input.CuotaMin, input.CuotaMax, input.ImportadorId, input.Sorting, input.MaxResultCount, input.SkipCount);
 
             return new PagedResultDto<CuotaImportadorWithNavigationPropertiesDto>
             {
@@ -74,22 +71,6 @@ namespace SAO.CuotaImportadors
             };
         }
 
-        public virtual async Task<PagedResultDto<LookupDto<int>>> GetAsraeLookupAsync(LookupRequestDto input)
-        {
-            var query = (await _asraeRepository.GetQueryableAsync())
-                .WhereIf(!string.IsNullOrWhiteSpace(input.Filter),
-                    x => x.Codigo_ASHRAE != null &&
-                         x.Codigo_ASHRAE.Contains(input.Filter));
-
-            var lookupData = await query.PageBy(input.SkipCount, input.MaxResultCount).ToDynamicListAsync<Asrae>();
-            var totalCount = query.Count();
-            return new PagedResultDto<LookupDto<int>>
-            {
-                TotalCount = totalCount,
-                Items = ObjectMapper.Map<List<Asrae>, List<LookupDto<int>>>(lookupData)
-            };
-        }
-
         [Authorize(SAOPermissions.CuotaImportadors.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
@@ -105,7 +86,7 @@ namespace SAO.CuotaImportadors
             }
 
             var cuotaImportador = await _cuotaImportadorManager.CreateAsync(
-            input.ImportadorId, input.AsraeId, input.Año, input.Cuota
+            input.ImportadorId, input.Año, input.Cuota
             );
 
             return ObjectMapper.Map<CuotaImportador, CuotaImportadorDto>(cuotaImportador);
@@ -121,7 +102,7 @@ namespace SAO.CuotaImportadors
 
             var cuotaImportador = await _cuotaImportadorManager.UpdateAsync(
             id,
-            input.ImportadorId, input.AsraeId, input.Año, input.Cuota
+            input.ImportadorId, input.Año, input.Cuota
             );
 
             return ObjectMapper.Map<CuotaImportador, CuotaImportadorDto>(cuotaImportador);

@@ -12,7 +12,6 @@ namespace SAO.CuotaImportadors
         public decimal? CuotaMin { get; set; }
         public decimal? CuotaMax { get; set; }
         public Guid? ImportadorId { get; set; }
-        public int? AsraeId { get; set; }
 
         public GetCuotaImportadorsInput()
         {

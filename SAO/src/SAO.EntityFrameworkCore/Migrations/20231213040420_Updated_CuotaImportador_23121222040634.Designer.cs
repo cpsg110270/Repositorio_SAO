@@ -13,8 +13,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace SAO.Migrations
 {
     [DbContext(typeof(SAODbContext))]
-    [Migration("20240115030415_Updated_CuotaImportador_24011421013077")]
-    partial class UpdatedCuotaImportador24011421013077
+    [Migration("20231213040420_Updated_CuotaImportador_23121222040634")]
+    partial class UpdatedCuotaImportador23121222040634
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,9 +82,6 @@ namespace SAO.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("AsraeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Año")
                         .HasColumnType("int")
                         .HasColumnName("Año");
@@ -113,8 +110,6 @@ namespace SAO.Migrations
                         .HasColumnName("LastModifierId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AsraeId");
 
                     b.HasIndex("ImportadorId");
 
@@ -2692,11 +2687,6 @@ namespace SAO.Migrations
 
             modelBuilder.Entity("SAO.CuotaImportadors.CuotaImportador", b =>
                 {
-                    b.HasOne("SAO.Asraes.Asrae", null)
-                        .WithMany()
-                        .HasForeignKey("AsraeId")
-                        .OnDelete(DeleteBehavior.NoAction);
-
                     b.HasOne("SAO.Importadors.Importador", null)
                         .WithMany()
                         .HasForeignKey("ImportadorId")

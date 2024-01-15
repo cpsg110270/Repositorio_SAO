@@ -16,8 +16,6 @@ namespace SAO.CuotaImportadors
 
         Task<PagedResultDto<LookupDto<Guid>>> GetImportadorLookupAsync(LookupRequestDto input);
 
-        Task<PagedResultDto<LookupDto<int>>> GetAsraeLookupAsync(LookupRequestDto input);
-
         Task DeleteAsync(Guid id);
 
         Task<CuotaImportadorDto> CreateAsync(CuotaImportadorCreateDto input);
