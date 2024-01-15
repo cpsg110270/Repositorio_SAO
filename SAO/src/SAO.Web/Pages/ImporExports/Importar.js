@@ -51,15 +51,14 @@ $("#GuardarLicenciasButton").click(function () {
         var PaisO   = $(this).find('td:eq(19)').html().toString().trim();
         var Almacen = $(this).find('td:eq(20)').html().toString().trim();
         var PermisoR = $(this).find('td:eq(21)').html().toString().trim();
-
     
        
         abp.ajax({
             url: abp.appPath + 'api/app/impor-exports',
             type: 'POST',
             abpHandleError: false, //DISABLE AUTO ERROR HANDLING
-            
-            data: JSON.stringify({
+
+            /*data: JSON.stringify({
                 NoPemiso: Permiso,
                 FechaEmision: FechaE,
                 FechaSolicitud: FechaS,
@@ -83,6 +82,55 @@ $("#GuardarLicenciasButton").click(function () {
                 AlmacenId : Almacen,
                 PermisoRenov :PermisoR
 
+            }),*/
+            /*data: JSON.stringify({
+                NoPermiso: "string",
+                FechaEmision: "2024-01-15T04:53:50.056Z",
+                FechaSolicitud: "2024-01-15T04:53:50.056Z",
+                PesoNeto: 0,
+                PesoUnitario: 0,
+                CantEnvvase: 0,
+                NoFactura: "string",
+                Observaciones: "string",
+                EsRenovacion: true,
+                Estado: true,
+                ImportadorId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                ExportadorId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                ProductoId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                UnidadMedidaId: 0,
+                TipoEnvaseId: 0,
+                PuertoEntradaId: 0,
+                PuertoSalidaId: 0,
+                PaisProcedenciaId: 0,
+                PaisDestinoId: 0,
+                PaisOrigenId: 0,
+                AlmacenId: 0,
+                PermisoRenov: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                PermisoDe: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }),*/
+            data: JSON.stringify({
+                NoPermiso: Permiso,
+                FechaEmision: FechaE,
+                FechaSolicitud: FechaS,
+                PesoNeto: parseFloat(PesoN),
+                ImportadorId: Impor,
+                ExportadorId: Expor,
+                ProductoId: Product,
+                PesoUnitario: parseFloat(PesoU),
+                CantEnvvase: parseFloat(CanEnv),
+                NoFactura: Factura,
+                Observaciones: Obser,
+                EsRenovacion: esRen === "true" ? true : false,
+                Estado: estado === "true" ? true : false,
+                UnidadMedidaId: parseInt(MedidaU),
+                TipoEnvaseId: parseInt(EnvTipo),
+                PuertoEntradaId: parseInt(PuertoE),
+                PuertoSalidaId: parseInt(PuertoS),
+                PaisProcedenciaId: parseInt(PaisP),
+                PaisDestinoId: parseInt(PaisD),
+                PaisOrigenId: parseInt(PaisO),
+                AlmacenId: parseInt(Almacen),
+                PermisoRenov: PermisoR
             }),
             success: function (data) {
                 $(item).find('td:eq(2)').html('<span class="badge badge-success">Éxito</span>');

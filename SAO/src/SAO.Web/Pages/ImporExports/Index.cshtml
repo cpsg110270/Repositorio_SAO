@@ -21,7 +21,7 @@
 }
 
 @section content_toolbar {
-    <a asp-controller="ImporExports" asp-action="Importar" class="btn btn-primary"><i class="fa fa-upload"></i> @L["Importar"].Value</a>
+    <a asp-controller="ImporExports" asp-action="Importar" class="btn btn-sm btn-primary"><i class="fa fa-upload"></i> @L["Importar"].Value</a>
     <abp-button id="ExportToExcelButton" text="@L["ExportToExcel"].Value" icon="download" size="Small" button-type="Primary" />
     
     @if (await Authorization.IsGrantedAsync(SAOPermissions.ImporExports.Create))

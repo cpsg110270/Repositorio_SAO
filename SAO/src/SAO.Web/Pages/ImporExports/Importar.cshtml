@@ -18,17 +18,17 @@
 
 @section styles
     {
-    <style>
+@*     <style>
         .input-group > .custom-file:not(:last-child) .custom-file-label, .input-group > .custom-file:not(:last-child) .custom-file-label::after {
             content: "Examinar";
         }
-    </style>
+    </style> *@
 }
 
 @section scripts
-    {
+{
     <abp-script src="/Pages/ImporExports/importar.js" />
-    }
+}
 
 @section content_toolbar {
     @if (await Authorization.IsGrantedAsync(SAOPermissions.ImporExports.Create))
@@ -52,7 +52,7 @@
             <abp-column size-md="_12">
                 <form method="post" asp-page-handler="Import" class="text-left form-validate" enctype="multipart/form-data" id="form-import">
                     <div class="container py-3">
-                        <div class="input-group">
+@*                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-paperclip"></i></span>
                             </div>
@@ -63,6 +63,19 @@
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">Leer archivo de Excel</button>
                             </div>
+                        </div> *@
+                        <div class="input-group">
+                            <input type="file"
+                                   class="form-control custom-file-input"
+                                   asp-for="XlsFile"
+                                   id="inputGroupFile04"
+                                   aria-describedby="inputGroupFileAddon04"
+                                   aria-label="Upload" />
+                            <button class="btn btn-primary"
+                                    type="submit"
+                                    id="inputGroupFileAddon04">
+                                Leer archivo de Excel
+                            </button>
                         </div>
                     </div>
                 </form>
