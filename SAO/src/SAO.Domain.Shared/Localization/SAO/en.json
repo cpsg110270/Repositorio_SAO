@@ -165,6 +165,19 @@
     "Menu:CuotaImportadors": "Cuota Importadors",
     "Menu:ReportViewer": "Informes",
     "Menu:Informes": "Informes",
-    "Menu:Registro Importaciones/Exportaciones": "Importaciones/Exportaciones"
+    "Menu:Registro Importaciones/Exportaciones": "Importaciones/Exportaciones",
+    "Permission:TotalImportacioness": "Total Importacioness",
+    "TotalImportacioness": "Total Importacioness",
+    "NewTotalImportaciones": "New Total Importaciones",
+    "Anio": "Anio",
+    "CuotaAsignada": "Cuota Asignada",
+    "CuotaConsumida": "Cuota Consumida",
+    "MinAnio": "Min Anio",
+    "MinCuotaAsignada": "Min Cuota Asignada",
+    "MinCuotaConsumida": "Min Cuota Consumida",
+    "MaxAnio": "Max Anio",
+    "MaxCuotaAsignada": "Max Cuota Asignada",
+    "MaxCuotaConsumida": "Max Cuota Consumida",
+    "Menu:TotalImportacioness": "Total Importacioness"
   }
 }

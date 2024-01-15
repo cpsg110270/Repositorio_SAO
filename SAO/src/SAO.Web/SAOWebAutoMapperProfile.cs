@@ -1,3 +1,5 @@
+using SAO.Web.Pages.TotalImportacioness;
+using SAO.TotalImportacioness;
 using AutoMapper;
 using SAO.Almacens;
 using SAO.Asraes;
@@ -98,5 +100,9 @@ public class SAOWebAutoMapperProfile : Profile
         CreateMap<CuotaImportadorDto, CuotaImportadorUpdateViewModel>();
         CreateMap<CuotaImportadorUpdateViewModel, CuotaImportadorUpdateDto>();
         CreateMap<CuotaImportadorCreateViewModel, CuotaImportadorCreateDto>();
+
+        CreateMap<TotalImportacionesDto, TotalImportacionesUpdateViewModel>();
+        CreateMap<TotalImportacionesUpdateViewModel, TotalImportacionesUpdateDto>();
+        CreateMap<TotalImportacionesCreateViewModel, TotalImportacionesCreateDto>();
     }
 }

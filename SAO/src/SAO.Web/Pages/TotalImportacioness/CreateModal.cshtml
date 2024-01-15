@@ -1,0 +1,48 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using SAO.Web.Pages.TotalImportacioness
+@using SAO.TotalImportacioness;
+@using System.Globalization
+@inject IHtmlLocalizer<SAOResource> L
+@model CreateModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/TotalImportacioness/CreateModal" autocomplete="off">
+    <abp-modal id="TotalImportacionesCreateModal">
+        <abp-modal-header title="@L["NewTotalImportaciones"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    
+            <abp-input asp-for="TotalImportaciones.Anio"  />
+
+            <abp-input asp-for="TotalImportaciones.CuotaAsignada"  />
+
+            <abp-input asp-for="TotalImportaciones.CuotaConsumida"  />
+
+                    <div class="form-group">
+                <label for="TotalImportaciones_ImportadorId">@L["Importador"]</label>
+                <select id="TotalImportaciones_ImportadorId"
+                        class="custom-select form-control"
+                        name="TotalImportaciones.ImportadorId"
+                        data-value="@Model.TotalImportaciones.ImportadorId" required>
+                </select>
+            </div>
+            <abp-select asp-for="TotalImportaciones.TipoProductoId" asp-items="Model.TipoProductoLookupListRequired" label="@L["TipoProducto"].Value"/><div class="form-group">
+                <label for="TotalImportaciones_AsraeId">@L["Asrae"]</label>
+                <select id="TotalImportaciones_AsraeId"
+                        class="custom-select form-control"
+                        name="TotalImportaciones.AsraeId"
+                        data-value="@Model.TotalImportaciones.AsraeId" required>
+                </select>
+            </div>
+
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using SAO.Localization;
 using SAO.Permissions;
 using System.Threading.Tasks;
@@ -97,7 +99,6 @@ public class SAOMenuContributor : IMenuContributor
 
         context.Menu.AddItem(catalogosGenerales);
 
-
         catalogosGenerales.AddItem(
           new ApplicationMenuItem(
                SAOMenus.Almacens,
@@ -170,8 +171,6 @@ public class SAOMenuContributor : IMenuContributor
                 requiredPermissionName: SAOPermissions.PuertoEntradaSalidas.Default)
         );
 
-
-
         catalogosGenerales.AddItem(
           new ApplicationMenuItem(
               SAOMenus.TipoEnvases,
@@ -198,7 +197,6 @@ public class SAOMenuContributor : IMenuContributor
                 icon: "fa fa-file-alt",
                 requiredPermissionName: SAOPermissions.TipoProductos.Default)
         );
-
 
         catalogosGenerales.AddItem(
            new ApplicationMenuItem(
@@ -278,6 +276,14 @@ public class SAOMenuContributor : IMenuContributor
         //        requiredPermissionName: SAOPermissions.Reportes)
         //);
 
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                SAOMenus.TotalImportacioness,
+                l["Menu:TotalImportacioness"],
+                url: "/TotalImportacioness",
+                icon: "fa fa-calculator",
+                requiredPermissionName: SAOPermissions.TotalImportacioness.Default)
+        );
         return Task.CompletedTask;
     }
 }

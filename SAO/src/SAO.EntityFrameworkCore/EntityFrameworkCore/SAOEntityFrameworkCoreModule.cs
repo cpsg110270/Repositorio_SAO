@@ -1,3 +1,4 @@
+using SAO.TotalImportacioness;
 using Microsoft.Extensions.DependencyInjection;
 using SAO.Almacens;
 using SAO.Asraes;
@@ -91,6 +92,8 @@ public class SAOEntityFrameworkCoreModule : AbpModule
             options.AddRepository<ImporExport, ImporExports.EfCoreImporExportRepository>();
 
             options.AddRepository<CuotaImportador, CuotaImportadors.EfCoreCuotaImportadorRepository>();
+
+            options.AddRepository<TotalImportaciones, TotalImportacioness.EfCoreTotalImportacionesRepository>();
 
         });
 

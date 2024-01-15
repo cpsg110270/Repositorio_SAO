@@ -109,11 +109,16 @@ namespace SAO.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("LastModifierId");
 
+                    b.Property<Guid?>("TipoProductoId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AsraeId");
 
                     b.HasIndex("ImportadorId");
+
+                    b.HasIndex("TipoProductoId");
 
                     b.ToTable("AppCuotaImportadors", (string)null);
                 });
@@ -533,6 +538,73 @@ namespace SAO.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppTipoProductos", (string)null);
+                });
+
+            modelBuilder.Entity("SAO.TotalImportacioness.TotalImportaciones", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Anio")
+                        .HasColumnType("int")
+                        .HasColumnName("Anio");
+
+                    b.Property<int>("AsraeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<double>("CuotaAsignada")
+                        .HasColumnType("float")
+                        .HasColumnName("CuotaAsignada");
+
+                    b.Property<double?>("CuotaConsumida")
+                        .HasColumnType("float")
+                        .HasColumnName("CuotaConsumida");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<Guid>("ImportadorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid>("TipoProductoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AsraeId");
+
+                    b.HasIndex("ImportadorId");
+
+                    b.HasIndex("TipoProductoId");
+
+                    b.ToTable("AppTotalImportacioness", (string)null);
                 });
 
             modelBuilder.Entity("SAO.UnidadMedidas.UnidadMedida", b =>
@@ -2699,6 +2771,11 @@ namespace SAO.Migrations
                         .HasForeignKey("ImportadorId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("SAO.TipoProductos.TipoProducto", null)
+                        .WithMany()
+                        .HasForeignKey("TipoProductoId")
+                        .OnDelete(DeleteBehavior.NoAction);
                 });
 
             modelBuilder.Entity("SAO.ImporExports.ImporExport", b =>
@@ -2805,6 +2882,27 @@ namespace SAO.Migrations
                     b.HasOne("SAO.SustanciaElementals.SustanciaElemental", null)
                         .WithMany()
                         .HasForeignKey("SustanciaElementalId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SAO.TotalImportacioness.TotalImportaciones", b =>
+                {
+                    b.HasOne("SAO.Asraes.Asrae", null)
+                        .WithMany()
+                        .HasForeignKey("AsraeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SAO.Importadors.Importador", null)
+                        .WithMany()
+                        .HasForeignKey("ImportadorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SAO.TipoProductos.TipoProducto", null)
+                        .WithMany()
+                        .HasForeignKey("TipoProductoId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });

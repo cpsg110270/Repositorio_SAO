@@ -12,7 +12,6 @@ public class SAOMenus
     public const string CatalagosGenerales = Prefix + ".CatalagosGenerales";
     public const string CatalogosProductos = Prefix + ".CatalogosProductos";
 
-
     public const string TenantDashboard = Prefix + ".TenantDashboard";
     public const string Importadors = Prefix + ".Importadors";
 
@@ -43,5 +42,7 @@ public class SAOMenus
     public const string ImporExports = Prefix + ".ImporExports";
 
     public const string CuotaImportadors = Prefix + ".CuotaImportadors";
+
+    public const string TotalImportacioness = Prefix + ".TotalImportacioness";
 
 }

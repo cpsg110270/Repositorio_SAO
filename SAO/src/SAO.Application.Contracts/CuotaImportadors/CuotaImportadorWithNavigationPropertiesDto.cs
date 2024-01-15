@@ -1,5 +1,6 @@
 using SAO.Importadors;
 using SAO.Asraes;
+using SAO.TipoProductos;
 
 using System;
 using Volo.Abp.Application.Dtos;
@@ -13,6 +14,7 @@ namespace SAO.CuotaImportadors
 
         public ImportadorDto Importador { get; set; }
         public AsraeDto Asrae { get; set; }
+        public TipoProductoDto TipoProducto { get; set; }
 
     }
 }

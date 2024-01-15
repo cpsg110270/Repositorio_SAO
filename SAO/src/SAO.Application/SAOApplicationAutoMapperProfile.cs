@@ -1,3 +1,4 @@
+using SAO.TotalImportacioness;
 using Volo.Abp.AutoMapper;
 using AutoMapper;
 using SAO.Almacens;
@@ -103,5 +104,9 @@ public class SAOApplicationAutoMapperProfile : Profile
         CreateMap<RepPesosNetosASHRAE, RepPesosNetosASHRAEDto>();
 
         CreateMap<Asrae, LookupDto<Guid>>().ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.Codigo_ASHRAE));
+
+        CreateMap<TotalImportaciones, TotalImportacionesDto>();
+        CreateMap<TotalImportaciones, TotalImportacionesExcelDto>();
+        CreateMap<TotalImportacionesWithNavigationProperties, TotalImportacionesWithNavigationPropertiesDto>();
     }
 }

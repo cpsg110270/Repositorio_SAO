@@ -1,5 +1,6 @@
 using SAO.Importadors;
 using SAO.Asraes;
+using SAO.TipoProductos;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -20,13 +21,14 @@ namespace SAO.CuotaImportadors
         public virtual decimal Cuota { get; set; }
         public Guid ImportadorId { get; set; }
         public int? AsraeId { get; set; }
+        public Guid? TipoProductoId { get; set; }
 
         public CuotaImportador()
         {
 
         }
 
-        public CuotaImportador(Guid id, Guid importadorId, int? asraeId, int año, decimal cuota)
+        public CuotaImportador(Guid id, Guid importadorId, int? asraeId, Guid? tipoProductoId, int año, decimal cuota)
         {
 
             Id = id;
@@ -34,6 +36,7 @@ namespace SAO.CuotaImportadors
             Cuota = cuota;
             ImportadorId = importadorId;
             AsraeId = asraeId;
+            TipoProductoId = tipoProductoId;
         }
 
     }

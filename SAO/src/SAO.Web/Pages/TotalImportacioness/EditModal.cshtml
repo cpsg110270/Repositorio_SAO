@@ -1,0 +1,58 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using SAO.Localization
+@using SAO.Web.Pages.TotalImportacioness
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using SAO.TotalImportacioness;
+@using System.Globalization
+@inject IHtmlLocalizer<SAOResource> L
+@model EditModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/TotalImportacioness/EditModal" autocomplete="off">
+    <abp-modal id="TotalImportacionesEditModal">
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    <abp-input asp-for="Id" />
+
+                    
+            <abp-input asp-for="TotalImportaciones.Anio"  />
+
+            <abp-input asp-for="TotalImportaciones.CuotaAsignada"  />
+
+            <abp-input asp-for="TotalImportaciones.CuotaConsumida"  />
+
+                                <div class="form-group">
+                <label for="TotalImportaciones_ImportadorId">@L["Importador"]</label>
+                <select id="TotalImportaciones_ImportadorId"
+                         name="TotalImportaciones.ImportadorId"
+                         class="custom-select form-control"
+                         data-value="@Model.TotalImportaciones.ImportadorId" required>
+                    @if (Model.Importador != null)
+                    {
+                        <option value="@Model.TotalImportaciones.ImportadorId">@Model.Importador.NombreImportador</option>
+                    }
+                </select>
+            </div>
+            <abp-select asp-for="TotalImportaciones.TipoProductoId" asp-items="Model.TipoProductoLookupListRequired" label="@L["TipoProducto"].Value"/>            <div class="form-group">
+                <label for="TotalImportaciones_AsraeId">@L["Asrae"]</label>
+                <select id="TotalImportaciones_AsraeId"
+                         name="TotalImportaciones.AsraeId"
+                         class="custom-select form-control"
+                         data-value="@Model.TotalImportaciones.AsraeId" required>
+                    @if (Model.Asrae != null)
+                    {
+                        <option value="@Model.TotalImportaciones.AsraeId">@Model.Asrae.Codigo_ASHRAE</option>
+                    }
+                </select>
+            </div>
+
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

@@ -14,7 +14,7 @@
   "ShouldCreateBackend": true,
   "ShouldExportExcel": false,
   "ShouldAddMigration": true,
-  "ShouldUpdateDatabase": false,
+  "ShouldUpdateDatabase": true,
   "CreateTests": true,
   "Properties": [
     {
@@ -92,6 +92,21 @@
       "DtoNamespace": "SAO.Asraes",
       "DtoEntityName": "AsraeDto",
       "Type": "int"
+    },
+    {
+      "EntityNameWithDuplicationNumber": "TipoProducto",
+      "EntitySetNameWithDuplicationNumber": "TipoProductos",
+      "ReferencePropertyName": "TipoProducto",
+      "UiPickType": "Dropdown",
+      "IsRequired": false,
+      "Name": "TipoProductoId",
+      "DisplayProperty": "DesProducto",
+      "Namespace": "SAO.TipoProductos",
+      "EntityName": "TipoProducto",
+      "EntitySetName": "TipoProductos",
+      "DtoNamespace": "SAO.TipoProductos",
+      "DtoEntityName": "TipoProductoDto",
+      "Type": "Guid"
     }
   ],
   "NavigationConnections": [],

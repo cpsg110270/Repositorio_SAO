@@ -21,6 +21,7 @@ namespace SAO.CuotaImportadors
             decimal? cuotaMax = null,
             Guid? importadorId = null,
             int? asraeId = null,
+            Guid? tipoProductoId = null,
             string sorting = null,
             int maxResultCount = int.MaxValue,
             int skipCount = 0,
@@ -47,6 +48,7 @@ namespace SAO.CuotaImportadors
             decimal? cuotaMax = null,
             Guid? importadorId = null,
             int? asraeId = null,
+            Guid? tipoProductoId = null,
             CancellationToken cancellationToken = default);
     }
 }

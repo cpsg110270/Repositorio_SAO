@@ -24,7 +24,6 @@ public class SAOPermissionDefinitionProvider : PermissionDefinitionProvider
         modulosPermission.AddChild(SAOPermissions.Modulos.CatalogosProductos, L("Permission:CatalogosProductos"));
         modulosPermission.AddChild(SAOPermissions.Modulos.Reportes, L("Permission:Reportes"));
 
-
         var importadorPermission = myGroup.AddPermission(SAOPermissions.Importadors.Default, L("Permission:Importadors"));
         importadorPermission.AddChild(SAOPermissions.Importadors.Create, L("Permission:Create"));
         importadorPermission.AddChild(SAOPermissions.Importadors.Edit, L("Permission:Edit"));
@@ -99,6 +98,11 @@ public class SAOPermissionDefinitionProvider : PermissionDefinitionProvider
         cuotaImportadorPermission.AddChild(SAOPermissions.CuotaImportadors.Create, L("Permission:Create"));
         cuotaImportadorPermission.AddChild(SAOPermissions.CuotaImportadors.Edit, L("Permission:Edit"));
         cuotaImportadorPermission.AddChild(SAOPermissions.CuotaImportadors.Delete, L("Permission:Delete"));
+
+        var totalImportacionesPermission = myGroup.AddPermission(SAOPermissions.TotalImportacioness.Default, L("Permission:TotalImportacioness"));
+        totalImportacionesPermission.AddChild(SAOPermissions.TotalImportacioness.Create, L("Permission:Create"));
+        totalImportacionesPermission.AddChild(SAOPermissions.TotalImportacioness.Edit, L("Permission:Edit"));
+        totalImportacionesPermission.AddChild(SAOPermissions.TotalImportacioness.Delete, L("Permission:Delete"));
     }
 
     private static LocalizableString L(string name)

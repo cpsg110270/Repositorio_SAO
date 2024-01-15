@@ -1,3 +1,4 @@
+using SAO.TotalImportacioness;
 using Microsoft.EntityFrameworkCore;
 using SAO.Almacens;
 using SAO.Asraes;
@@ -44,6 +45,7 @@ public class SAODbContext :
     IIdentityProDbContext,
     ISaasDbContext
 {
+    public DbSet<TotalImportaciones> TotalImportacioness { get; set; }
     public DbSet<CuotaImportador> CuotaImportadors { get; set; }
     public DbSet<ImporExport> ImporExports { get; set; }
     public DbSet<TipoPermiso> TipoPermisos { get; set; }
@@ -462,6 +464,10 @@ public class SAODbContext :
         }
         if (builder.IsHostDatabase())
         {
+
+        }
+        if (builder.IsHostDatabase())
+        {
             builder.Entity<CuotaImportador>(b =>
 {
     b.ToTable(SAOConsts.DbTablePrefix + "CuotaImportadors", SAOConsts.DbSchema);
@@ -470,6 +476,22 @@ public class SAODbContext :
     b.Property(x => x.Cuota).HasColumnName(nameof(CuotaImportador.Cuota));
     b.HasOne<Importador>().WithMany().IsRequired().HasForeignKey(x => x.ImportadorId).OnDelete(DeleteBehavior.NoAction);
     b.HasOne<Asrae>().WithMany().HasForeignKey(x => x.AsraeId).OnDelete(DeleteBehavior.NoAction);
+    b.HasOne<TipoProducto>().WithMany().HasForeignKey(x => x.TipoProductoId).OnDelete(DeleteBehavior.NoAction);
+});
+
+        }
+        if (builder.IsHostDatabase())
+        {
+            builder.Entity<TotalImportaciones>(b =>
+{
+    b.ToTable(SAOConsts.DbTablePrefix + "TotalImportacioness", SAOConsts.DbSchema);
+    b.ConfigureByConvention();
+    b.Property(x => x.Anio).HasColumnName(nameof(TotalImportaciones.Anio));
+    b.Property(x => x.CuotaAsignada).HasColumnName(nameof(TotalImportaciones.CuotaAsignada));
+    b.Property(x => x.CuotaConsumida).HasColumnName(nameof(TotalImportaciones.CuotaConsumida));
+    b.HasOne<Importador>().WithMany().IsRequired().HasForeignKey(x => x.ImportadorId).OnDelete(DeleteBehavior.NoAction);
+    b.HasOne<TipoProducto>().WithMany().IsRequired().HasForeignKey(x => x.TipoProductoId).OnDelete(DeleteBehavior.NoAction);
+    b.HasOne<Asrae>().WithMany().IsRequired().HasForeignKey(x => x.AsraeId).OnDelete(DeleteBehavior.NoAction);
 });
 
         }

@@ -1,3 +1,4 @@
+using SAO.TipoProductos;
 using SAO.Asraes;
 using SAO.Importadors;
 using System;
@@ -30,7 +31,8 @@ namespace SAO.CuotaImportadors
                 {
                     CuotaImportador = cuotaImportador,
                     Importador = dbContext.Set<Importador>().FirstOrDefault(c => c.Id == cuotaImportador.ImportadorId),
-                    Asrae = dbContext.Set<Asrae>().FirstOrDefault(c => c.Id == cuotaImportador.AsraeId)
+                    Asrae = dbContext.Set<Asrae>().FirstOrDefault(c => c.Id == cuotaImportador.AsraeId),
+                    TipoProducto = dbContext.Set<TipoProducto>().FirstOrDefault(c => c.Id == cuotaImportador.TipoProductoId)
                 }).FirstOrDefault();
         }
 
@@ -42,13 +44,14 @@ namespace SAO.CuotaImportadors
             decimal? cuotaMax = null,
             Guid? importadorId = null,
             int? asraeId = null,
+            Guid? tipoProductoId = null,
             string sorting = null,
             int maxResultCount = int.MaxValue,
             int skipCount = 0,
             CancellationToken cancellationToken = default)
         {
             var query = await GetQueryForNavigationPropertiesAsync();
-            query = ApplyFilter(query, filterText, añoMin, añoMax, cuotaMin, cuotaMax, importadorId, asraeId);
+            query = ApplyFilter(query, filterText, añoMin, añoMax, cuotaMin, cuotaMax, importadorId, asraeId, tipoProductoId);
             query = query.OrderBy(string.IsNullOrWhiteSpace(sorting) ? CuotaImportadorConsts.GetDefaultSorting(true) : sorting);
             return await query.PageBy(skipCount, maxResultCount).ToListAsync(cancellationToken);
         }
@@ -60,11 +63,14 @@ namespace SAO.CuotaImportadors
                    from importador in importadors.DefaultIfEmpty()
                    join asrae in (await GetDbContextAsync()).Set<Asrae>() on cuotaImportador.AsraeId equals asrae.Id into asraes
                    from asrae in asraes.DefaultIfEmpty()
+                   join tipoProducto in (await GetDbContextAsync()).Set<TipoProducto>() on cuotaImportador.TipoProductoId equals tipoProducto.Id into tipoProductos
+                   from tipoProducto in tipoProductos.DefaultIfEmpty()
                    select new CuotaImportadorWithNavigationProperties
                    {
                        CuotaImportador = cuotaImportador,
                        Importador = importador,
-                       Asrae = asrae
+                       Asrae = asrae,
+                       TipoProducto = tipoProducto
                    };
         }
 
@@ -76,7 +82,8 @@ namespace SAO.CuotaImportadors
             decimal? cuotaMin = null,
             decimal? cuotaMax = null,
             Guid? importadorId = null,
-            int? asraeId = null)
+            int? asraeId = null,
+            Guid? tipoProductoId = null)
         {
             return query
                 .WhereIf(!string.IsNullOrWhiteSpace(filterText), e => true)
@@ -85,7 +92,8 @@ namespace SAO.CuotaImportadors
                     .WhereIf(cuotaMin.HasValue, e => e.CuotaImportador.Cuota >= cuotaMin.Value)
                     .WhereIf(cuotaMax.HasValue, e => e.CuotaImportador.Cuota <= cuotaMax.Value)
                     .WhereIf(importadorId != null && importadorId != Guid.Empty, e => e.Importador != null && e.Importador.Id == importadorId)
-                    .WhereIf(asraeId != null, e => e.Asrae != null && e.Asrae.Id == asraeId);
+                    .WhereIf(asraeId != null, e => e.Asrae != null && e.Asrae.Id == asraeId)
+                    .WhereIf(tipoProductoId != null && tipoProductoId != Guid.Empty, e => e.TipoProducto != null && e.TipoProducto.Id == tipoProductoId);
         }
 
         public async Task<List<CuotaImportador>> GetListAsync(
@@ -112,10 +120,11 @@ namespace SAO.CuotaImportadors
             decimal? cuotaMax = null,
             Guid? importadorId = null,
             int? asraeId = null,
+            Guid? tipoProductoId = null,
             CancellationToken cancellationToken = default)
         {
             var query = await GetQueryForNavigationPropertiesAsync();
-            query = ApplyFilter(query, filterText, añoMin, añoMax, cuotaMin, cuotaMax, importadorId, asraeId);
+            query = ApplyFilter(query, filterText, añoMin, añoMax, cuotaMin, cuotaMax, importadorId, asraeId, tipoProductoId);
             return await query.LongCountAsync(GetCancellationToken(cancellationToken));
         }
 

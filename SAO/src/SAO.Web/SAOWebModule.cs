@@ -221,6 +221,7 @@ public class SAOWebModule : AbpModule
             options.Conventions.AuthorizePage("/TipoPermisos/Index", SAOPermissions.TipoPermisos.Default);
             options.Conventions.AuthorizePage("/ImporExports/Index", SAOPermissions.ImporExports.Default);
             options.Conventions.AuthorizePage("/CuotaImportadors/Index", SAOPermissions.CuotaImportadors.Default);
+            options.Conventions.AuthorizePage("/TotalImportacioness/Index", SAOPermissions.TotalImportacioness.Default);
         });
     }
 
