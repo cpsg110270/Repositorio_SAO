@@ -270,11 +270,28 @@ namespace SAO.ImporExports
                 throw new UserFriendlyException(L["The {0} field is required.", L["TipoPermiso"]]);
             }
 
-            var imporExport = await _imporExportManager.CreateAsync(
+            if (input.PaisDestinoId == 0)
+            { input.PaisDestinoId = null; }
+
+            if (input.PaisProcedenciaId == 0)
+            { input.PaisDestinoId = null; }
+
+            if (input.PuertoEntradaId == 0)
+            { input.PuertoEntradaId = null; }
+
+            if (input.PuertoSalidaId == 0)
+            { input.PuertoSalidaId = null; }
+
+             if (input.PermisoRenov == Guid.Empty)
+            { input.PermisoRenov = null; }
+
+         
+
+            var ImporExport = await _imporExportManager.CreateAsync(
             input.ImportadorId, input.ExportadorId, input.ProductoId, input.UnidadMedidaId, input.TipoEnvaseId, input.PuertoEntradaId, input.PuertoSalidaId, input.PaisProcedenciaId, input.PaisDestinoId, input.PaisOrigenId, input.AlmacenId, input.PermisoRenov, input.PermisoDe, input.NoPermiso, input.FechaEmision, input.FechaSolicitud, input.PesoNeto, input.PesoUnitario, input.CantEnvvase, input.NoFactura, input.Observaciones, input.EsRenovacion, input.Estado
             );
 
-            return ObjectMapper.Map<ImporExport, ImporExportDto>(imporExport);
+            return ObjectMapper.Map<ImporExport, ImporExportDto>(ImporExport);
         }
 
         [Authorize(SAOPermissions.ImporExports.Edit)]

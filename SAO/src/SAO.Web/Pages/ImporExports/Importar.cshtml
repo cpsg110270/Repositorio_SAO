@@ -18,11 +18,21 @@
 
 @section styles
     {
-@*     <style>
-        .input-group > .custom-file:not(:last-child) .custom-file-label, .input-group > .custom-file:not(:last-child) .custom-file-label::after {
-            content: "Examinar";
-        }
-    </style> *@
+        <style>
+        .tabla-contenedor   {
+           /*  max-width: 1400px; */
+            max-height: 750px;
+            overflow: auto;
+                             }
+        th { min-width: 100px; }
+        td { max-width: 200px;} 
+
+        thead {
+            position: sticky;
+            top: 0;
+            background-color: #f5f5f5;
+            }
+        </style>
 }
 
 @section scripts
@@ -52,18 +62,6 @@
             <abp-column size-md="_12">
                 <form method="post" asp-page-handler="Import" class="text-left form-validate" enctype="multipart/form-data" id="form-import">
                     <div class="container py-3">
-@*                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-paperclip"></i></span>
-                            </div>
-                            <div class="custom-file">
-                                <input asp-for="XlsFile" class="custom-file-input" type="file" id="chooseFile" required>
-                                <label class="custom-file-label" for="myInput">Subir Archivo</label>
-                            </div>
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary">Leer archivo de Excel</button>
-                            </div>
-                        </div> *@
                         <div class="input-group">
                             <input type="file"
                                    class="form-control custom-file-input"
@@ -81,10 +79,11 @@
                 </form>
             </abp-column>
         </abp-row>
+        <div class="tabla-contenedor">
         <abp-table striped-rows="true" id="tableLicencias">
             <thead>
                 <tr>
-                    <th>@L["NoPermiso"]</th>
+                     <th>@L["NoPermiso"]</th>
                     <th>@L["Fecha Emision"]</th>
                     <th>@L["Fecha Solicitud"]</th>
                     <th>@L["Peso Neto"]</th>
@@ -106,6 +105,7 @@
                     <th>@L["Pais Origen"]</th>
                     <th>@L["Almacen"]</th>
                     <th>@L["Permiso Renv."]</th>  
+                    <th>@L["Tipo Permiso."]</th>  
                 </tr>
             </thead>
             <tbody>
@@ -117,7 +117,7 @@
                         <td>@item.FechaEmision.ToShortDateString()</td>
                         <td>@item.FechaSolicitud.ToShortDateString()</td>
                         <td>@item.PesoNeto</td>
-                        <td>@item.ImportadorId</td>
+                        <td>@item.ImportadorId.</td>
                         <td>@item.ExportadorId</td>
                         <td>@item.ProductoId</td>
                         <td>@item.PesoUnitario</td>
@@ -135,6 +135,8 @@
                         <td>@item.PaisOrigenId</td>
                         <td>@item.AlmacenId</td>
                         <td>@item.PermisoRenov</td>
+                        <td>@item.PermisoDe</td>
+
  
 
 
@@ -150,5 +152,8 @@
                 </tr>
             </tfoot>
         </abp-table>
+        </div>
     </abp-card-body>
+   
+   
 </abp-card>
