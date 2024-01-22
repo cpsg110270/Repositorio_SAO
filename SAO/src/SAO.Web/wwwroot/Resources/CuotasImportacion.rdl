@@ -6,10 +6,9 @@
     <DataSource Name="DataSource1">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=localhost;Initial Catalog=SAO</ConnectString>
-        <IntegratedSecurity>true</IntegratedSecurity>
+        <ConnectString>Data Source=192.168.0.104;Initial Catalog=SAO;user=sa;password=maiden2018</ConnectString>
       </ConnectionProperties>
-      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>1fa8cf70-db81-4900-9b80-9cfaab4b0469</rd:DataSourceID>
     </DataSource>
   </DataSources>

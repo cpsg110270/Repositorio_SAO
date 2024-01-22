@@ -231,6 +231,30 @@ public class SAOMenuContributor : IMenuContributor
         );
         #endregion
 
+
+        #region Importadores
+        var catalogosImportadors = new ApplicationMenuItem(
+        SAOMenus.CatalogosImportadors, 
+        l["Menu:Importadores"],
+        url: "/Importadores",
+        icon: "fa fa-folder",
+        requiredPermissionName: SAOPermissions.Modulos.CatalogosImportadors);
+
+        context.Menu.AddItem(catalogosImportadors);
+
+        catalogosImportadors.AddItem(
+           new ApplicationMenuItem(
+               SAOMenus.Importadors,
+               l["Menu:Importadores"],
+               url: "/Importadors",
+               icon: "fa fa-file-alt",
+               requiredPermissionName: SAOPermissions.Importadors.Default)
+       );
+
+
+        #endregion
+
+
         context.Menu.AddItem(
            new ApplicationMenuItem(
                SAOMenus.ImporExports,
@@ -276,14 +300,14 @@ public class SAOMenuContributor : IMenuContributor
         //        requiredPermissionName: SAOPermissions.Reportes)
         //);
 
-        context.Menu.AddItem(
-            new ApplicationMenuItem(
-                SAOMenus.TotalImportacioness,
-                l["Menu:TotalImportacioness"],
-                url: "/TotalImportacioness",
-                icon: "fa fa-calculator",
-                requiredPermissionName: SAOPermissions.TotalImportacioness.Default)
-        );
+        //context.Menu.AddItem(
+        //    new ApplicationMenuItem(
+        //        SAOMenus.TotalImportacioness,
+        //        l["Menu:TotalImportacioness"],
+        //        url: "/TotalImportacioness",
+        //        icon: "fa fa-calculator",
+        //        requiredPermissionName: SAOPermissions.TotalImportacioness.Default)
+        //);
         return Task.CompletedTask;
     }
 }

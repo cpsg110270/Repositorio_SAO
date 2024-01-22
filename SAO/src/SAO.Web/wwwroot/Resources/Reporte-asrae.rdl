@@ -6,10 +6,9 @@
     <DataSource Name="InformeAshrae">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=localhost;Initial Catalog=SAO</ConnectString>
-        <IntegratedSecurity>true</IntegratedSecurity>
+        <ConnectString>Data Source=192.168.0.104;Initial Catalog=SAO;user=sa;password=maiden2018</ConnectString>
       </ConnectionProperties>
-      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>6f049cf7-b508-49b5-a631-0781281e5408</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -520,7 +519,7 @@ Order by AppAsraes.Codigo_ASHRAE</CommandText>
                                   <Value>=Fields!FechaEmision.Value</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
-                                    <Format>dd-MMM-yy</Format>
+                                    <Format>MM/dd/yyyy</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>

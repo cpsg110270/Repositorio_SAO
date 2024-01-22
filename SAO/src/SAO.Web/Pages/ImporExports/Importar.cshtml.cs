@@ -49,6 +49,7 @@ namespace SAO.Web.Pages.ImporExports
                         var rowCount = worksheet.Dimension.Rows;
                         for (int row = 2; row <= rowCount; row++)
                         {
+                      
                             string Permiso = (worksheet.Cells[row, 1].Value ?? string.Empty).ToString().Trim();
                             string FechaE = (worksheet.Cells[row, 2].Value ?? string.Empty).ToString().Trim();
                             string FechaS = (worksheet.Cells[row, 3].Value ?? string.Empty).ToString().Trim();
@@ -59,6 +60,7 @@ namespace SAO.Web.Pages.ImporExports
                             string Obser = (worksheet.Cells[row, 8].Value ?? string.Empty).ToString().Trim();
                             string esRen    = (worksheet.Cells[row, 9].Value ?? string.Empty).ToString().Trim(); 
                             string estado   = (worksheet.Cells[row, 10].Value ?? string.Empty).ToString().Trim(); 
+
                             string Impor    = (worksheet.Cells[row, 11].Value ?? string.Empty).ToString().Trim(); 
                             string Expor    = (worksheet.Cells[row, 12].Value ?? string.Empty).ToString().Trim(); 
                             string Product  = (worksheet.Cells[row, 13].Value ?? string.Empty).ToString().Trim(); 
@@ -71,14 +73,15 @@ namespace SAO.Web.Pages.ImporExports
                             string PaisO    = (worksheet.Cells[row, 20].Value ?? string.Empty).ToString().Trim(); 
                             string Almacen  = (worksheet.Cells[row, 21].Value ?? string.Empty).ToString().Trim(); 
                             string PermisoR = (worksheet.Cells[row, 22].Value ?? string.Empty).ToString().Trim();
+                            string TipoPer= (worksheet.Cells[row, 23].Value ?? string.Empty).ToString().Trim();
 
                             if (esRen == "0")
-                            { esRen = "False"; }
-                            else { esRen = "True"; }
+                            { esRen = "false"; }
+                            else { esRen = "true"; }
 
                             if (estado == "0")
-                            { estado = "False"; }
-                            else { estado = "True"; }
+                            { estado = "false"; }
+                            else { estado = "true"; }
 
                             if (PermisoR == "")
                             { PermisoR = "00000000-0000-0000-0000-000000000000"; }
@@ -115,7 +118,8 @@ namespace SAO.Web.Pages.ImporExports
                                 PaisDestinoId = int.Parse(PaisD),
                                 PaisOrigenId = int.Parse(PaisO),
                                 AlmacenId = int.Parse(Almacen),
-                               PermisoRenov=Guid.Parse(PermisoR)
+                                PermisoRenov=Guid.Parse(PermisoR),
+                                PermisoDe = Guid.Parse(TipoPer)
 
 
                             });
